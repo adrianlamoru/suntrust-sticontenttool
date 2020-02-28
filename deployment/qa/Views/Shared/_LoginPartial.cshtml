@@ -1,0 +1,20 @@
+﻿@using st1001.website.Models;
+
+@if (Request.IsAuthenticated)
+{
+    <text>
+        @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "header-login-form" }))
+        {
+            @Html.AntiForgeryToken()
+            var currentUser = (st1001.website.DAL.Security.CustomPrincipal)st1001.website.Models.ModelHelper.GetCurrentUser();
+            
+            <span class="login-display">Logged as <b>@currentUser.Email</b></span>
+            <a href="javascript:document.getElementById('logoutForm').submit()" class="login-button">Sign Out</a>
+            <div class="clear"></div>
+        }
+    </text>
+}
+else
+{
+    @Html.ActionLink("Login", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "login-button" })
+}

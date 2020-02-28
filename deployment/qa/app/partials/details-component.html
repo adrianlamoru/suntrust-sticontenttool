@@ -1,0 +1,58 @@
+﻿<div class="table-block input-spacing">
+    <div class="section-header">
+        <h3>{{number}} <span ng-bind-html="componentName"></span></h3>
+        <div class="deactivate-component" ng-show="deactivatable">
+            <span>Deactivate Component</span>
+            <input type="checkbox" name="inactive" ng-checked="component.Inactive" ng-model="component.Inactive" />
+        </div>
+    </div>
+    
+    <div class="section-content"  ng-if="emailTags">
+        <div class="input-container">
+            <div class="text-editor input-spacing" text-angular="text-angular" name="details"
+                 ta-toolbar="{{toolbarOptions}}" ng-model="component.Data.Description">
+            </div>
+            
+            <div ng-if="emailTags">
+                <select name="urlselect" ng-model="component.Data.Apply.DesktopAlignment" ng-options="url.Name for url in Options" ng-change="defaultValue = 'NOT_A_DEFAULT'" ng-class="{'color-for-default': defaultValue != 'NOT_A_DEFAULT'}"></select>
+                <input type="text" name="buttonText" ng-model="component.Data.Apply.buttonText" placeholder="Insert apply now button text" />
+                <input type="url" name="urlToCall" ng-model="component.Data.Apply.url" placeholder="Enter apply now button URL" />
+                <div class="error-container no-marging" ng-show="$parent.sectionForm.urlToCall.$error.required">
+                    <span class="error-msg">Required</span>
+                </div>
+                <div class="error-container no-marging" ng-show="!$parent.sectionForm.urlToCall.$error.required && $parent.sectionForm.urlToCall.$error.url">
+                    <span class="error-msg">The URL must begin with http://</span>
+                </div>
+                <div id="testApply" class="apply-now" style="display:inline-block;text-align:center;vertical-align:middle;visibility:hidden;padding: 0 20px;position:absolute;height:0;">
+                    {{component.Data.Apply.buttonText || ' Apply Now'}} <span> &nbsp;&nbsp;&nbsp;&nbsp; &#x25BA;</span>
+                </div>
+            </div>
+        </div>
+        <div class="section-description">
+            <div class="section-main-details">
+                <p ta-bind ng-model="header"  ng-bind-html="header"></p>
+            </div>
+            <div class="section-explaination">
+                <p ng-bind-html="details"></p>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+    </div>
+    <div class="section-content full-width" ng-if="!emailTags">
+        <div class="section-description">
+            <div class="section-main-details">
+                <p ta-bind ng-model="header" ng-bind-html="header"></p>
+            </div>
+            <div class="section-explaination">
+                <p ng-bind-html="details"></p>
+            </div>
+        </div>
+        <div class="input-container">
+            <div class="text-editor input-spacing" text-angular="text-angular" name="details"
+                 ta-toolbar="{{toolbarOptions}}" ng-model="component.Data.Description">
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>

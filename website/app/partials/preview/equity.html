@@ -1,0 +1,76 @@
+﻿<div class="bg-equity">
+    <div class="banner">
+        <h1 class="page-title">
+            Special Offer
+        </h1>
+        <div class="dark-widget">
+            <div class="image-container">
+                <a href="" target="_blank">
+                    <img class="img-banner" fallback-src="{{DEFAULT_IMAGE_URL}}" ng-src="{{getSrc(ComponentType.MAIN_IMAGE)}}" />
+
+                </a>
+            </div>
+
+            
+            <!--div class="icon-no"></div-->
+            <br>
+            <div class="headline">
+                <div ng-bind="getComponent(ComponentType.HEADLINE).Data.Headline"></div>
+
+            </div>
+            <div class="preview-details">
+                <div class="html-view" ng-bind-html="getComponent(ComponentType.DETAILS).Data.Description"></div>
+            </div>
+
+            <div class="clear"></div>
+            <div ng-if="getComponent(ComponentType.TERMS_CONDITIONS).Data.url">
+
+                <img ng-src="{{PDF_IMAGE_URL}}" class="pdf-icon" />
+                <a ng-href="{{getComponent(ComponentType.TERMS_CONDITIONS).Data.url}}" href="" target="_blank" class="link-conditions">Terms and Conditions</a>
+
+            </div>
+            <div class="options ">
+                <center>
+                    <a ng-href="{{getHref(ComponentType.CALL_TO_ACTION)}}" href="" target="_blank" ng-if="isVisible(ComponentType.CALL_TO_ACTION)" class="btn action">
+                        Apply Now
+                    </a>
+                </center>
+            </div>
+        </div>
+        <br>
+        <div class="or-skip-row" style="text-align:center;">
+            <strong>OR</strong>
+            <br />
+            <br />
+            <a href="">Skip this and continue with your original product selection »</a>
+        </div>
+        
+        <!--div class="options">
+            <a class="btn action" href="">Continue</a>
+        </div-->
+        <!--div-- class="term-conditions">
+            <div class="html-view sup" ng-bind-html="getComponent(ComponentType.TERMS_CONDITIONS).Data.Conditions"></div>
+        </div-->
+    </div>
+</div>
+<div class="bg-cc-footer">
+
+</div>
+<div class="pdf-conplete-content">
+    <h3>Complete Content:</h3>
+    <hr />
+    <div class="pdf-complete-content-text" ng-if="!isEmptyOrWhiteSpace(display(ComponentType.HEADLINE))">
+        <h4>Headline:</h4>
+        <div class="overlay-text-viewer">
+            <div ng-bind="getComponent(ComponentType.HEADLINE).Data.Headline"></div>
+        </div>
+    </div>
+    <div class="pdf-complete-content-text" ng-if="isVisible(ComponentType.DETAILS)">
+        <h4>Details:</h4>
+        <div class="overlay-text-viewer html-view" ng-bind-html="getComponent(ComponentType.DETAILS).Data.Description"></div>
+    </div>
+    <div class="pdf-complete-content-text" ng-if="isVisible(ComponentType.TERMS_CONDITIONS)">
+        <h4>Terms & Conditions:</h4>
+        <div class="overlay-text-viewer html-view" ng-bind-html="getComponent(ComponentType.TERMS_CONDITIONS).Data.Conditions"></div>
+    </div>
+</div>

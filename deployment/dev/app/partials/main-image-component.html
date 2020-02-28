@@ -1,0 +1,53 @@
+﻿<div class="table-block input-spacing">
+    <div class="section-header">
+        <h3>{{number}} Main Image</h3>
+        <div class="deactivate-component" ng-show="deactivatable">
+            <span>Deactivate Component</span>
+            <input type="checkbox" name="inactive" ng-checked="component.Inactive" ng-model="component.Inactive" />
+        </div>
+    </div>
+
+    <div class="section-content">
+        <div class="input-container white" nv-file-drop="" uploader="uploader">
+            <div ng-show="uploader.isHTML5">
+                <div class="zone" nv-file-over="" uploader="uploader" options="{}" over-class="over">
+                    <img id="imagePreview" fallback-src="{{DEFAULT_URL}}" ng-src="{{imageURL}}" src="" alt="" ng-click="clickUploadImage()" />
+                </div>
+                <div class="dad-notification red">{{uiMsg}}</div>
+            </div>
+            <div ng-show="!uploader.isHTML5">
+                <img id="imagePreview" fallback-src="{{DEFAULT_URL}}" ng-src="{{imageURL}}" src="" alt="" ng-click="clickUploadImage()" />
+            </div>
+
+            <div class="input-spacing upload-button-positon">
+                <button class="button blue image-container-button-positon" ng-click="clickUploadImage()">Upload</button>
+            </div>
+        </div>
+
+        <div class="section-description">
+            <div class="section-main-details">
+                <p ng-bind-html="header">
+                </p>
+            </div>
+            <div class="section-explaination">
+                <p ng-bind-html="details">
+                </p>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+
+        <div ng-if="false">
+            <div class="input-container">
+                <div class="input-spacing" ng-show="showTcTextEditor">
+                    <div class="text-editor" text-angular="text-angular" ta-toolbar="{{toolbarOptions}}" name="overlay" ng-model="component.Data.OverlayText" ta-disabled='disabled' ta-readonly='disabled'></div>
+                </div>
+            </div>
+
+            <div class="clear"></div>
+        </div>
+        
+    </div>
+</div>
+
+

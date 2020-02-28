@@ -1,0 +1,1978 @@
+
+
+.preview-container {
+    font-family: Arial;
+    width: 1020px !important;
+    margin: 0 auto;
+    background-color: #fff;
+    color: #555;
+    line-height: normal;
+    font-size: 16px;
+}
+
+.responsive .preview-container {
+    max-width: 1020px !important;
+    width: auto !important;
+}
+
+.preview-container .page-break {
+    display: block;
+    page-break-before: always;
+}
+
+.pull-right {
+    float: right;
+}
+
+.pull-left {
+    float: left;
+}
+
+.clear {
+    clear: both;
+}
+
+.cta-link-text {
+    font-weight: 900;
+}
+
+.preview-container .sup, .preview-container .sup p, .preview-container .sup li, .preview-container .sup span, .preview-container .superscript-font, .preview-container .superscript-font p, .preview-container .superscript-font span {
+    font-size: 10px;
+    line-height: 12px;
+}
+
+.html-view {
+    margin-bottom: 15px;
+    padding-right: 5px;
+    padding-top: 10px;
+    font-family: Arial;
+}
+
+    .html-view p, .html-view div {
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        display: block;
+        font-size: 13px;
+        line-height: 15px;
+        margin: 0 0 10px 0;
+        color: #555;
+        font-family: Arial;
+    }
+
+    .html-view span {
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        font-size: 13px;
+        line-height: 15px;
+        margin: 0 0 10px 0;
+        color: #555;
+        font-family: Arial;
+    }
+
+    .preview-details h1 span, .overlay-text-viewer h1 span, .overlay-text-viewer h1, .disclaimer h1 {
+        font-size: 2.0rem;
+        line-height: 2.1rem;
+    }
+
+    .preview-details h2 span, .overlay-text-viewer h2 span, .overlay-text-viewer h2, .disclaimer h2 {
+        font-size: 1.5rem;
+        line-height: 1.6rem;
+    }
+
+    .preview-details h3 span, .overlay-text-viewer h3 span, .overlay-text-viewer h3, .disclaimer h3 {
+        font-size: 1.17rem;
+        line-height: 1.27rem;
+    }
+
+    .html-view b {
+        display: inline;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        font-size: 13px;
+        line-height: 15px;
+        font-weight: bold;
+        font-family: Arial;
+    }
+
+    .html-view i {
+        display: inline;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        font-size: 13px;
+        line-height: 15px;
+        font-style: italic;
+        font-family: Arial;
+    }
+
+    .html-view a {
+        display: inline;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        font-size: 13px;
+        line-height: 15px;
+        font-style: italic;
+        color: #428bca;
+        text-decoration: none;
+        float: none;
+        font-family: Arial;
+    }
+
+    .html-view ul, .html-view ol {
+        display: block;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        font-size: 13px;
+        line-height: 15px;
+        list-style-type: disc;
+        margin-bottom: 20px;
+        margin-top: 0;
+        /* padding-left: 10px; */
+        margin-left: 15px;
+        font-family: Arial;
+    }
+
+        .html-view ul li, .html-view ol li {
+            display: list-item;
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            font-size: 13px;
+            font-family: Arial;
+            line-height: 15px;
+            list-style-type: disc;
+            text-align: left;
+            color: #555;
+            list-style-position: inherit;
+            margin-bottom: 10px;
+            padding-left: 0;
+        }
+
+    .html-view ol, .html-view ol li {
+        list-style-type: none;
+        margin-left: 0;
+    }
+
+	.html-view ul li p, .html-view ol li p {
+		margin-bottom: 30px;
+	}
+    
+
+    .preview-details h1 span, .overlay-text-viewer h1 span, .overlay-text-viewer h1, .disclaimer h1 {
+        font-size: 2.0rem;
+        line-height: 2.1rem;
+    }
+
+.preview-container .pdf-conplete-content {
+    display: none;
+}
+
+.preview-container.preview-pdf .pdf-conplete-content {
+    display: block;
+    font-family: Arial;
+    font-size: 13px;
+    color: #555555;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+    .preview-container.preview-pdf .pdf-conplete-content h3, .preview-container.preview-pdf .pdf-conplete-content h4 {
+        font-weight: bold;
+        font-size: 13px;
+    }
+
+    .preview-container.preview-pdf .pdf-conplete-content h4 {
+        text-decoration: underline;
+    }
+
+    .preview-container.preview-pdf .pdf-conplete-content .pdf-complete-content-text {
+        margin-top: 15px;
+    }
+
+        .preview-container.preview-pdf .pdf-conplete-content .pdf-complete-content-text .overlay-text-viewer {
+            font-family: Arial;
+            font-size: 13px;
+            color: #555555;
+            margin-top: 10px;
+        }
+
+        .preview-container.preview-pdf .pdf-conplete-content .pdf-complete-content-text p {
+            font-family: Arial;
+            font-size: 13px;
+            color: #555555;
+        }
+
+    .preview-container.preview-pdf .pdf-conplete-content hr {
+        border-width: 0;
+        border-top-width: 2px;
+    }
+
+.preview-container .logo {
+    width: 88px;
+    height: 50px;
+    background: url(../images/preview-logo.png) no-repeat center center;
+    background-size: cover;
+    display: inline-block;
+}
+
+.preview-container .main-text {
+    display: inline-block;
+    margin: 0 0 0 30px;
+    font-weight: lighter;
+    font-size: 24px;
+    color: #003C72;
+}
+
+.preview-container .layout-name {
+    color: rgb(251, 131, 39);
+    font-weight: lighter;
+    font-size: 13px;
+    margin-top: 70px;
+}
+
+.preview-container .page-name {
+    color: rgb(251, 131, 39);
+    font-weight: lighter;
+    font-size: 13px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.preview-container .layout-note {
+    color: rgb(251, 131, 39);
+    font-weight: lighter;
+    font-size: 13px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.preview-container .options {
+    padding-top: 13px;
+    padding-bottom: 18px;
+}
+
+    .preview-container .options .btn {
+        display: inline-block;
+        padding: 1px 10px;
+        color: #003871;
+        -moz-border-radius: 4px;
+        -webkit-border-radius: 4px;
+        border-radius: 4px;
+        line-height: 24px;
+        font-size: 13px;
+        text-decoration: initial;
+    }
+
+        .preview-container .options .btn.first-btn {
+            padding-left: 0;
+        }
+
+        .preview-container .options .btn.action {
+            background-color: #00366f;
+            color: #fff;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+/* begin: primary-banner */
+.preview-container .bg-primary-banner {
+    background: url(../images/previews/bg-primary-banner.jpg) no-repeat center center;
+    background-size: cover;
+    width: 1020px;
+    height: 720px;
+    position: relative;
+}
+
+    .preview-container .bg-primary-banner .banner {
+        display: inline-block;
+        position: relative;
+        top: 256px;
+        left: 203px;
+        padding: 13px;
+        max-width: 242px;
+    }
+
+    .preview-container .bg-primary-banner .img-banner, .preview-container .bg-primary-banner .img-container {
+        height: 77px;
+        width: 185px;
+    }
+
+    .preview-container .bg-primary-banner .banner .headline-subheadline-container {
+        position: absolute;
+        top: 31px;
+        font-size: 8px;
+        line-height: 10px;
+        left: 51px;
+        width: 138px;
+        letter-spacing: 0.1px;
+    }
+
+    .preview-container .bg-primary-banner .banner .headline-subheadline-container .headline {
+        color: #000;
+        display: block;
+        max-height: 10px;
+        overflow: hidden;
+        font-weight: bold;
+        padding: 0;
+        margin: 0;
+        text-transform: uppercase;  
+        font-family: 'FSAlbertRegular', sans-serif;
+    }
+
+    .preview-container .bg-primary-banner .banner .headline-subheadline-container .subheadline {
+      color: #9C9C9E;
+      margin: 0;
+      padding: 0;
+      max-height: 28px;
+      overflow: hidden;
+        font-family: 'FSAlbertRegular', sans-serif;
+    }
+
+    .preview-container .bg-primary-banner .banner .overlay-text {
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin: 13px;
+        padding: 15px 14px;
+        color: #fff;
+        font-size: 11px;
+        line-height: 12px;
+        font-family: Arial;
+    }
+
+        .preview-container .bg-primary-banner .banner .overlay-text p {
+            color: #fff;
+            color: #fff;
+            font-size: 11px;
+            line-height: 12px;
+            font-family: Arial;
+        }
+
+/* end: primary-banner */
+
+
+/* begin: offers-details */
+.preview-container .bg-offers-details {
+    background: url(../images/previews/bg-offers-detail.jpg) no-repeat center center;
+    background-size: cover;
+    width: 1020px;
+    height: 720px;
+    position: relative;
+}
+
+    .preview-container .bg-offers-details .offers-banner {
+        width: 580px;
+        position: relative;
+        top: 197px;
+        left: 205px;
+        padding: 18px;
+    }
+
+    .preview-container .bg-offers-details .img-banner, .preview-container .bg-offers-details .img-container {
+        width: 582px;
+        height: 270px;
+    }
+
+    .preview-container .bg-offers-details .offers-banner .headline-subheadline-container {
+        position: absolute;
+        top: 70px;
+        left: 162px;
+        width: 272px;
+        letter-spacing: 0.5px;
+    }
+
+    .preview-container .bg-offers-details .offers-banner .headline-subheadline-container .headline {
+        color: #000;
+        display: block;
+        max-height: 77px;
+        overflow: hidden;
+        padding: 0;
+        margin: 0;
+        text-transform: uppercase;  
+        font-size: 22px;
+        line-height: 26px;
+        font-family: 'FSAlbertRegular', sans-serif;
+    }
+
+    .preview-container .bg-offers-details .offers-banner .headline-subheadline-container .subheadline {
+        color: #9C9C9E;
+        margin: 0;
+        padding: 14px 0 0 3px;
+        max-height: 98px;
+        overflow: hidden;
+        line-height: 20px;
+        font-family: 'FSAlbertRegular', sans-serif;
+    }
+
+    .preview-container .bg-offers-details .disclaimer {
+        height: 160px;
+        overflow: auto;
+    }
+
+    .preview-container .bg-offers-details .go-to-chat {
+        width: 230px;
+        position: absolute;
+        bottom: 0;
+        right: 10px;
+        padding: 6px 6px 6px 8px;
+        background-color: #00366f;
+        color: #fff;
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    .preview-container .bg-offers-details .go-to-chat .icons {
+        display: inline-block;
+        float: right;
+        font-weight: normal;
+    }
+
+    .preview-container .bg-offers-details .go-to-chat .icons .icon {
+        width: 18px;
+        height: 16px;
+        background-size: cover;
+        display: inline-block;
+    }
+
+    .preview-container .bg-offers-details .go-to-chat .icons .caret-up {
+        background-image: url(../images/previews/arrowUp.png);
+    }
+
+    .preview-container .bg-offers-details .go-to-chat .icons .close {
+        background-image: url(../images/previews/close-icon.png);
+    }
+
+
+/* end: offers-details */
+
+
+/* begin: ghost-accounts*/
+
+/* end: ghost-accounts*/
+
+/* begin: all-offers*/
+/* begin: OLB-all-offers*/
+.preview-container .olb-bg-all-offers,
+.preview-container .bg-all-offers {
+    background: url(../images/previews/bg-all-offers.jpg) no-repeat center center;
+    background-size: cover;
+    width: 1020px;
+    height: 720px;
+    position: relative;
+}
+
+    .preview-container .olb-bg-all-offers .all-offers-banner,
+    .preview-container .bg-all-offers .all-offers-banner {
+        width: 588px;
+        position: relative;
+        top: 197px;
+        left: 199px;
+        padding: 18px;
+    }
+
+    .preview-container .olb-bg-all-offers .img-banner, .preview-container .olb-bg-all-offers .image-container,
+    .preview-container .bg-all-offers .img-banner, .preview-container .bg-all-offers .image-container {
+        width: 240px;
+        height: 96px;
+        position: relative;
+    }
+
+        .preview-container .olb-bg-all-offers .image-container .options,
+        .preview-container .bg-all-offers .image-container .options {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            padding: 0 20px 10px 0;
+        }
+
+    .preview-container .olb-bg-all-offers .options .btn.action,
+    .preview-container .bg-all-offers .options .btn.action {
+        background-color: transparent;
+        background-image: url('../images/previews/learn-more-background.png');
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        font-size: 12px;
+        line-height: 12px;
+        padding: 5px 26px;
+    }
+
+/* end: OLB-all-offers*/
+/* end: all-offers*/
+
+/* begin: splash-page*/
+.preview-container .bg-splash-page {
+    background: url(../images/previews/bg-splash-page.jpg) no-repeat center center;
+    background-size: cover;
+    width: 1020px;
+    height: 720px;
+    position: relative;
+}
+
+    .preview-container .bg-splash-page .banner {
+        width: 440px;
+        position: relative;
+        top: 134px;
+        left: 280px;
+        padding: 14px;
+    }
+
+        .preview-container .bg-splash-page .banner .preview-details {
+            height: 110px;
+            overflow: auto;
+            font-size: 13px;
+            margin: 0;
+            width: 100%;
+            color: #555;
+        }
+
+        .preview-container .bg-splash-page .banner .options {
+            padding-top: 5px;
+            padding-bottom: 7px;
+        }
+
+        .preview-container .bg-splash-page .banner .img-banner, .preview-container .bg-splash-page .banner .image-container {
+            height: 192px;
+            width: 438px;
+        }
+
+    .preview-container .bg-splash-page .banner .image-container .headline-subheadline-container {
+        position: absolute;
+        top: 36px;
+        left: 35px;
+        width: 214px;
+        letter-spacing: 0.5px;
+    }
+
+    .preview-container .bg-splash-page .banner .image-container .headline-subheadline-container .headline {
+        color: #FFFFFF;
+        display: block;
+        height: 38px;
+        overflow: hidden;
+        padding: 0;
+        margin: 0;
+        text-transform: uppercase;
+        font-size: 16px;
+        line-height: 18px;
+        font-family: 'FSAlbertRegular', sans-serif;
+    }
+
+    .preview-container .bg-splash-page .banner .image-container .headline-subheadline-container .subheadline {
+        color: #FFFFFF;
+        margin: 0;
+        padding: 0;
+        max-height: 60px;
+        overflow: hidden;
+        font-size: 20px;
+        line-height: 21px;
+        font-family: 'FSAlbertRegular', sans-serif;
+    }
+
+    
+/* end: splash-page*/
+
+/* begin: signoff-page*/
+.preview-container .bg-signoff-page {
+    background: url(../images/previews/bg-sign-off.jpg) no-repeat center center;
+    background-size: cover;
+    width: 1020px;
+    height: 720px;
+    position: relative;
+}
+
+
+    .preview-container .bg-signoff-page .banner {
+        width: 260px;
+        position: relative;
+        top: 153px;
+        left: 465px;
+        padding: 28px;
+    }
+
+    .preview-container .bg-signoff-page .banner .image-container .headline-subheadline-container {
+        position: absolute;
+        top: 48px;
+        left: 88px;
+        width: 188px;
+        letter-spacing: 0.3px;
+    }
+
+    .preview-container .bg-signoff-page .banner .image-container .headline-subheadline-container .headline {
+        color: #000;
+        display: block;
+        max-height: 14px;
+        overflow: hidden;
+        padding: 0;
+        margin: 0;
+        text-transform: uppercase;
+        font-size: 12px;
+        line-height: 14px;
+        font-family: 'FSAlbertRegular', sans-serif;
+    }
+
+    .preview-container .bg-signoff-page .banner .image-container .headline-subheadline-container .subheadline {
+        color: #9C9C9E;
+        margin: 0;
+        padding: 0;
+        max-height: 30px;
+        overflow: hidden;
+        font-size: 12px;
+        line-height: 14px;
+        font-family: 'FSAlbertRegular', sans-serif;
+    }
+
+        .preview-container .bg-signoff-page .banner .img-banner, .preview-container .bg-signoff-page .banner .image-container {
+            width: 258px;
+            height: 146px;
+        }
+
+/* end: signoff-page*/
+
+/* begin: credit-card*/
+.preview-container .bg-credit-card {
+    background: url(../images/previews/bg-cc.jpg) no-repeat top left;
+    background-size: contain;
+    font-family: 'Trebuchet MS', sans-serif;
+    width: 1020px;
+    min-height: 686px;
+    position: relative;
+    padding-bottom: 123px;
+}
+
+    .preview-container .bg-credit-card .banner {
+        position: relative;
+        top: 123px;
+        left: 146px;
+        padding-right: 25px;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        border-right: 1px solid #F4F4F4;
+        width: 530px;
+    }
+
+        .preview-container .bg-credit-card .banner .page-title {
+            margin: 11px 10px 15px 10px;
+            line-height: 38px;
+            font-weight: normal;
+            font-size: 29px;
+            font-family: Arial;
+        }
+
+        .preview-container .bg-credit-card .banner .dark-widget {
+            padding: 20px;
+            background-color: #F4F4F4;
+            border-radius: 3px;
+            font-size: 15px;
+        }
+
+        .preview-container .bg-credit-card .banner .image-container {
+            max-height: none;
+        }
+
+            .preview-container .bg-credit-card .banner .image-container .img-banner {
+                width: 100%;
+            }
+
+    .preview-container .bg-credit-card .banner .image-container .headline-subheadline-container {
+        position: absolute;
+        top: 114px;
+        left: 88px;
+        width: 332px;
+        letter-spacing: 0.3px;
+    }
+
+    .preview-container .bg-credit-card .banner .image-container .headline-subheadline-container .headline {
+        color: #000;
+        display: block;
+        max-height: 80px;
+        overflow: hidden;
+        padding: 0;
+        margin: 0;
+        text-transform: uppercase;
+        font-size: 24px;
+        line-height: 26px;
+        font-family: 'FSAlbertRegular', sans-serif;
+    }
+
+    .preview-container .bg-credit-card .banner .image-container .headline-subheadline-container .subheadline {
+        color: #9C9C9E;
+        max-height: 130px;
+        overflow: hidden;
+        font-size: 16px;
+        line-height: 18px;
+        font-family: 'FSAlbertRegular', sans-serif;
+    }
+
+        .preview-container .bg-credit-card .banner .text-containter {
+            margin-top: 32px;
+        }
+
+            .preview-container .bg-credit-card .banner .text-containter .text-header {
+                color: #000;
+                font-weight: bold;
+                font-size: 18px;
+                line-height: 21px;
+                margin-bottom: 9px;
+                font-family: Arial;
+            }
+
+        .preview-container .bg-credit-card .banner .dark-widget .link-conditions {
+            color: #003875;
+            font-size: 14px;
+            vertical-align: middle;
+            font-family: Arial;
+        }
+
+        .preview-container .bg-credit-card .banner .dark-widget .pdf-icon {
+            vertical-align: middle;
+        }
+
+        .preview-container .bg-credit-card .banner .options {
+            text-align: center;
+            margin-top: 45px;
+        }
+
+            .preview-container .bg-credit-card .banner .options .btn.action {
+                background-color: #003871;
+                font-size: 16px;
+                line-height: 21px;
+                font-weight: normal;
+                padding: 7px 24px;
+            }
+
+        .preview-container .bg-credit-card .banner .or-skip-row {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+            .preview-container .bg-credit-card .banner .or-skip-row strong {
+                font-weight: bold;
+            }
+
+            .preview-container .bg-credit-card .banner .or-skip-row a {
+                color: #003871;
+                font-family: Arial;
+                font-size: 15px;
+                cursor: pointer;
+            }
+
+                .preview-container .bg-credit-card .banner .or-skip-row a:hover {
+                    text-decoration: underline;
+                }
+
+
+.preview-container .bg-cc-footer {
+    background: url(../images/previews/bg-cc-footer.jpg) no-repeat top left;
+    background-size: contain;
+    width: 1020px;
+    min-height: 169px;
+}
+
+
+/* end: credit-card*/
+
+/* begin: bulletin-zoned*/
+.preview-container .bg-bulletin-zone {
+    background: url(../images/previews/bg-bulletin-zone.jpg) no-repeat top left;
+    /*background-size: contain;*/
+    background-size: cover;
+    font-family: 'Trebuchet MS', sans-serif;
+    width: 1020px;
+    /*min-height: 686px;*/
+    min-height: 340px;
+    position: relative;
+    padding-bottom: 123px;
+}
+
+/* begin: edu-offer */
+.preview-container .bg-edu-offer {
+    background: url(../images/previews/bg-bulletin-zone.jpg) no-repeat center center;
+    background-size: cover;
+    width: 1020px;
+    height: 720px;
+    position: relative;
+    text-align: center;
+}
+
+.preview-container .bg-edu-offer .banner {
+    background: url(../images/previews/edu-offer.jpg);
+    background-size: cover;
+    display: inline-block;
+    position: relative;
+    width: 460px;
+    height: 250px;
+    top: 100px;
+    text-align: left;
+}
+.preview-container .bg-edu-offer .img-container {
+    display: inline-block;
+    position: relative;
+    margin: 65px 0 0 10px;
+    height: 100px;
+    width: 146px;
+}
+
+     .preview-container .bg-edu-offer .img-banner {
+        height: 100px;
+        width: 150px;
+     }
+
+      .preview-container .bg-edu-offer .img-container .headline-subheadline-container {
+        position: absolute;
+        top: 0;
+        left: 10px;
+        width: 130px;
+        letter-spacing: 0.3px;
+        font-family: 'FSAlbertRegular', sans-serif;
+    }
+
+    .preview-container .bg-edu-offer .img-container .headline-subheadline-container .subheadline {
+        color: #9C9C9E;
+        max-height: 75px;
+        overflow: hidden;
+        font-size: 12px;
+        line-height: 14px;
+    }
+
+     .preview-container .bg-edu-offer .content-container {
+        height: 100px;
+        vertical-align: top;
+        margin: 65px 0 0 10px;
+        display: inline-block;
+        text-align: left;
+        max-width: 280px;
+    }
+
+    .preview-container .bg-edu-offer .content-container .edu-headline {
+        font-size: 20px;
+        line-height: 22px;
+        font-family: 'FSAlbertRegular', sans-serif;
+        color: #333333;
+        width: 260px;
+        height: 26px;
+        overflow: hidden;
+    }
+
+    .preview-container .bg-edu-offer .content-container .html-view {
+        font-size: 13px;
+        line-height: 15px;
+        font-family: 'FSAlbertRegular', sans-serif;
+        color: #333333;
+        width: 260px;
+        height: 48px;
+        overflow: hidden;
+    }
+
+    .preview-container .bg-edu-offer .content-container .call-action {
+        font-size: 13px;
+        line-height: 15px;
+        color: #00467F;
+        font-family: 'FSAlbertRegular', sans-serif;
+    }
+
+/* end: edu-offer */
+
+/* begin: prod-offer */
+.preview-container .bg-prod-offer {
+    background: url(../images/previews/bg-bulletin-zone.jpg) no-repeat center center;
+    background-size: cover;
+    width: 1020px;
+    height: 720px;
+    position: relative;
+    text-align: center;
+}
+
+.preview-container .bg-prod-offer .banner {
+    background: url(../images/previews/prod-offer.jpg);
+    background-size: cover;
+    display: inline-block;
+    position: relative;
+    width: 220px;
+    height: 251px;
+    top: 100px;
+}
+     .preview-container .bg-prod-offer .img-container {
+        display: inline-block;
+        position: relative;
+        margin-top: 60px;
+        height: 100px;
+        width: 200px;
+    }
+
+     .preview-container .bg-prod-offer .img-banner {
+        height: 100px;
+        width: 200px;
+     }
+
+     .preview-container .bg-prod-offer .banner .img-container .headline-subheadline-container {
+        position: absolute;
+        top: 6px;
+        left: 10px;
+        width: 180px;
+        letter-spacing: 0.1px;
+        text-align: left;
+    }
+
+    .preview-container .bg-prod-offer .banner .img-container .headline-subheadline-container .headline {
+        color: #000;
+        display: block;
+        height: 38px;
+        overflow: hidden;
+        padding: 0;
+        margin: 0;
+        text-transform: uppercase;
+        font-size: 14px;
+        line-height: 16px;
+        font-family: 'FSAlbertRegular', sans-serif;
+    }
+
+    .preview-container .bg-prod-offer .banner .img-container .headline-subheadline-container .subheadline {
+        color: #9C9C9E;
+        margin: 0;
+        padding: 0;
+        max-height: 60px;
+        overflow: hidden;
+        font-size: 16px;
+        line-height: 18px;
+        font-family: 'FSAlbertRegular', sans-serif;
+    }
+
+     .preview-container .bg-prod-offer .text-section {
+        /*height: 32px;*/
+        vertical-align: top;
+        margin: 5px 20px 20px 20px;
+        text-align: left;
+        max-height: 33px;
+        overflow: hidden;
+    }
+
+    .preview-container .bg-prod-offer .text-section .html-view {
+        font-size: 14px;
+        line-height: 16px;
+        font-family: 'FSAlbertRegular', sans-serif;
+        color: #333333;
+    }
+
+    .preview-container .bg-prod-offer .call-action {
+        text-align: left;
+        margin: 0 20px;
+        max-height: 32px;
+        overflow: hidden;
+    }
+
+    .preview-container .bg-prod-offer .call-action a {
+        font-size: 16px;
+        line-height: 18px;
+        font-family: 'FSAlbertRegular', sans-serif;
+        color: #00467F;
+    }
+
+    .preview-container .bg-prod-offer .call-action a:visited {
+        color: #00467F;
+    }
+/* end: prod-offer */
+
+/* begin: hero-offer */
+.preview-container .bg-hero-offer {
+    width: 1020px;
+    height: 720px;
+    position: relative;
+    text-align: center;
+}
+
+.preview-container .bg-hero-offer .top-header {
+   background: url(../images/previews/Top_Header.png) no-repeat;
+    background-size: cover;
+    width: 1020px;
+    height: 76px;
+    position: relative;
+    text-align: center;
+}
+
+.preview-container .bg-hero-offer .banner {
+    position: relative;
+    width: 1020px;
+    height: 240px;
+}
+
+.preview-container .bg-hero-offer .banner .img-banner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.preview-container .bg-hero-offer .banner .content-container {
+    position: absolute;
+    top: 20px;
+    left: 380px;
+    text-align: left;
+}
+
+.preview-container .bg-hero-offer .banner .content-container .hero-headline {
+    font-size: 30px;
+    line-height: 34px;
+    font-family: 'FSAlbertLight', sans-serif;
+    color: #ffffff;
+    width: 436px;
+    max-height: 73px;
+    overflow: hidden;
+}
+
+.preview-container .bg-hero-offer .banner .content-container .html-view {
+    font-size: 18px;
+    line-height: 21px;
+    font-family: 'FSAlbertLight', sans-serif;
+    color: #ffffff;
+    width: 428px;
+    max-height: 102px;
+    overflow: hidden;
+}
+   .preview-container .bg-hero-offer .banner .call-action .action-container {
+       border: solid 1px #ffffff;
+       border-radius: 5px;
+       width: 150px;
+       height: 35px;
+   }
+
+    .preview-container .bg-hero-offer .banner .call-action {
+        color: #ffffff;
+        font-size: 12px;
+        line-height: 35px;
+        font-family: 'FSAlbertLight', sans-serif;
+        position: absolute;
+        left: 820px;
+        top: 110px;
+        width: 150px;
+        height: 35px;
+    }
+/* end: hero-offer */
+
+    .preview-container .bg-bulletin-zone .banner {
+        position: relative;
+        top: 123px;
+        left: 146px;
+        padding-right: 25px;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        border-right: 1px solid #F4F4F4;
+        width: 530px;
+    }
+
+        .preview-container .bg-bulletin-zone .banner .page-title {
+            margin: 11px 10px 15px 10px;
+            line-height: 38px;
+            font-weight: normal;
+            font-size: 29px;
+            font-family: Arial;
+        }
+
+        .preview-container .bg-bulletin-zone .banner .dark-widget {
+            padding: 20px;
+            background-color: #F4F4F4;
+            border-radius: 3px;
+            font-size: 15px;
+        }
+
+        .preview-container .bg-bulletin-zone.original .banner .dark-widget {
+            background-color: #003871;
+        }
+
+        .preview-container .bg-bulletin-zone .banner .image-container {
+            max-height: none;
+        }
+
+            .preview-container .bg-bulletin-zone .banner .image-container .img-banner {
+                width: 100%;
+            }
+
+        .preview-container .bg-bulletin-zone .banner .text-containter {
+            margin-top: 32px;
+        }
+
+        .preview-container .bg-bulletin-zone .banner .text-containter .text-header {
+            color: #000;
+            font-weight: bold;
+            font-size: 18px;
+            line-height: 21px;
+            margin-bottom: 9px;
+            font-family: Arial;
+        }
+
+.preview-container .bg-bulletin-zone.original .banner .text-containter .text-header,
+.preview-container .bg-bulletin-zone.original .banner .text-containter .text-header p,
+.preview-container .bg-bulletin-zone.original .banner .text-containter .text-header span,
+.preview-container .bg-bulletin-zone.original .banner .text-containter .text-content,
+.preview-container .bg-bulletin-zone.original .banner .text-containter .text-content p,
+.preview-container .bg-bulletin-zone.original .banner .text-containter .text-content span,
+.preview-container .bg-bulletin-zone.original .banner .text-containter .text-content div,
+.preview-container .bg-bulletin-zone.original .banner .text-containter .text-content .html-view div {
+    color: #FFFFFF;
+}
+
+        .preview-container .bg-bulletin-zone .banner .dark-widget .link-conditions {
+            color: #003875;
+            font-size: 14px;
+            vertical-align: middle;
+            font-family: Arial;
+        }
+
+        .preview-container .bg-bulletin-zone .banner .dark-widget .pdf-icon {
+            vertical-align: middle;
+        }
+
+        .preview-container .bg-bulletin-zone .banner .options {
+            text-align: center;
+            margin-top: 45px;
+        }
+
+            .preview-container .bg-bulletin-zone .banner .options .btn.action {
+                background-color: #003871;
+                font-size: 16px;
+                line-height: 21px;
+                font-weight: normal;
+                padding: 7px 24px;
+            }
+
+        .preview-container .bg-bulletin-zone .banner .or-skip-row {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+            .preview-container .bg-bulletin-zone .banner .or-skip-row strong {
+                font-weight: bold;
+            }
+
+            .preview-container .bg-bulletin-zone .banner .or-skip-row a {
+                color: #003871;
+                font-family: Arial;
+                font-size: 15px;
+                cursor: pointer;
+            }
+
+                .preview-container .bg-bulletin-zone .banner .or-skip-row a:hover {
+                    text-decoration: underline;
+                }
+
+
+.preview-container .bg-cc-footer {
+    background: url(../images/previews/bg-cc-footer.jpg) no-repeat top left;
+    background-size: contain;
+    width: 1020px;
+    min-height: 169px;
+}
+
+
+/* end: bulletin-zone*/
+
+/* begin: equity*/
+.preview-container .bg-equity {
+    background: url(../images/previews/bg-equity.jpg) no-repeat top center;
+    background-size: contain;
+    position: relative;
+    font-family: 'Trebuchet MS', sans-serif;
+    padding-bottom: 140px;
+}
+
+    .preview-container .bg-equity .banner {
+        position: relative;
+        top: 140px;
+        left: 94px;
+        width: 611px;
+        min-height: 450px;
+        border-right: 1px solid #F4F4F4;
+        padding-right: 25px;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+
+        .preview-container .bg-equity .banner .page-title {
+            margin: 11px 10px 15px 10px;
+            line-height: 38px;
+            font-weight: normal;
+            font-size: 29px;
+            font-family: 'Trebuchet MS', sans-serif;
+        }
+
+        .preview-container .bg-equity .banner .dark-widget {
+            background-color: #F4F4F4;
+            border-radius: 3px;
+            font-size: 15px;
+            padding: 15px 10px;
+        }
+
+            .preview-container .bg-equity .banner .dark-widget .icon-no {
+                background: url(../images/previews/icon-no.png) no-repeat top right;
+                background-size: contain;
+                width: 74px;
+                height: 29px;
+                position: absolute;
+                right: 34px;
+            }
+
+            .preview-container .bg-equity .banner .dark-widget .headline {
+                display: block;
+                font-weight: bold;
+                color: #333;
+                padding: 10px 0;
+                margin-right: 85px;
+            }
+
+                .preview-container .bg-equity .banner .dark-widget .headline .html-view {
+                    padding-top: 0;
+                }
+
+            .preview-container .bg-equity .banner .dark-widget .preview-details {
+                padding: 10px 0 0 0;
+                color: #707070;
+                font-size: 14px;
+            }
+
+            .preview-container .bg-equity .banner .dark-widget .link-conditions {
+                color: #003875;
+                font-size: 14px;
+                vertical-align: middle;
+                font-family: Arial;
+            }
+
+            .preview-container .bg-equity .banner .dark-widget .pdf-icon {
+                vertical-align: middle;
+            }
+
+        .preview-container .bg-equity .banner .options {
+            text-align: right;
+        }
+
+            .preview-container .bg-equity .banner .options .btn.action {
+                background-color: #003871;
+                font-size: 16px;
+                line-height: 21px;
+                font-weight: normal;
+                padding: 7px 24px;
+            }
+
+    .preview-container .bg-equity .term-conditions {
+        font-style: italic;
+    }
+
+
+
+/* end: equity*/
+
+/* begin: deposits*/
+.preview-container .bg-deposits {
+    background: url(../images/previews/bg-deposits.jpg) no-repeat center center;
+    background-size: cover;
+    width: 1020px;
+    height: 690px;
+    position: relative;
+}
+
+    .preview-container .bg-deposits .banner {
+        background: url(../images/previews/btn-no.jpg) no-repeat top right;
+        background-position: 437px 10px;
+        position: relative;
+        top: 189px;
+        left: 120px;
+        width: 506px;
+        background-color: #f4f4f4;
+        padding: 20px 10px 5px 10px;
+    }
+
+    .preview-container .bg-deposits .headline {
+        font-weight: bold;
+        font-size: 18px;
+        margin-bottom: 15px;
+        margin-right: 85px;
+    }
+
+        .preview-container .bg-deposits .headline .html-view {
+            padding-top: 0;
+        }
+
+    .preview-container .bg-deposits .preview-details {
+        max-height: 117px;
+        overflow: auto;
+    }
+
+    .preview-container .bg-deposits .link-conditions {
+        color: #003875;
+    }
+
+/* end: deposits*/
+
+/* begin: certificates of deposits*/
+.preview-container .bg-certificates {
+    background: url(../images/previews/bg-certificates.jpg) no-repeat top center;
+    background-size: cover;
+    /* width: 1020px; */
+    /* height: 868px; */
+    position: relative;
+    padding-bottom: 470px;
+}
+
+    .preview-container .bg-certificates .banner {
+        background: url(../images/previews/btn-no.jpg) no-repeat top right;
+        background-position: 459px 10px;
+        position: relative;
+        top: 190px;
+        left: 119px;
+        width: 513px;
+        background-color: #f4f4f4;
+        padding: 20px 10px 5px 10px;
+    }
+
+    .preview-container .bg-certificates .headline {
+        font-weight: bold;
+        font-size: 18px;
+        margin-bottom: 15px;
+        margin-right: 85px;
+    }
+
+        .preview-container .bg-certificates .headline .html-view {
+            padding-top: 0;
+        }
+
+    .preview-container .bg-certificates .preview-details {
+        height: 117px;
+        overflow: auto;
+    }
+
+    .preview-container .bg-certificates .link-conditions {
+        color: #003875;
+    }
+/* end: deposits*/
+
+
+/* begin: recommended*/
+.preview-container .bg-recommended {
+    background: url(../images/previews/bg-recommended.jpg) no-repeat center center;
+    background-size: cover;
+    width: 1020px;
+    height: 720px;
+    position: relative;
+}
+
+    .preview-container .bg-recommended .banner {
+        position: relative;
+        top: 383px;
+        width: 175px;
+    }
+
+    .preview-container .bg-recommended .headline {
+        padding-left: 10px;
+        color: #4e4c4c;
+        height: 20px;
+        overflow: hidden;
+    }
+
+    .preview-container .bg-recommended .action-link {
+        padding-left: 10px;
+        margin-top: 3px;
+    }
+
+        .preview-container .bg-recommended .action-link a {
+            background-color: #bdbec1;
+            color: #fff;
+            font-size: 16px;
+            text-decoration: none;
+            -moz-border-radius: 6px;
+            -webkit-border-radius: 6px;
+            border-radius: 6px;
+            padding: 0px 4px;
+        }
+/* end: recommended*/
+
+/*Begin RTO Mobile Primary Banner*/
+
+.preview-container .bg-rto-primary-banner {
+    width: 1020px;
+    text-align: center;
+    padding: 20px 0;
+}
+
+    .preview-container .bg-rto-primary-banner .banner {
+        width: 416px;
+        height: 760px;
+        margin: 0 auto;
+        background: url(../images/previews/rto_primary_banner_bg.png) no-repeat center center;
+        background-size: 416px 760px;
+        position: relative;
+    }
+
+    .preview-container .bg-rto-primary-banner .img-container {
+        height: 166px;
+        width: calc(100% - 2px);
+        position: relative;
+        top: 593px;
+    }
+
+    .preview-container .bg-rto-primary-banner .img-banner {
+        height: 166px;
+        width: 100%;
+        position: relative;
+        left: 1px;
+    }
+
+    .preview-container .bg-rto-primary-banner .banner .overlay-text {
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin: 13px;
+        padding: 15px 14px;
+        color: #fff;
+        font-size: 11px;
+        line-height: 12px;
+        font-family: Arial;
+    }
+
+.preview-container .bg-primary-banner .banner .overlay-text p {
+    color: #fff;
+    color: #fff;
+    font-size: 11px;
+    line-height: 12px;
+    font-family: Arial;
+}
+
+.preview-container .bg-rto-primary-banner .banner .action-container {
+    width: 150px;
+    padding: 4px 0;
+    background-color: #949599;
+    color: #ffffff;
+    text-transform: uppercase;
+    font-size: 12px;
+    position: relative;
+    top: 555px;
+    float: right;
+    margin-right: 15px;
+    border-radius: 2px;
+}
+/*End: RTO Mobile Primary Banner */
+
+/* Begin: RTO Offers Details */
+.preview-container .bg-rto-offers-details, .preview-container .bg-rto-all-offers {
+    width: 1020px;
+    padding: 50px 0;
+    position: relative;
+    font-family: 'FSAlbertRegular';
+}
+
+    .preview-container .bg-rto-offers-details .html-view, .preview-container .bg-rto-all-offers .html-view {
+        font-family: 'FSAlbertRegular';
+    }
+
+    .preview-container .bg-rto-offers-details .offers-banner, .preview-container .bg-rto-all-offers .offers-banner {
+        background: url(../images/previews/rto_offer_details_bg.png) no-repeat;
+        background-size: cover;
+        width: 320px;
+        height: 506px;
+        margin: 0 auto;
+        padding-top: 64px;
+        overflow: hidden;
+    }
+
+    .preview-container .bg-rto-offers-details .img-container {
+        width: calc(100% - 2px);
+        height: 150px;
+        margin: 1px 0 0 1px;
+    }
+
+    .preview-container .bg-rto-offers-details .img-container .img-banner {
+        width: 100%;
+    }
+
+    .preview-container .bg-rto-offers-details .img-container .headline-subheadline-container {
+        position: absolute;
+        top: 120px;
+        left: 362px;
+        width: 294px;
+        letter-spacing: 0.5px;
+    }
+
+    .preview-container .bg-rto-offers-details .img-container .headline-subheadline-container .headline {
+        color: #000;
+        display: block;
+        max-height: 40px;
+        overflow: hidden;
+        padding: 0;
+        margin: 0;
+        text-transform: uppercase;  
+        font-size: 18px;
+        line-height: 20px;
+        font-family: 'FSAlbertRegular', sans-serif;
+    }
+
+    .preview-container .bg-rto-offers-details .img-container .headline-subheadline-container .subheadline {
+        color: #9C9C9E;
+        margin: 0;
+        padding: 14px 0 0 3px;
+        max-height: 98px;
+        overflow: hidden;
+        line-height: 16px;
+        font-family: 'FSAlbertRegular', sans-serif;
+    }
+
+    .preview-container .bg-rto-offers-details .offers-banner .offer-details {
+        max-height: 160px;
+        min-height: 15px;
+        overflow: hidden;
+        padding: 5px 10px 0 15px;
+        font-size: 14px;
+        line-height: 16px;
+        color: #333333;
+
+    }
+
+    .preview-container .bg-rto-offers-details .offers-banner .offer-details .html-view {
+        overflow-y: auto;
+        max-height: 97px;
+    }
+
+    .preview-container .bg-rto-offers-details .offers-banner .options {
+        text-align: center;
+        padding: 0;
+    }
+
+    .preview-container .bg-rto-offers-details .offers-banner .options .option {
+        font-size: 14px;
+        color: #003871;
+        text-transform: uppercase;
+        font-family:'FSAlbertRegular';
+    }
+
+    .preview-container .bg-rto-offers-details .offers-banner .options .option .btn.action {
+        font-size: 14px;
+        font-weight: normal;
+        background-color: #003871;
+        width: 268px;
+        border-radius: 2px;
+        line-height: 40px;
+    }
+
+    .preview-container .bg-rto-offers-details .offers-banner .options .option .btn.rejection {
+        line-height: 45px;
+    }
+
+    .preview-container .bg-rto-offers-details .offers-banner .options .option .btn.rejection.first-btn {
+        line-height: 14px;
+    }
+
+    .preview-container .bg-rto-offers-details .disclaimer {
+        max-height: 114px;
+        overflow: hidden;
+        padding: 5px 10px 0 15px;
+    }
+
+    .preview-container .bg-rto-offers-details .disclaimer .html-view {
+        max-height: 100px;
+        overflow-y: auto;
+    }
+
+    .preview-container .bg-rto-offers-details .disclaimer .sup, .preview-container .bg-rto-offers-details .disclaimer .sup span {
+        font-size: 12px;
+        line-height: 14px;
+        color: #777777;
+    }
+
+/* End: RTO Offers Details */
+
+/* Begin: RTO All Offers */
+
+    .preview-container .bg-rto-all-offers .offers-banner {
+        background: url(../images/previews/rto_all_offers_bg.png) no-repeat;
+        background-size: cover;
+        width: 414px;
+        height: 736px;
+        margin: 0 auto;
+        overflow: hidden;
+        padding: 0;
+    }
+
+        .preview-container .bg-rto-all-offers .offers-banner .img-banner {
+            height: 180px;
+            background-size: 100% 100%;
+            border-radius: 5px;
+            margin: 116px 20px 20px 20px;
+            position: relative;
+        }
+
+        .preview-container .bg-rto-all-offers .offers-banner hr {
+            height: 1px;
+            width: calc(100% - 2px);
+            color: #9B9A99;
+        }
+
+    .preview-container .bg-rto-all-offers .options {
+       padding: 0;
+       position: absolute;
+       bottom: 0;
+       right: 0;
+       margin: 0 10px 20px 0;
+    }
+
+        .preview-container .bg-rto-all-offers .options .btn.action {
+            background-color: #9B9A99;
+            font-size: 14px;
+            font-weight: normal;
+        }
+
+/* End: RTO All Offers */
+
+/* Begin: Email Template */
+
+.preview-container .wrapper {
+    background-color: #DCD9DC;
+    max-width: 600px;
+    padding: 20px;
+    margin: 20px auto;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    font-size:14px; 
+}
+
+    .preview-container .wrapper .main-content-wrapper,
+    .preview-container .wrapper .bottom-cta-container {
+        padding: 20px;
+        font-size: 0;
+    }
+    
+    .preview-container .wrapper .suntrust-logo {
+        width: 198px
+    }
+
+    .preview-container .wrapper .section {
+        display: inline-table;
+        vertical-align: bottom;
+        margin: 0 0 10px 0;
+    }
+
+    .preview-container .wrapper .section.suntrust-logo-container {
+        width: 39%;
+    }
+
+.preview-container .pdf-conplete-content .wrapper .section.suntrust-logo-container {
+    width: 35%;
+}
+
+.second:before {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    border-left: 100vw solid transparent;
+    border-bottom: 80px solid gold;
+}
+
+.preview-container .wrapper .section.links {
+    width: 60%;
+}
+
+    .preview-container .wrapper .section .logo-container {
+        text-align: left;
+    }
+
+    .preview-container .wrapper .links-container {
+        text-align: right;
+        padding: 15px 20px 0 0;
+    }
+
+    .preview-container .wrapper .img-banner {
+        max-width: 600px;
+    }
+
+    .preview-container .wrapper .left-content {
+        width: 100%;
+    }
+
+    .preview-container .wrapper .left-content.right-content-active {
+        width: 63%;
+        border-right: 1px solid #DCD9DC;
+    }
+
+    .preview-container .wrapper .left-content.right-content-active tr td.left-content-wrapper {
+        padding-right: 5px;
+        font-size: 14px;
+    }
+
+    .preview-container .wrapper .right-content tr td.right-content-wrapper {
+        padding-left: 5px;
+    }
+
+    .preview-container .wrapper .right-content tr td.right-content-wrapper .html-content.image-component {
+        margin-top: 20px;
+        text-align: left;
+    }
+
+    .preview-container .wrapper .right-content {
+        width: 37%;
+    }
+
+    .preview-container .wrapper .html-content {
+        font-family: "Trebuchet MS", Helvetica, sans-serif;
+        font-size: 14px;
+    }
+
+    .preview-container .wrapper img {
+        width: 100%;
+        vertical-align: top;
+    }
+
+    .preview-container .wrapper .three-items .cta-links {
+        width: calc(33.3% - 6px);
+    }
+
+    .preview-container .wrapper .three-items .cta-links:first-child {
+        margin-right: 9px;
+    }
+
+    .preview-container .wrapper .three-items .cta-links:nth-child(2) {
+        margin-right: 9px;
+    }
+
+    .preview-container .wrapper .two-items .cta-links {
+        width: calc(50% - 5px);
+    }
+
+    .preview-container .wrapper .two-items .cta-links:first-child {
+        margin-right:10px;
+    }
+
+    .preview-container .wrapper .one-item .cta-links {
+        width: 100%;
+        margin: 0; 
+    }
+
+    .preview-container .wrapper .cta-links span {
+        word-break: break-all;
+    }
+
+    .preview-container .wrapper .right-content .cta-links {
+        width: calc(100% - 18px);
+        margin-bottom: 10px;
+    }
+
+    .preview-container .wrapper a,
+    .preview-container .wrapper table,
+    .preview-container .wrapper table tr,
+    .preview-container .wrapper table tr td {
+        vertical-align: top;
+    }
+        
+    .preview-container .wrapper .html-content p,
+    .preview-container .wrapper .html-content b,
+    .preview-container .wrapper .html-content ul,
+    .preview-container .wrapper .html-content ol,
+    .preview-container .wrapper .html-content ul li,
+    .preview-container .wrapper .html-content ol li,
+    .preview-container .wrapper .html-content div {
+        font-family: "Trebuchet MS", Helvetica, sans-serif;
+    }
+
+    .preview-container .wrapper .html-content div { 
+        margin: 0;
+    }
+
+    .preview-container .wrapper .html-content ul {
+        list-style-type: disc;
+        list-style: disc;
+        list-style-type: disc;
+        -webkit-margin-before: 1em;
+        -webkit-margin-after: 1em;
+        -webkit-margin-start: 0px;
+        -webkit-margin-end: 0px;
+        -webkit-padding-start: 40px;
+    }
+
+    .preview-container .wrapper .html-content ul li {
+        display: list-item;
+        text-align: -webkit-match-parent;
+    }
+    .preview-container .wrapper .disclaimer-container {
+        padding: 20px;
+    }
+
+    .preview-container .wrapper .disclaimer-container a {
+        text-decoration: underline;
+        color: #428bca;
+    }
+
+.preview-container .wrapper .header-content {
+    display: none;
+}
+
+    .preview-container .wrapper .header-content.default-height {
+        display:table;
+    }
+
+.preview-container .wrapper .header-text,
+.preview-container .wrapper .header-cta-container {
+    width: 50%;
+    height: 268px;
+    vertical-align: middle;
+}
+.preview-container .wrapper .header-text {
+    width: 60%;
+    padding: 0 20px;
+}
+
+.preview-container .wrapper .header-cta-container {
+    width: 40%;
+}
+
+.preview-container .wrapper .header-cta-container .apply-now {
+    margin-top: 150px !important;
+}
+
+.preview-container .wrapper .html-content div.apply-center,
+.preview-container .wrapper .html-content .apply-center,
+.preview-container .wrapper .html-content div.apply-left,
+.preview-container .wrapper .html-content .apply-left,
+.preview-container .wrapper .html-content div.apply-right,
+.preview-container .wrapper .html-content .apply-right {
+    display: block;
+    margin: 10px 0;
+    vertical-align: middle;
+}
+
+.apply-center {
+    text-align: center;
+}
+
+.apply-left {
+    text-align: left;
+}
+
+.apply-right {
+    text-align: right;
+}
+.header-text.hidden-desktop,
+.default-height.hidden-desktop {
+    display: none;
+}
+.preview-container .wrapper .html-content div.apply-default,
+.preview-container .wrapper .html-content div.apply-NULL,
+.preview-container .wrapper .html-content .apply-default,
+.preview-container .wrapper .html-content .apply-NULL {
+    display: inline-block;
+    margin: 10px 0;
+    vertical-align: middle;
+    text-align: center;
+}
+
+@media screen and (max-width: 520px) {
+    .preview-container .wrapper, .preview-container .wrapper .main-content-wrapper, .preview-container .wrapper .bottom-cta-container {
+            padding: 10px;
+        }
+    .preview-container .wrapper .suntrust-logo {
+        width: 120px
+    }
+
+    .preview-container .wrapper .section.suntrust-logo-container,
+    .preview-container .wrapper .section.links {
+        width: 100%;
+    }
+
+    .preview-container .wrapper .links-container,
+    .preview-container .wrapper .section .logo-container {
+        text-align: center;
+        padding: 15px 0 0 0;
+    }
+    .preview-container .wrapper .left-content.right-content-active {
+        width: 100%;
+        border-right: 0;
+    }
+    .preview-container .wrapper .left-content.right-content-active tr td.left-content-wrapper {
+        padding: 0 0 20px 0;
+    }
+
+    .preview-container .wrapper .right-content {
+        border-top: 1px solid #DCD9DC;
+        width: 100%;
+    }
+
+    .preview-container .wrapper .right-content tr td.right-content-wrapper {
+        padding: 20px 0 0 0;
+    }
+
+    .preview-container .wrapper .one-item .cta-links,
+    .preview-container .wrapper .two-items .cta-links,
+    .preview-container .wrapper .three-items .cta-links {
+        width: 100%;
+        margin: 5px 0 !important;
+    }
+
+    .preview-container .wrapper .disclaimer-container {
+        padding: 10px;
+    }
+
+    .apply-now {
+        display: block !important;
+        text-align: center !important;
+    }
+    .apply-now.hidden {
+        display: none !important;
+    }
+    .preview-container .wrapper .header-text,
+    .preview-container .wrapper .header-cta-container {
+        width: 100%;
+        display: inline-table;
+        height: 180px;
+        text-align: center;
+    }
+    .preview-container .wrapper .header-text,
+    .preview-container .wrapper .header-cta-container {
+        text-align: left;
+    }
+    .preview-container .wrapper .header-cta-container {
+        height: 60px;
+        background-color: #FFFFFF !important;
+        padding: 0 10px;
+    }
+    .preview-container .wrapper .header-cta-container .apply-now {
+        margin-top: 20px !important;
+    }
+        .preview-container .wrapper .header-cta-container.hidden-mobile,
+        .header-text.hidden-mobile,
+        .default-height.hidden-mobile {
+            display: none !important;
+        }
+
+    .preview-container .wrapper .header-text .header-left-content {
+        padding: 20px 10px 0 10px;
+    }
+
+    .header-text.hidden-desktop,
+    .default-height.hidden-desktop {
+        display: inline-table;
+    }
+
+    .preview-container .wrapper .preview .html-content div.apply-default,
+    .preview-container .wrapper .preview .html-content div.apply-NULL,
+    .preview-container .wrapper .preview .html-content .apply-default,
+    .preview-container .wrapper .preview .html-content .apply-NULL {
+        display: block;
+    }
+}
+/* End: Email Template */
+
+@font-face {
+    font-family:'FSAlbertLight';
+    src:    url('../fonts/FSAlbert/FSAlbert-Light.eot');
+    src:    url('../fonts/FSAlbert/FSAlbert-Light.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/FSAlbert/FSAlbert-Light.woff') format('woff'),
+    url('../fonts/FSAlbert/FSAlbert-Light.ttf') format('truetype');
+    font-weight:normal;
+    font-style:normal;
+}
+@font-face {
+    font-family:'FSAlbertRegular';
+    src:    url('../fonts/FSAlbert/FSAlbert Regular.otf');
+    font-weight:normal;
+    font-style:normal;
+}

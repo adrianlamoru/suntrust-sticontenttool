@@ -1,0 +1,40 @@
+﻿<div class="bg-certificates">
+    <div class="banner">
+        <div class="headline">
+            <div ng-bind="getComponent(ComponentType.HEADLINE).Data.Headline"></div>
+        </div>
+        <div class="preview-details">
+            <div class="html-view" ng-bind-html="getComponent(ComponentType.DETAILS).Data.Description"></div>
+        </div>
+        <div ng-if="getComponent(ComponentType.TERMS_CONDITIONS).Data.url">
+            <img ng-src="{{PDF_IMAGE_URL}}" />
+            <a ng-href="{{getComponent(ComponentType.TERMS_CONDITIONS).Data.url}}" href="" target="_blank" class="link-conditions">Terms and Conditions</a>
+        </div>
+    </div>
+</div>
+<div class="pdf-conplete-content">
+    <h3>Complete Content:</h3>
+    <hr />
+    <div class="pdf-complete-content-text" ng-if="!isEmptyOrWhiteSpace(display(ComponentType.HEADLINE))">
+        <h4>Headline:</h4>
+        <div class="overlay-text-viewer">
+            <div ng-bind="getComponent(ComponentType.HEADLINE).Data.Headline"></div>
+        </div>
+    </div>
+    <div class="pdf-complete-content-text" ng-if="isVisible(ComponentType.DETAILS)">
+        <h4>Details:</h4>
+        <div class="overlay-text-viewer html-view" ng-bind-html="getComponent(ComponentType.DETAILS).Data.Description"></div>
+    </div>
+</div>
+<!--<div class="pdf-conplete-content">
+    <div class="pdf-complete-content-text" ng-if="!isEmptyOrWhiteSpace(display(ComponentType.HEADLINE))">
+        <h4>Note to Reviewers:</h4>
+        <div class="overlay-text-viewer">
+            Code values are intentionally entered as “######.”
+        </div>
+        <div class="overlay-text-viewer">
+            New Account Center Product Managers check accuracy of promotional codes in validation environment before offer deployment.
+        </div>
+    </div>
+</div>-->
+

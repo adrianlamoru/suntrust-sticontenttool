@@ -1,0 +1,38 @@
+﻿<div class="bg-rto-all-offers">
+    <div class="offers-banner">
+        <a class="btn action gray" ng-if="isVisible(ComponentType.CALL_TO_ACTION)" href="" target="_blank"
+           ng-href="{{getHref(ComponentType.CALL_TO_ACTION)}}">
+            <div class="img-banner" style="background-image:url('{{getSrc(ComponentType.MAIN_IMAGE)}}')">
+
+                <!--<div class="options">
+                    <a class="btn action gray" ng-if="isVisible(ComponentType.CALL_TO_ACTION)" href="" target="_blank"
+                       ng-href="{{getHref(ComponentType.CALL_TO_ACTION)}}">
+                        {{display(ComponentType.CALL_TO_ACTION)}}
+                    </a>
+                </div>-->
+
+            </div>
+        </a>
+        
+        <hr />
+    </div>
+    
+</div>
+
+<div class="pdf-conplete-content">
+    <h3>Complete Content:</h3>
+    <hr />
+    <div class="pdf-complete-content-text" ng-if="!isEmptyOrWhiteSpace(getCTALink(ComponentType.CALL_TO_ACTION))">
+        <div class="overlay-text-viewer">
+            <div ng-if="isALink(ComponentType.CALL_TO_ACTION)">
+                <span class="cta-link-text">CTA Link:</span> <a href="{{getCTALink(ComponentType.CALL_TO_ACTION)}}" target="_blank">{{getCTALink(ComponentType.CALL_TO_ACTION)}}</a>
+            </div>
+            <div ng-if="!isALink(ComponentType.CALL_TO_ACTION)">
+                <span class="cta-link-text">CTA Link:</span> {{getCTALink(ComponentType.CALL_TO_ACTION)}}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

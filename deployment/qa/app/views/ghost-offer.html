@@ -1,0 +1,32 @@
+﻿<div class="screen-content">
+    <div class="input-spacing" ng-click="showView('layout-menu')">
+        <div class=" arrow-holder clickable">
+            <div class="arrow-left"></div>
+        </div>
+        <label class="label-larger grey-color clickable">Back to Layout Menu</label>
+    </div>
+    <div class="input-spacing page-main-title lesser-height">
+        <span>OLB Ghost - {{projectManager.selectedLayout.ID}}</span>
+    </div>
+    <form name="sectionForm" novalidate>
+        <wg-headline 
+                     number="01." 
+                     max-length="2000" 
+                     show-pull-down="true" 
+                     header="Select a Product Name." 
+                     details="Select a Product Name from the pull-down list. &lt;br /&gt; &lt;br /&gt; &lt;i&gt;Note: There are no exceptions to this list as the space will not allow for any modifications.&lt;/i&gt;">
+        </wg-headline>
+        <wg-call-to-action 
+                           number="02." 
+                           header="Set up the Call to Action (CTA) for the OLB Ghost offer."
+                           details="The Call to Action (CTA) determines how an offer will be fulfilled. Please select the appropriate CTA from the drop down menu. &lt;br /&gt; &lt;br /&gt; &lt;i&gt;Note: When the URL CTA is selected, please enter the hyperlink to the appropriate location.&lt;/i&gt;"
+                           buttom-text-visible="true"
+                           deactivatable="true"
+                           balance-transfer-opt="true"
+                           add-pwm-options="true">
+        </wg-call-to-action>
+        <div ng-include="'../app/partials/action-bar-components.html'"></div>
+    </form>
+</div>
+<div class="dialog noselect" ng-class="{'open': isPreviewDlgVisible }"
+     ng-include="previewUrl()"></div>

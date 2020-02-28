@@ -1,0 +1,68 @@
+﻿<div class="screen-content">
+    <div class="input-spacing" ng-click="showView('layout-menu')">
+        <div class=" arrow-holder clickable">
+            <div class="arrow-left"></div>
+        </div>
+        <label class="label-larger grey-color clickable">Back to Layout Menu</label>
+    </div>
+    <div class="input-spacing page-main-title lesser-height">
+        <span>Email Template - {{projectManager.selectedLayout.ID}}</span>
+    </div>
+    <form name="sectionForm" novalidate>
+        <wg-email-manage-header-links number="01."
+                                 first-link-header="LINK 1"
+                                 second-link-header="LINK 2"
+                                 third-link-header="LINK 3"
+                                 deactivatable="true">
+        </wg-email-manage-header-links>
+        <wg-main-image number="02."
+                       name="Header image"
+                       width-array="600,600"
+                       height-array="268,118"
+                       header="Upload the header image."
+                       details="Appears at the top of the email to setup purpose of email and motivate recipient to read further."
+                       show-link-url="true"
+                       open-upload-image-dialog-click="openUploadImageDialogClick(callbackOK)"
+                       multiple="true">
+        </wg-main-image>
+
+        <wg-details number="03."
+                    name="1<sup>st</sup> column (body)"
+                    header="Enter 1<sup>st</sup> column copy/text."
+                    details="1<sup>st</sup> column contains body of message."
+                    special-controls="true"
+                    email-tags="true">
+        </wg-details>
+
+        <wg-right-rail number="04."
+                       header="2<sup>nd</sup> column content."
+                       details="Used to convey offer highlights in bullet or other summarized form (optional)"
+                       deactivatable="true"
+                       special-controls="true"
+                       width-array="600,600"
+                       height-array="268,118"
+                       multiple="true"
+                       open-upload-image-dialog-click="openUploadImageDialogClick(callbackOK)">
+        </wg-right-rail>
+
+        <wg-email-call-to-action number="05."
+                                 go-online-header="CTA 1"
+                                 go-online-details="This section is typically used to present a call to action choice – such as online."
+                                 call-header="CTA 2"
+                                 call-details="This section is typically used to present a call to action choice – such as online."
+                                 visit-header="CTA 3"
+                                 visit-details="This section is typically used to present a call to action choice – such as online."
+                                 deactivatable="true">
+        </wg-email-call-to-action>
+
+        <wg-disclaimer number="06."
+                       header="[TBD - Provided by Client]"
+                       details="[TBD - Provided by Client]"
+                       special-controls="true"
+                       email-tags="true">
+        </wg-disclaimer>
+        <div ng-include="'../app/partials/action-bar-components.html'"></div>
+    </form>
+</div>
+<div class="dialog noselect responsive" ng-class="{'open': isPreviewDlgVisible }"
+     ng-include="previewUrl()"></div>

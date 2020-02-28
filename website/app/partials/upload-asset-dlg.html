@@ -1,0 +1,28 @@
+﻿<div id="uploadImage" class="dialog-block" ng-controller="UploadAssetController">
+    <div class="form-container">
+        <form name="uploadAssetForm" novalidate>
+            <div class="dialog-header">
+                <div class="dialog-heading">{{uploadAssetDialogTitle}}</div>
+                <div class="close-button" ng-click="cancelButtonClick()">&times;</div>
+            </div>
+            <div class="dialog-content">
+                <div class="instructions"><span class="sentence" ng-bind-html="uploadAssetDialogMessage">Choose an asset to upload from your desktop.</span></div>
+
+                <div class="input-spacing">
+                    <input class="input-bigger-size" type="text" name="uploadImageLocation" ng-model="formData.uploadInputValue" readonly />
+                    <div class="button blue button-float-right fileUpload">
+                        <span>Upload</span>
+                        <br />
+                        <input type="file" class="upload" nv-file-select="" uploader="assetUploader" />
+                    </div>
+                </div>
+                <div class="button-container">
+                    <button class="button orange button-float-right" ng-click="confirmButtonClick(uploadAssetForm)" ng-disabled="formData.uploadInputValue == ''">{{uploadAssetBtnOkText}}</button>
+                    <button class="button orange button-float-right" ng-click="cancelButtonClick()">Cancel</button>
+                    <div class="clear"></div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>

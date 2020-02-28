@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "Shared Media Library";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div ng-controller="SharedMediaLibraryController">
+    <div class="overall-title">
+        <span ng-class="{'page-bread-crump' : !formData.isRootFolderSelected }" ng-click="setSelectedFolder(null)"> SHARED MEDIA LIBRARY </span>
+        <span ng-hide="formData.isRootFolderSelected">&nbsp;&#60;&nbsp;&nbsp;FOLDER VIEW</span>
+    </div>
+    <div class="site-page shared-media-library">
+        <div class="screen-content">
+            <div class="page-main-title no-description">
+                <span>{{formData.folderTitle}}</span>
+            </div>
+
+            <div ng-include="'@Href("~/app/partials/media-library.html")'"></div>
+
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script src="~/app/controllers/shared-media-library-controller.js" type="text/javascript"></script>
+}
+
+

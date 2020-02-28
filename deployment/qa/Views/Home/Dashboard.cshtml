@@ -1,0 +1,464 @@
+﻿@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    var currentUser = (st1001.website.DAL.Security.CustomPrincipal)st1001.website.Models.ModelHelper.GetCurrentUser();
+}
+
+<div class="overall-title">
+    <span>My Dashboard</span>
+</div>
+<div class="site-page dashboard">
+    <div class="screen-content">
+        <div class="page-main-title no-description">
+            <span>@currentUser.Role</span>
+        </div>
+        @if (currentUser.IsInRole(Constants.ROLE_ADMIN) || currentUser.IsInRole(Constants.ROLE_SA))
+        {
+            <div class="table-block input-spacing">
+                <table class="table-content">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="section section-create-offer">
+                                    <div class="page-main-title page-main-title-v2">
+                                        <span>Create a New Offer</span>
+                                    </div>
+                                    <input class="button blue button-position" type="button" value="Create" ng-click="openOfferDialogClick()">
+                                    <div class="description">
+                                        <p>Manual Offer creation should only be initiated if automation has been disabled.</p>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        }
+        <div class="clear"></div>
+        <div ng-controller="DashboardController">
+            @if (currentUser.IsInRole(Constants.ROLE_ADMIN) || currentUser.IsInRole(Constants.ROLE_SA))
+            {
+                <div class="table-block input-spacing">
+                    <table class="table-content">
+                        <thead>
+                            <tr>
+                                <th class="clickable">
+                                    <div class="resize-content" ng-click="toggleUserList()">
+                                        <div>
+                                            <div class="signs" ng-class="{'hide': !enableUserList}">+</div>
+                                            <div class="signs" ng-class="{'hide': enableUserList}">&#8211</div>
+                                        </div>
+                                        <div class="signs-side-heading"><span>User List</span></div>
+                                    </div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody ng-class="{'hide': enableUserList}">
+                            <tr>
+                                <td>
+                                    <div class="section section-user-list">
+                                        <div class="section-controls">
+                                            <button class="button blue no-margin-left" ng-click="createNewUser()">Create New User</button>
+                                            <div class="pagination-content pagination-position">
+                                                <ul>
+                                                    <li ng-class="{'disabled' : tbUsersModel.currentPage == 0}">
+                                                        <a href="#" ng-click="tbUsersModel.firstPage()"><div class="square">&lt;&lt;</div></a>
+                                                    </li>
+                                                    <li ng-class="{'disabled' : tbUsersModel.currentPage == 0}">
+                                                        <a href="#" ng-click="tbUsersModel.prevPage()"><div class="square">&lt;</div></a>
+                                                    </li>
+                                                    <li><span>Page {{tbUsersModel.pageNumber()}} of {{tbUsersModel.pagedItemsLength}}</span></li>
+                                                    <li ng-class="{'disabled': tbUsersModel.currentPage == tbUsersModel.pagedItemsLength - 1}">
+                                                        <a href="#" ng-click="tbUsersModel.nextPage()"><div class="square">&gt;</div></a>
+                                                    </li>
+                                                    <li ng-class="{'disabled': tbUsersModel.currentPage == tbUsersModel.pagedItemsLength - 1}">
+                                                        <a href="#" ng-click="tbUsersModel.lastPage()"><div class="square">&gt;&gt;</div></a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="clear"></div>
+                                        </div>
+                                        <table class="table-with-values clickable">
+                                            <thead>
+                                                <tr>
+                                                    <th>
+                                                        <div ng-click="tbUsersModel.sortBy('LastName')">
+                                                            <div ng-class="{'empty-block': tbUsersModel.sortingOrder != 'LastName', 'hide': tbUsersModel.sortingOrder == 'LastName'}"></div>
+                                                            <div ng-class="{'hide': tbUsersModel.sortingOrder != 'LastName', 'arrow-down': tbUsersModel.reverse == undefined || !tbUsersModel.reverse, 'arrow-up': tbUsersModel.reverse}"></div>
+                                                            <span>Last Name</span>
+                                                        </div>
+                                                    </th>
+                                                    <th>
+                                                        <div ng-click="tbUsersModel.sortBy('FirstName')">
+                                                            <div ng-class="{'empty-block': tbUsersModel.sortingOrder != 'FirstName', 'hide': tbUsersModel.sortingOrder == 'FirstName'}"></div>
+                                                            <div ng-class="{'hide': tbUsersModel.sortingOrder != 'FirstName', 'arrow-down': tbUsersModel.reverse == undefined || !tbUsersModel.reverse, 'arrow-up': tbUsersModel.reverse}"></div>
+                                                            <span>First Name</span>
+                                                        </div>
+                                                    </th>
+                                                    <th>
+                                                        <div ng-click="tbUsersModel.sortBy('Role')">
+                                                            <div ng-class="{'empty-block': tbUsersModel.sortingOrder != 'Role', 'hide': tbUsersModel.sortingOrder == 'Role'}"></div>
+                                                            <div ng-class="{'hide': tbUsersModel.sortingOrder != 'Role', 'arrow-down': tbUsersModel.reverse == undefined || !tbUsersModel.reverse, 'arrow-up': tbUsersModel.reverse}"></div>
+                                                            <span>Role</span>
+                                                        </div>
+                                                    </th>
+                                                    @if (currentUser.IsInRole(Constants.ROLE_SA))
+                                                    {
+                                                        <th>
+                                                            <div ng-click="tbUsersModel.sortBy('UserType')">
+                                                                <div ng-class="{'empty-block': tbUsersModel.sortingOrder != 'UserType', 'hide': tbUsersModel.sortingOrder == 'UserType'}"></div>
+                                                                <div ng-class="{'hide': tbUsersModel.sortingOrder != 'UserType', 'arrow-down': tbUsersModel.reverse == undefined || !tbUsersModel.reverse, 'arrow-up': tbUsersModel.reverse}"></div>
+                                                                <span>User Type</span>
+                                                            </div>
+                                                        </th>
+                                                    }
+                                                    <th>
+                                                        <div ng-click="tbUsersModel.sortBy('DateJoined')">
+                                                            <div ng-class="{'empty-block': tbUsersModel.sortingOrder != 'DateJoined', 'hide': tbUsersModel.sortingOrder == 'DateJoined'}"></div>
+                                                            <div ng-class="{'hide': tbUsersModel.sortingOrder != 'DateJoined', 'arrow-down': tbUsersModel.reverse == undefined || !tbUsersModel.reverse, 'arrow-up': tbUsersModel.reverse}"></div>
+                                                            <span>Date Joined</span>
+                                                        </div>
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="item in tbUsersModel.pagedItems[tbUsersModel.currentPage]" ng-click="openUserProfile(item.ID)">
+                                                    <td><div title="{{item.LastName}}" class="truncate"> {{item.LastName}} </div></td>
+                                                    <td><div title="{{item.FirstName}}" class="truncate"> {{item.FirstName}} </div></td>
+                                                    <td><div title="{{item.Role}}" class="truncate"> {{item.Role}} </div></td>
+                                                    @if (currentUser.IsInRole(Constants.ROLE_SA))
+                                                    {
+                                                        <td><div title="{{item.UserType}}" class="truncate"> {{item.UserType}} </div></td>
+                                                    }
+                                                    <td><div title="{{item.DateJoined | date:'short'}}" class="truncate"> {{item.DateJoined | date:'short'}} </div></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <div class="clear"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            }
+            <div class="table-block input-spacing">
+                <table class="table-content">
+                    <thead>
+                        <tr>
+                            <th class="clickable">
+                                <div class="resize-content" ng-click="toggleActiveProjects()">
+                                    <div>
+                                        <div class="signs" ng-class="{'hide': !enableActiveProjects}">+</div>
+                                        <div class="signs" ng-class="{'hide': enableActiveProjects}">&#8211</div>
+                                    </div>
+                                    <div class="signs-side-heading"><span>Active Projects</span></div>
+                                </div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody ng-class="{'hide': enableActiveProjects}">
+                        <tr>
+                            <td>
+                                <div class="section">
+                                    <div class="section-controls">
+                                        @if (currentUser.IsInRole(Constants.ROLE_ADMIN) || currentUser.IsInRole(Constants.ROLE_PM) || currentUser.IsInRole(Constants.ROLE_SA))
+                                        {
+                                            <button class="button blue no-margin-left" ng-click="openProjectDialogClick()">+ Create New Project</button>
+                                        }
+                                        <div class="pagination-content pagination-position" ng-show="tbActiveProjectsModel.isNotEmpty()">
+                                            <ul>
+                                                <li ng-class="{'disabled' : tbActiveProjectsModel.currentPage == 0}">
+                                                    <a href="#" ng-click="tbActiveProjectsModel.firstPage()"><div class="square">&lt;&lt;</div></a>
+                                                </li>
+                                                <li ng-class="{'disabled' : tbActiveProjectsModel.currentPage == 0}">
+                                                    <a href="#" ng-click="tbActiveProjectsModel.prevPage()"><div class="square">&lt;</div></a>
+                                                </li>
+                                                <li><span>Page {{tbActiveProjectsModel.pageNumber()}} of {{tbActiveProjectsModel.pagedItemsLength}}</span></li>
+                                                <li ng-class="{'disabled': tbActiveProjectsModel.currentPage == tbActiveProjectsModel.pagedItemsLength - 1}">
+                                                    <a href="#" ng-click="tbActiveProjectsModel.nextPage()"><div class="square">&gt;</div></a>
+                                                </li>
+                                                <li ng-class="{'disabled': tbActiveProjectsModel.currentPage == tbActiveProjectsModel.pagedItemsLength - 1}">
+                                                    <a href="#" ng-click="tbActiveProjectsModel.lastPage()"><div class="square">&gt;&gt;</div></a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <table class="table-with-values clickable" ng-show="tbActiveProjectsModel.isNotEmpty()">
+                                        <thead>
+                                            <tr>
+                                                <th></th>
+                                                <th>
+                                                    <div ng-click="tbActiveProjectsModel.sortBy('OfferName')">
+                                                        <div ng-class="{'empty-block': tbActiveProjectsModel.sortingOrder != 'OfferName', 'hide': tbActiveProjectsModel.sortingOrder == 'OfferName'}"></div>
+                                                        <div ng-class="{'hide': tbActiveProjectsModel.sortingOrder != 'OfferName', 'arrow-down': tbActiveProjectsModel.reverse == undefined || !tbActiveProjectsModel.reverse, 'arrow-up': tbActiveProjectsModel.reverse}"></div>
+                                                        <span>Offer Name</span>
+                                                    </div>
+                                                </th>
+                                                <th>
+                                                    <div ng-click="tbActiveProjectsModel.sortBy('OfferID')">
+                                                        <div ng-class="{'empty-block': tbActiveProjectsModel.sortingOrder != 'OfferID', 'hide': tbActiveProjectsModel.sortingOrder == 'OfferID'}"></div>
+                                                        <div ng-class="{'hide': tbActiveProjectsModel.sortingOrder != 'OfferID', 'arrow-down': tbActiveProjectsModel.reverse == undefined || !tbActiveProjectsModel.reverse, 'arrow-up': tbActiveProjectsModel.reverse}"></div>
+                                                        <span>Offer ID</span>
+                                                    </div>
+                                                </th>
+                                                @if (currentUser.IsInRole(Constants.ROLE_SA))
+                                                {
+                                                    <th>
+                                                        <div ng-click="tbActiveProjectsModel.sortBy('OfferType')">
+                                                            <div ng-class="{'empty-block': tbActiveProjectsModel.sortingOrder != 'OfferType', 'hide': tbActiveProjectsModel.sortingOrder == 'OfferType'}"></div>
+                                                            <div ng-class="{'hide': tbActiveProjectsModel.sortingOrder != 'OfferType', 'arrow-down': tbActiveProjectsModel.reverse == undefined || !tbActiveProjectsModel.reverse, 'arrow-up': tbActiveProjectsModel.reverse}"></div>
+                                                            <span>Offer Type</span>
+                                                        </div>
+                                                    </th>
+                                                }
+                                                <th>
+                                                    <div ng-click="tbActiveProjectsModel.sortBy('Author')">
+                                                        <div ng-class="{'empty-block': tbActiveProjectsModel.sortingOrder != 'Author', 'hide': tbActiveProjectsModel.sortingOrder == 'Author'}"></div>
+                                                        <div ng-class="{'hide': tbActiveProjectsModel.sortingOrder != 'Author', 'arrow-down': tbActiveProjectsModel.reverse == undefined || !tbActiveProjectsModel.reverse, 'arrow-up': tbActiveProjectsModel.reverse}"></div>
+                                                        <span>Author</span>
+                                                    </div>
+                                                </th>
+                                                <th>
+                                                    <div ng-click="tbActiveProjectsModel.sortBy('DateCreated')">
+                                                        <div ng-class="{'empty-block': tbActiveProjectsModel.sortingOrder != 'DateCreated', 'hide': tbActiveProjectsModel.sortingOrder == 'DateCreated'}"></div>
+                                                        <div ng-class="{'hide': tbActiveProjectsModel.sortingOrder != 'DateCreated', 'arrow-down': tbActiveProjectsModel.reverse == undefined || !tbActiveProjectsModel.reverse, 'arrow-up': tbActiveProjectsModel.reverse}"></div>
+                                                        <span>Date Created</span>
+                                                    </div>
+                                                </th>
+                                                <th>
+                                                    <div ng-click="tbActiveProjectsModel.sortBy('Approval')">
+                                                        <div ng-class="{'empty-block': tbActiveProjectsModel.sortingOrder != 'Approval', 'hide': tbActiveProjectsModel.sortingOrder == 'Approval'}"></div>
+                                                        <div ng-class="{'hide': tbActiveProjectsModel.sortingOrder != 'Approval', 'arrow-down': tbActiveProjectsModel.reverse == undefined || !tbActiveProjectsModel.reverse, 'arrow-up': tbActiveProjectsModel.reverse}"></div>
+                                                        <span>Approval</span>
+                                                    </div>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="item in tbActiveProjectsModel.pagedItems[tbActiveProjectsModel.currentPage]">
+                                                <td><input type="checkbox" ng-model="item.selected" /></td>
+                                                <td ng-click="gotoEditProject(item.OfferID)">
+                                                    <div title="{{item.OfferName}}" class="truncate"> {{item.OfferName}} </div>
+                                                </td>
+                                                <td ng-click="gotoEditProject(item.OfferID)">
+                                                    <div title="{{item.OfferID}}" class="truncate"> {{item.OfferID}} </div>
+                                                </td>
+                                                @if (currentUser.IsInRole(Constants.ROLE_SA))
+                                                {
+                                                    <td ng-click="gotoEditProject(item.OfferID)">
+                                                        <div title="{{item.OfferType}}" class="truncate"> {{item.OfferType}} </div>
+                                                    </td>
+                                                }
+                                                <td ng-click="gotoEditProject(item.OfferID)">
+                                                    <div title="{{item.Author}}" class="truncate"> {{item.Author}} </div>
+                                                </td>
+                                                <td ng-click="gotoEditProject(item.OfferID)">
+                                                    <div title="{{item.DateCreated | date:'short' }}" class="truncate"> {{item.DateCreated | date:'short' }} </div>
+                                                </td>
+                                                <td ng-click="gotoEditProject(item.OfferID)">
+                                                    <div title="{{item.Approval}}" ng-class="{'not-approved' : item.Approval == 'No'}" class="truncate text-center"> {{item.Approval}} </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="section-export-controls" ng-show="tbActiveProjectsModel.isNotEmpty()">
+                                        <div class="pull-left">
+                                            <a class="btn-select-all" ng-click="tbActiveProjectsModel.toggleSelectAll()">
+                                                {{tbActiveProjectsModel.selectAllBtnDisplay()}}
+                                            </a>
+                                        </div>
+                                        <div class="pull-right">
+                                            <button class="button blue no-margin-left" ng-click="toggleExportMenu()">
+                                                ↗ Export LIVE RTO 
+                                            </button>
+                                            <button class="button blue no-margin-left" ng-click="toggleExportMenu()">
+                                                ↗ Export Selected
+                                            </button>
+                                            <ul class="export-menu" ng-show="exportMenuVisible">
+                                                <li ng-click="exportSelectedToPDF()">Review</li>
+                                                <li ng-click="exportSelectedToZip()">Web Team</li>
+                                            </ul>
+                                            <button class="button blue no-margin-left" ng-click="archiveSelected()">↘ Archive Selected</button>
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="table-block input-spacing">
+                <table class="table-content">
+                    <thead>
+                        <tr>
+                            <th class="clickable">
+                                <div class="resize-content" ng-click="toggleArchivedProjects()">
+                                    <div>
+                                        <div class="signs" ng-class="{'hide': !enableArchivedProjects}">+</div>
+                                        <div class="signs" ng-class="{'hide': enableArchivedProjects}">&#8211</div>
+                                    </div>
+                                    <div class="signs-side-heading"><span>Archived Projects</span></div>
+                                </div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody ng-class="{'hide': enableArchivedProjects}">
+                        <tr>
+                            <td>
+                                <div class="section">
+                                    <div class="section-controls">
+                                        <div class="pagination-content" ng-show="tbArchivedProjectsModel.isNotEmpty()">
+                                            <ul>
+                                                <li ng-class="{'disabled' : tbArchivedProjectsModel.previousDisabled() }">
+                                                    <a href="#" ng-click="tbArchivedProjectsModel.firstPage()"><div class="square">&lt;&lt;</div></a>
+                                                </li>
+                                                <li ng-class="{'disabled' : tbArchivedProjectsModel.previousDisabled() }">
+                                                    <a href="#" ng-click="tbArchivedProjectsModel.prevPage()"><div class="square">&lt;</div></a>
+                                                </li>
+                                                <li><span>Page {{tbArchivedProjectsModel.pageNumber()}} of {{tbArchivedProjectsModel.pagedItemsLength}}</span></li>
+                                                <li ng-class="{'disabled': tbArchivedProjectsModel.nextDisabled() }">
+                                                    <a href="#" ng-click="tbArchivedProjectsModel.nextPage()"><div class="square">&gt;</div></a>
+                                                </li>
+                                                <li ng-class="{'disabled': tbArchivedProjectsModel.nextDisabled() }">
+                                                    <a href="#" ng-click="tbArchivedProjectsModel.lastPage()"><div class="square">&gt;&gt;</div></a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+                                    <table class="table-with-values clickable" ng-show="tbArchivedProjectsModel.isNotEmpty()">
+                                        <thead>
+                                            <tr>
+                                                <th></th>
+                                                <th>
+                                                    <div ng-click="tbArchivedProjectsModel.sortBy('OfferName')">
+                                                        <div ng-class="{'empty-block': tbArchivedProjectsModel.sortingOrder != 'OfferName', 'hide': tbArchivedProjectsModel.sortingOrder == 'OfferName'}"></div>
+                                                        <div ng-class="{'hide': tbArchivedProjectsModel.sortingOrder != 'OfferName', 'arrow-down': tbArchivedProjectsModel.reverse == undefined || !tbArchivedProjectsModel.reverse, 'arrow-up': tbArchivedProjectsModel.reverse}"></div>
+                                                        <span>Offer Name</span>
+                                                    </div>
+                                                </th>
+                                                <th>
+                                                    <div ng-click="tbArchivedProjectsModel.sortBy('OfferID')">
+                                                        <div ng-class="{'empty-block': tbArchivedProjectsModel.sortingOrder != 'OfferID', 'hide': tbArchivedProjectsModel.sortingOrder == 'OfferID'}"></div>
+                                                        <div ng-class="{'hide': tbArchivedProjectsModel.sortingOrder != 'OfferID', 'arrow-down': tbArchivedProjectsModel.reverse == undefined || !tbArchivedProjectsModel.reverse, 'arrow-up': tbArchivedProjectsModel.reverse}"></div>
+                                                        <span>Offer ID</span>
+                                                    </div>
+                                                </th>
+                                                @if (currentUser.IsInRole(Constants.ROLE_SA))
+                                                {
+                                                    <th>
+                                                        <div ng-click="tbActiveProjectsModel.sortBy('OfferType')">
+                                                            <div ng-class="{'empty-block': tbActiveProjectsModel.sortingOrder != 'OfferType', 'hide': tbActiveProjectsModel.sortingOrder == 'OfferType'}"></div>
+                                                            <div ng-class="{'hide': tbActiveProjectsModel.sortingOrder != 'OfferType', 'arrow-down': tbActiveProjectsModel.reverse == undefined || !tbActiveProjectsModel.reverse, 'arrow-up': tbActiveProjectsModel.reverse}"></div>
+                                                            <span>Offer Type</span>
+                                                        </div>
+                                                    </th>
+                                                }
+                                                <th>
+                                                    <div ng-click="tbArchivedProjectsModel.sortBy('Author')">
+                                                        <div ng-class="{'empty-block': tbArchivedProjectsModel.sortingOrder != 'Author', 'hide': tbArchivedProjectsModel.sortingOrder == 'Author'}"></div>
+                                                        <div ng-class="{'hide': tbArchivedProjectsModel.sortingOrder != 'Author', 'arrow-down': tbArchivedProjectsModel.reverse == undefined || !tbArchivedProjectsModel.reverse, 'arrow-up': tbArchivedProjectsModel.reverse}"></div>
+                                                        <span>Author</span>
+                                                    </div>
+                                                </th>
+                                                <th>
+                                                    <div ng-click="tbArchivedProjectsModel.sortBy('DateCreated')">
+                                                        <div ng-class="{'empty-block': tbArchivedProjectsModel.sortingOrder != 'DateCreated', 'hide': tbArchivedProjectsModel.sortingOrder == 'DateCreated'}"></div>
+                                                        <div ng-class="{'hide': tbArchivedProjectsModel.sortingOrder != 'DateCreated', 'arrow-down': tbArchivedProjectsModel.reverse == undefined || !tbArchivedProjectsModel.reverse, 'arrow-up': tbArchivedProjectsModel.reverse}"></div>
+                                                        <span>Date Created</span>
+                                                    </div>
+                                                </th>
+                                                <th>
+                                                    <div ng-click="tbArchivedProjectsModel.sortBy('DateArchived')">
+                                                        <div ng-class="{'empty-block': tbArchivedProjectsModel.sortingOrder != 'DateArchived', 'hide': tbArchivedProjectsModel.sortingOrder == 'DateArchived'}"></div>
+                                                        <div ng-class="{'hide': tbArchivedProjectsModel.sortingOrder != 'DateArchived', 'arrow-down': tbArchivedProjectsModel.reverse == undefined || !tbArchivedProjectsModel.reverse, 'arrow-up': tbArchivedProjectsModel.reverse}"></div>
+                                                        <span>Date Archived</span>
+                                                    </div>
+                                                </th>
+                                                <th>
+                                                    <div ng-click="tbArchivedProjectsModel.sortBy('Approval')">
+                                                        <div ng-class="{'empty-block': tbArchivedProjectsModel.sortingOrder != 'Approval', 'hide': tbArchivedProjectsModel.sortingOrder == 'Approval'}"></div>
+                                                        <div ng-class="{'hide': tbArchivedProjectsModel.sortingOrder != 'Approval', 'arrow-down': tbArchivedProjectsModel.reverse == undefined || !tbArchivedProjectsModel.reverse, 'arrow-up': tbArchivedProjectsModel.reverse}"></div>
+                                                        <span>Approval</span>
+                                                    </div>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="item in tbArchivedProjectsModel.pagedItems[tbArchivedProjectsModel.currentPage] | orderBy:tbArchivedProjectsModel.sortingOrder:tbArchivedProjectsModel.reverse">
+                                                <td><input type="checkbox" ng-model="item.selected" /></td>
+                                                <td ng-click="gotoEditProject(item.OfferID)">
+                                                    <div title="{{item.OfferName}}" class="truncate"> {{item.OfferName}} </div>
+                                                </td>
+                                                <td ng-click="gotoEditProject(item.OfferID)">
+                                                    <div title="{{item.OfferID}}" class="truncate"> {{item.OfferID}} </div>
+                                                </td>
+                                                @if (currentUser.IsInRole(Constants.ROLE_SA))
+                                                {
+                                                    <td ng-click="gotoEditProject(item.OfferID)">
+                                                        <div title="{{item.OfferType}}" class="truncate"> {{item.OfferType}} </div>
+                                                    </td>
+                                                }
+                                                <td ng-click="gotoEditProject(item.OfferID)">
+                                                    <div title="{{item.Author}}" class="truncate"> {{item.Author}} </div>
+                                                </td>
+                                                <td ng-click="gotoEditProject(item.OfferID)">
+                                                    <div title="{{item.DateCreated | date:'short' }}" class="truncate"> {{item.DateCreated | date:'short' }} </div>
+                                                </td>
+                                                <td ng-click="gotoEditProject(item.OfferID)">
+                                                    <div title="{{item.DateArchived | date:'short' }}" class="truncate"> {{item.DateArchived | date:'short' }} </div>
+                                                </td>
+                                                <td ng-click="gotoEditProject(item.OfferID)">
+                                                    <div title="{{item.Approval}}" class="truncate text-center"> {{item.Approval}} </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="clear"></div>
+                                    <div class="section-export-controls" ng-show="tbArchivedProjectsModel.isNotEmpty()">
+                                        <div class="pull-left">
+                                            <a class="btn-select-all" ng-click="tbArchivedProjectsModel.toggleSelectAll()">
+                                                {{tbArchivedProjectsModel.selectAllBtnDisplay()}}
+                                            </a>
+                                        </div>
+                                        <div class="pull-right">
+                                            <button class="button blue no-margin-left" ng-click="activateSelected()">&uarr; Activate Selected</button>
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- begin: Dialogs sections -->
+            <div class="dialog projects-selection-dlg noselect" ng-class="{'open': isProjectSelectionDlgVisible }"
+                 ng-include="'@Href("~/app/partials/projects-selection-dlg.html")'"></div>
+            <!-- end: Dialogs sections -->
+        </div>
+    </div>
+
+
+</div>
+
+<script type="text/javascript">
+    var sortingOrder = 'ProjectName';
+</script>
+
+@section scripts {
+    <script src="~/app/common.js"></script>
+    <script src="~/app/services/dashboard-service.js" type="text/javascript"></script>
+    <script src="~/app/services/project-service.js"></script>
+    <script src="~/app/controllers/dashboard-controller.js" type="text/javascript"></script>
+    <script src="~/app/controllers/projects-selection-controller.js"></script>
+    <script src="~/app/services/project-manager.js" type="text/javascript"></script>
+}
+
+

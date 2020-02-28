@@ -1,0 +1,12 @@
+﻿<div class="dialog-block" 
+     ng-controller="PreviewController" ng-init="init(projectManager)">
+    <div class="preview-container">
+        <div class="dialog-header">
+            <div class="dialog-heading">Preview</div>
+            <div class="close-button" ng-click="closePreviewDialogClick()">&times;</div>
+        </div>
+        <div class="dialog-content">
+            <div ng-include="getCurrentViewUrl()"></div>
+        </div>
+    </div>
+</div>

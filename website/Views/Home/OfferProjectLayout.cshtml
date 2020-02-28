@@ -1,0 +1,131 @@
+﻿@using st1001.website.Models;
+
+@{
+    ViewBag.Title = "OfferProjectLayout";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var currentUser = (st1001.website.DAL.Security.CustomPrincipal)ModelHelper.GetCurrentUser();
+}
+<div ng-controller="ProjectLayoutController">
+    <div class="page-main-title page-main-title-v3 left-padding">
+        <span>{{projectManager.project.Name}}</span>
+    </div>
+
+    <div class="details">
+        <div class="details-left">
+            <div>
+                <div class="details-label">OFFER ID:</div>
+                <div class="details-label">{{projectManager.project.ID}}</div>
+            </div>
+            <div>
+                <div class="details-label">AUTHOR:</div>
+                <div class="details-label">{{ projectManager.project.CreatedBy }}</div>
+            </div>
+        </div>
+        <div class="details-middle">
+            <p>{{ projectManager.project.Description }}</p>
+        </div>
+        <div class="details-right">
+            @if (currentUser.IsInRole(Constants.ROLE_ADMIN) || currentUser.IsInRole(Constants.ROLE_PM) || currentUser.IsInRole(Constants.ROLE_SA))
+            {
+                <div>
+                    <div class="details-label">Approved</div>
+                    <div class="switch custom-position" ng-class=" {'approved': projectManager.isApproved()}" ng-click="toggleApproval()">
+                        <label class="switch-label" for="offerNotApproved" ng-class=" {'switch-label-active': !projectManager.isApproved()}">No</label>
+                        <label class="switch-label switch-right-label" for="offerApproved" ng-class=" {'switch-label-active': projectManager.isApproved()}">Yes</label>
+                        <span class="switch-selection" id="switchSelection" ng-class="{'switch-selection-right': projectManager.isApproved()}"></span>
+                    </div>
+                </div>
+            }
+
+            <div>
+                <div class="details-label">Export For</div>
+                <a class="button blue webteam" ng-class="{'disabled': !projectManager.isThereAnySectionEdited()}" ng-click="exportForReview()">Review</a>
+                <a class="button blue button-float-right webteam" ng-class="{'disabled': !projectManager.isThereAnySectionEdited()}" ng-click="exportToZip()">Web Team</a>
+            </div>
+
+            <div>
+                <div class="details-label">Share</div>
+                <a class="button blue webteam" ng-class="{'disabled': !projectManager.isThereAnySectionEdited()}" ng-click="shareReadOnlyLink()">Preview</a>
+                <a class="button blue webteam button-float-right" ng-click="openSelectProjectToCopyDlgClick()" ng-if="isWebProject()">Copy from</a>
+            </div>
+
+            <!-- TODO: 3.Import / Export Text Fields -->
+            <div style="display: none;">
+                <div class="details-label">Contents</div>
+                <a class="button blue webteam" ng-class="{'disabled': !projectManager.isThereAnySectionEdited()}" ng-click="exportContents()">Export</a>
+
+                <div class="button blue button-float-right fileUpload">
+                    <span>Import</span>
+                    <br />
+                    <!-- TODO: Upload the file and send to "Project/ImportContents" -->
+                    <!--
+                    <input type="file" name="fileInput" class="upload" nv-file-select="" />
+                    --->
+                </div>
+                <!--  <a class="button blue button-float-right webteam" ng-class="{'disabled': !projectManager.isThereAnySectionEdited()}" ng-click="importContents()">Import</a>-->
+            </div>
+
+        </div>
+        <div class="clear"></div>
+    </div>
+
+    <div class="tab-container">
+        <div class="tabs">
+            <div class="tab tab-step1 no-user-selection" ng-click="updateCurrentStep(1)" ng-class="{'tab-active' : currentStep == 1}"><i class="fa fa-file-o"></i><span>Layout templates</span></div>
+            <div class="tab tab-step2 no-user-selection" ng-click="updateCurrentStep(2)" ng-class="{'tab-active' : currentStep == 2}"><i class="fa fa-folder-o"></i><span>Media library</span></div>
+        </div>
+
+        <div class="site-page" ng-class="{'hide': currentStep == 2}" ng-view=""></div>
+        <div class="site-page" ng-class="{'hide': currentStep == 1}" ng-controller="SharedMediaLibraryController">
+            <div class="project-media-library">
+                <div class="screen-content">
+                    <div class="page-main-title no-description">
+                        <span>{{formData.folderTitle}}</span>
+                    </div>
+
+                    <div ng-include="'@Href("~/app/partials/media-library.html")'"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- begin: Dialogs sections -->
+    <div class="dialog upload-image noselect" ng-class="{'open': isUploadImageDlgVisible }"
+         ng-include="'@Href("~/app/partials/upload-image-dlg.html")'"></div>
+
+    <div class="dialog copy-content-ids noselect" ng-class="{'open': isCopyContentIDsDlgVisible }"
+         ng-include="'@Href("~/app/partials/copy-content-ids-dlg.html")'"></div>
+
+    <div class="dialog select-content-ids noselect" ng-class="{'open': isSelectContentIDsDlgVisible }"
+         ng-include="'@Href("~/app/partials/select-content-ids-dlg.html")'"></div>
+
+    <div class="dialog select-content-ids noselect" ng-class="{'open': isSelectCopyProjectDlgVisible }"
+         ng-include="'@Href("~/app/partials/projects-selection-copy-dlg.html")'"></div>
+    <!-- end: Dialogs sections -->
+
+</div>
+
+@section IncludesInHeader {
+    <link href="~/Content/styles/preview.css" rel="stylesheet" />
+}
+
+@section scripts {
+    <script src="~/app/project-layout-routes.js" type="text/javascript"></script>
+    <script src="~/app/services/project-service.js" type="text/javascript"></script>
+    <script src="~/app/services/dashboard-service.js" type="text/javascript"></script>
+    <script src="~/app/services/project-manager.js" type="text/javascript"></script>
+
+    <script src="~/app/controllers/accordion-controller.js" type="text/javascript"></script>
+    <script src="~/app/controllers/project-layout-controller.js" type="text/javascript"></script>
+    <script src="~/app/controllers/project-layout-menu-controller.js" type="text/javascript"></script>
+    <script src="~/app/controllers/section-controller.js" type="text/javascript"></script>
+    <script src="~/app/directives/widgets.js"></script>
+    <script src="~/app/controllers/upload-image-controller.js" type="text/javascript"></script>
+    <script src="~/app/controllers/preview-controller.js" type="text/javascript"></script>
+    <script src="~/app/controllers/shared-media-library-controller.js" type="text/javascript"></script>
+    <script src="~/app/controllers/copy-content-ids-controller.js" type="text/javascript"></script>
+    <script src="~/app/controllers/copy-project-controller.js" type="text/javascript"></script>
+    <script src="~/app/controllers/select-content-ids-controller.js" type="text/javascript"></script>
+    <script src="~/app/controllers/layout-details-controller.js"></script>
+    <script src="~/app/controllers/email-template/email-template-controller.js"></script>
+}

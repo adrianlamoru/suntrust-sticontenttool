@@ -1,0 +1,104 @@
+﻿@model PagedList.IPagedList<st1001.data.User>
+@using PagedList.Mvc
+@using st1001.website.Models
+@{
+    ViewBag.Title = "View All Users";
+    //ViewBag.Message = "Test";
+}
+
+<script type="text/javascript">
+    function updateBlockStatus(data) {
+        if (!data.Success) {
+            alert(data.ErrorMessage);
+        }
+        else {
+            var link = $('#block-btn-' + data.ID);
+
+            if (data.Deactivated) {
+                link.text("Activate").attr('href', link.attr('href').replace('Account/BlockUser', 'Account/UnBlockUser'));
+            }
+            else {
+                link.text("Deactivate").attr('href', link.attr('href').replace('Account/UnBlockUser', 'Account/BlockUser'));
+            }
+        }
+    }
+
+</script>
+
+
+<div class="view-moderators">
+    <h1 class="top-title">View All Users</h1>
+    <div class="admin-content">
+        <div class="search-container">
+            @using (Html.BeginForm("GetUsers", "Account", FormMethod.Get))
+            {
+                @Html.TextBox("SearchString")
+                <input class="button" type="submit" value="Search" />
+            }
+        </div>
+
+        @if (!string.IsNullOrEmpty(ViewBag.Message)) { 
+            <script type="text/javascript">
+                alert('@ViewBag.Message');
+            </script>
+        }
+
+        <div class="stories-table">
+            <div class="rows first-last header">
+                <div class="column">Name</div>
+                <div class="column">Username</div>
+                <div class="column">Email</div>
+                <div class="column">Role</div>
+            </div>
+            @foreach (var user in Model)
+            {
+                <div class="rows">
+                    <div class="column">
+                        <div class="user-content">
+                            <img src="@ModelHelper.GetPhotoUrl(user.Photo)" class="user-photo">
+                            <div class="user-info">
+                                <h2>@user.FirstName @user.LastName</h2>
+                                @Html.ActionLink("Edit", "EditUser", "Account", new { id = user.ID}, new{ @class="edit" })
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="column">
+                        <h2 class="username">@user.Username</h2>
+
+                        @Ajax.ActionLink(
+                            user.Deactivated ? "Activate" : "Deactivate", 
+                            user.Deactivated ? "UnBlockUser" : "BlockUser", 
+                            "Account",
+                            new { @id = user.ID }, 
+                            new AjaxOptions
+                                {                         
+                                    HttpMethod = "POST", // <-- HTTP method
+                                    OnSuccess = "updateBlockStatus"
+                                },
+                            new { @class = "button green-border", @id = "block-btn-" + user.ID })                           
+                            
+                        
+                    </div>
+                    <div class="column">
+                        <a href="mailto:@user.Email" class="user-email">@user.Email</a>
+                    </div>
+                    <div class="column">
+                        <p class="role">@ModelHelper.GetRoleName(user.Role)</p>
+                    </div>
+                </div>
+            }
+            <div class="rows first-last footer">
+                <div class="column">Name</div>
+                <div class="column">Username</div>
+                <div class="column">Email</div>
+                <div class="column">Role</div>
+            </div>
+            <div class="clear"></div>
+            <div class="pagination-content">
+                <p class="page-text">Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount</p>
+                @Html.PagedListPager(Model, page => Url.Action("GetUsers", new { page, searchString = ViewBag.CurrentSearch }))
+            </div>
+        </div>
+    </div>
+</div>

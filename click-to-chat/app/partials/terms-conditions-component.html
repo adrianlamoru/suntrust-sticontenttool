@@ -1,0 +1,39 @@
+﻿<div class="table-block input-spacing">
+    <div class="section-header">
+        <h3>{{number}} Terms &amp; Conditions</h3>
+        <div class="deactivate-component" ng-show="deactivatable">
+            <span>Deactivate Component</span>
+            <input type="checkbox" name="inactive" ng-checked="component.Inactive" ng-model="component.Inactive" />
+        </div>
+    </div>
+    <div class="section-content">
+        <div class="input-container">
+            <div class="input-spacing">
+                <div class="input-spacing" ng-show="showTcTextEditor">
+                    <div class="text-editor" text-angular="text-angular" ta-toolbar="{{toolbarOptions}}" name="conditions" ng-model="component.Data.Conditions" ta-disabled='disabled' ta-readonly='disabled'></div>
+                </div>
+
+                <div ng-show="showTcUrl">
+                    <input type="url" name="urlToCall" ng-model="component.Data.url" placeholder="Enter URL" />
+                    <div class="error-container no-marging invisible" ng-class="{'visible': $parent.sectionForm.urlToCall.$error.url}">
+                        <span class="error-msg">Invalid URL. It must begin with http://</span>
+                    </div>
+                    <img class="pull-right" ng-src="{{PDF_IMAGE_URL}}" src="" alt="" />
+                </div>
+            </div>
+        </div>
+        <div class="section-description">
+            <div class="section-main-details">
+                <p ta-bind ng-model="header">
+                    {{header}}
+                </p>
+            </div>
+            <div class="section-explaination">
+                <p ng-bind-html="details">
+                </p>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+

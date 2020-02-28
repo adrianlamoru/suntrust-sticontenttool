@@ -1,0 +1,35 @@
+﻿<div class="dialog-block" ng-controller="CopyContentIDsController">
+    <div class="form-container">
+        <form name="copyContentIDsForm" novalidate class="copy-content-ids-form">
+            <div class="dialog-header">
+                <div class="dialog-heading">Copy Content to Content ID(s)</div>
+                <div class="close-button" ng-click="cancelButtonClick()">&times;</div>
+            </div>
+            <div class="dialog-content">
+                <div class="instructions">
+                    <span class="sentence">Select the Content ID(s) to populate from <span class="layout-name">{{selectedLayout.ID}}</span>.</span>
+                    <a class="select-all" ng-click="selectAll()">{{selectAllText()}}</a>
+                </div>
+                <ul>
+                    <li class="input-spacing dialog-items" ng-class="{'asterisk': item.hasData}" ng-repeat="item in formData.contentIDs">
+                        <label class="id-selector">
+                            <input type="checkbox" id="contentID1" value="Content ID 1" ng-model="item.selected" />
+                            {{item.id}}<span ng-show="item.hasData">*</span>
+                        </label>
+                        <span class="note">
+                            {{item.note}}
+                        </span>
+                    </li>
+                </ul>
+                <div class="footnotes" ng-show="showMessage">*WARNING: this Content ID contains existing content that will be overwritten if selected.</div>
+
+                <div class="button-container">
+                    <button class="button orange button-float-right" ng-click="confirmButtonClick()" ng-disabled="false">Yes</button>
+                    <button class="button orange button-float-right" ng-click="cancelButtonClick()">Cancel</button>
+                    <div class="clear"></div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>

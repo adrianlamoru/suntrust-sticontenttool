@@ -1,0 +1,1 @@
+UPDATE SectionType SET Name = 'Bulletin Zone', Code = 'BULLETIN_ZONE' WHERE ID = 11

@@ -1,0 +1,26 @@
+﻿<div class="dialog-block" ng-controller="ProjectsSelectionController">
+    <div class="form-container">
+        <form name="copyContentIDsForm" novalidate class="projects-selection-form">
+            <div class="dialog-header">
+                <div class="dialog-heading">{{projectSelectionDlgData.title}}</div>
+                <div class="close-button" ng-click="projectSelectionDlgData.onCancelClick()">&times;</div>
+            </div>
+            <div class="dialog-content">
+                <div class="instructions">
+                    <span class="sentence">{{projectSelectionDlgData.description}}</span>
+                </div>
+                <ul class="display-block">
+                    <li class="display-block" ng-repeat="project in projectSelectionDlgData.projects">
+                        <label class="dialog-items">{{project.OfferName}}</label>
+                    </li>
+                </ul>
+                <div class="button-container">
+                    <button class="button orange button-float-right" ng-click="yesClick()" ng-disabled="false">Yes</button>
+                    <button class="button orange button-float-right" ng-click="cancelClick()">Cancel</button>
+                    <div class="clear"></div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,65 @@
+﻿@model st1001.website.Models.RegistrationModel
+@{
+    ViewBag.Title = "View Moderators";
+}
+
+<div class="create-moderators">
+    <h1 class="top-title">Edit User</h1>
+    <div class="admin-content">
+        <h2>Edit a User</h2>
+        @using (Html.BeginForm("EditUser", "Account", FormMethod.Post, new { @class = "with-border" }))
+        {
+            <p class="required-info">All fields with <span class="red">*</span> are required</p>
+
+            @Html.AntiForgeryToken()
+
+            <div class="form-container">
+
+                <div class="input-container">
+                    @Html.LabelFor(model => model.Role, new { @class = "no-margin required" })
+                    <div class="select-container">
+                        <select id="Role" name="Role">
+                            <option value="-1">SELECT ROLE</option>
+                            <option value="0" @{if (Model.Role == 0) {<text>selected</text> }}>User</option>
+                            <option value="1" @{if (Model.Role == 1) { <text> selected </text>  }}>Moderator</option>
+                            <option value="2" @{if (Model.Role == 2) { <text> selected </text>  }}>Super Admin</option>
+                        </select>
+                    </div>
+                    <div class="error-container">
+                        @Html.ValidationMessageFor(model => model.Role)
+                    </div>
+                </div>
+                <div class="input-container">
+                    @Html.LabelFor(model => model.FirstName, new { @class = "required" })
+                    @Html.EditorFor(model => model.FirstName)
+                    <div class="error-container">
+                        @Html.ValidationMessageFor(model => model.FirstName)
+                    </div>
+                </div>
+                <div class="input-container no-margin">
+                    @Html.LabelFor(model => model.LastName, new { @class = "required" })
+                    @Html.EditorFor(model => model.LastName)
+                    <div class="error-container">
+                        @Html.ValidationMessageFor(model => model.LastName)
+                    </div>
+                </div>
+                <div class="input-container big">
+                    @Html.LabelFor(model => model.Email, new { @class = "required" })
+                    @Html.EditorFor(model => model.Email)
+                    <div class="error-container">
+                        @Html.ValidationMessageFor(model => model.Email)
+                    </div>
+                </div>
+
+                <input type="submit" class="button" name="Save" value="Save">
+
+                @Html.ActionLink("Cancel", "GetUsers", "Account", null, new { @class = "button cancel" })
+                
+                <div class="error-container">
+                    @Html.ValidationSummary(true)
+                </div>
+                <div class="clear"></div>
+            </div>
+        }
+    </div>
+</div>

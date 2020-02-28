@@ -1,0 +1,35 @@
+﻿<div class="bg-all-offers">
+    <div class="all-offers-banner">
+        <div class="image-container">
+            <a>
+                <img class="img-banner" fallback-src="{{DEFAULT_IMAGE_URL}}" ng-src="{{getSrc(ComponentType.MAIN_IMAGE)}}" />
+            </a>
+        </div>
+        <div class="options">
+            <div class="pull-right">
+                <a class="btn action gray" ng-if="isVisible(ComponentType.CALL_TO_ACTION)" href="" target="_blank"
+                   ng-href="{{getHref(ComponentType.CALL_TO_ACTION)}}">{{display(ComponentType.CALL_TO_ACTION)}}</a>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="overlay-text" ng-bind-html="getComponent(ComponentType.MAIN_IMAGE).Data.OverlayText"></div>
+    </div>
+</div>
+<div class="pdf-conplete-content">
+    <h3>Complete Content:</h3>
+    <hr />
+    <div class="pdf-complete-content-text" ng-if="false">
+        <h4>Overlay Text:</h4>
+        <div class="overlay-text-viewer" ng-bind-html="getComponent(ComponentType.MAIN_IMAGE).Data.OverlayText"></div>
+    </div>
+    <div class="pdf-complete-content-text" ng-if="!isEmptyOrWhiteSpace(getCTALink(ComponentType.CALL_TO_ACTION))">
+        <div class="overlay-text-viewer">
+            <div ng-if="isALink(ComponentType.CALL_TO_ACTION)">
+                <span class="cta-link-text">CTA Link:</span> <a href="{{getCTALink(ComponentType.CALL_TO_ACTION)}}" target="_blank">{{getCTALink(ComponentType.CALL_TO_ACTION)}}</a>
+            </div>
+            <div ng-if="!isALink(ComponentType.CALL_TO_ACTION)">
+                <span class="cta-link-text">CTA Link:</span> {{getCTALink(ComponentType.CALL_TO_ACTION)}}
+            </div>
+        </div>
+    </div>
+</div>

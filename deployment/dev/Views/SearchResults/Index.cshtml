@@ -1,0 +1,153 @@
+﻿@{
+    ViewBag.Title = "Search Results";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="overall-title">
+    <span>Search Results</span>
+</div>
+
+<div ng-controller="SearchResultsController">
+    <div class="site-page less-margin">
+        <div class="screen-content">
+            <div class="page-main-title no-description less-height">
+                <span>Offers</span>
+            </div>
+            <div ng-if="!isSearhEmpty">
+                <div ng-if="isProjectResultEmpty" class="empty-results">
+                    <span>No Results Found.</span>
+                </div>
+                <div ng-if="!isProjectResultEmpty">
+                    <div class="pagination-content pagination-position">
+                        <ul>
+                            <li ng-class="{'disabled' : tbAllProjectsModel.currentPage == 0}">
+                                <a href="#" ng-click="tbAllProjectsModel.firstPage()"><div class="square">&lt;&lt;</div></a>
+                            </li>
+                            <li ng-class="{'disabled' : tbAllProjectsModel.currentPage == 0}">
+                                <a href="#" ng-click="tbAllProjectsModel.prevPage()"><div class="square">&lt;</div></a>
+                            </li>
+                            <li><span>Page {{tbAllProjectsModel.pageNumber()}} of {{tbAllProjectsModel.pagedItemsLength}}</span></li>
+                            <li ng-class="{'disabled': tbAllProjectsModel.currentPage == tbAllProjectsModel.pagedItemsLength - 1}">
+                                <a href="#" ng-click="tbAllProjectsModel.nextPage()"><div class="square">&gt;</div></a>
+                            </li>
+                            <li ng-class="{'disabled': tbAllProjectsModel.currentPage == tbAllProjectsModel.pagedItemsLength - 1}">
+                                <a href="#" ng-click="tbAllProjectsModel.lastPage()"><div class="square">&gt;&gt;</div></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="clear"></div>
+
+                    <div class="table-block">
+                        <table class="table-content fixed-column-sizes clickable">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <div ng-click="tbAllProjectsModel.sortBy('OfferName')">
+                                            <div ng-class="{'empty-block': tbAllProjectsModel.sortingOrder != 'OfferName', 'hide': tbAllProjectsModel.sortingOrder == 'OfferName'}"></div>
+                                            <div ng-class="{'hide': tbAllProjectsModel.sortingOrder != 'OfferName', 'arrow-down': tbAllProjectsModel.reverse == undefined || !tbAllProjectsModel.reverse, 'arrow-up': tbAllProjectsModel.reverse}"></div>
+                                            <span>Offer Name</span>
+                                        </div>
+                                    </th>
+                                    <th>
+                                        <div ng-click="tbAllProjectsModel.sortBy('OfferID')">
+                                            <div ng-class="{'empty-block': tbAllProjectsModel.sortingOrder != 'OfferID', 'hide': tbAllProjectsModel.sortingOrder == 'OfferID'}"></div>
+                                            <div ng-class="{'hide': tbAllProjectsModel.sortingOrder != 'OfferID', 'arrow-down': tbAllProjectsModel.reverse == undefined || !tbAllProjectsModel.reverse, 'arrow-up': tbAllProjectsModel.reverse}"></div>
+                                            <span>Offer ID</span>
+                                        </div>
+                                    </th>
+                                    <th>
+                                        <div ng-click="tbAllProjectsModel.sortBy('Author')">
+                                            <div ng-class="{'empty-block': tbAllProjectsModel.sortingOrder != 'Author', 'hide': tbAllProjectsModel.sortingOrder == 'Author'}"></div>
+                                            <div ng-class="{'hide': tbAllProjectsModel.sortingOrder != 'Author', 'arrow-down': tbAllProjectsModel.reverse == undefined || !tbAllProjectsModel.reverse, 'arrow-up': tbAllProjectsModel.reverse}"></div>
+                                            <span>Author</span>
+                                        </div>
+                                    </th>
+                                    <th>
+                                        <div ng-click="tbAllProjectsModel.sortBy('DateCreated')">
+                                            <div ng-class="{'empty-block': tbAllProjectsModel.sortingOrder != 'DateCreated', 'hide': tbAllProjectsModel.sortingOrder == 'DateCreated'}"></div>
+                                            <div ng-class="{'hide': tbAllProjectsModel.sortingOrder != 'DateCreated', 'arrow-down': tbAllProjectsModel.reverse == undefined || !tbAllProjectsModel.reverse, 'arrow-up': tbAllProjectsModel.reverse}"></div>
+                                            <span>Date Created</span>
+                                        </div>
+                                    </th>
+                                    <th>
+                                        <div ng-click="tbAllProjectsModel.sortBy('ProjectStatus')">
+                                            <div ng-class="{'empty-block': tbAllProjectsModel.sortingOrder != 'ProjectStatus', 'hide': tbAllProjectsModel.sortingOrder == 'ProjectStatus'}"></div>
+                                            <div ng-class="{'hide': tbAllProjectsModel.sortingOrder != 'ProjectStatus', 'arrow-down': tbAllProjectsModel.reverse == undefined || !tbAllProjectsModel.reverse, 'arrow-up': tbAllProjectsModel.reverse}"></div>
+                                            <span>Project Status</span>
+                                        </div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="item in tbAllProjectsModel.pagedItems[tbAllProjectsModel.currentPage]" ng-click="gotoPage('Home/OfferProjectLayout#/layout-menu/', item.OfferID);">
+                                    <td><div title="{{item.OfferName}}" class="truncate"> {{item.OfferName}} </div></td>
+                                    <td><div title="{{item.OfferID}}" class="truncate"> {{item.OfferID}} </div></td>
+                                    <td><div title="{{item.Author}}" class="truncate"> {{item.Author}} </div></td>
+                                    <td><div title="{{item.DateCreated | date:'short' }}" class="truncate"> {{item.DateCreated | date:'short' }} </div></td>
+                                    <td><div title="{{item.ProjectStatus}}" class="truncate"> {{item.ProjectStatus}} </div></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="site-page less-margin">
+        <div class="screen-content">
+            <div class="page-main-title no-description less-height">
+                <span>Assets</span>
+            </div>
+
+            <div ng-if="!isSearhEmpty">
+                <div ng-if="isMediaAssetResultEmpty" class="empty-results">
+                    <span>No Results Found.</span>
+                </div>
+                <div ng-if="!isMediaAssetResultEmpty">
+
+
+
+                    <div ng-hide="tbImagesModel.pagedItemsLength == 0" class="pagination-content pagination-position">
+                        <ul>
+                            <li ng-class="{'disabled' : tbImagesModel.previousDisabled()}">
+                                <a href="javascript:void(0)" ng-click="resetSelectedValues(); tbImagesModel.firstPage()"><div class="square">&lt;&lt;</div></a>
+                            </li>
+                            <li ng-class="{'disabled' : tbImagesModel.previousDisabled()}">
+                                <a href="javascript:void(0)" ng-click="resetSelectedValues(); tbImagesModel.prevPage()"><div class="square">&lt;</div></a>
+                            </li>
+                            <li><span>Page {{tbImagesModel.pageNumber()}} of {{tbImagesModel.pagedItemsLength}}</span></li>
+                            <li ng-class="{'disabled': tbImagesModel.nextDisabled()}">
+                                <a href="javascript:void(0)" ng-click="resetSelectedValues(); tbImagesModel.nextPage()"><div class="square">&gt;</div></a>
+                            </li>
+                            <li ng-class="{'disabled': tbImagesModel.nextDisabled()}">
+                                <a href="javascript:void(0)" ng-click="resetSelectedValues(); tbImagesModel.lastPage()"><div class="square">&gt;&gt;</div></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="clear"></div>
+
+                    <div id="folder-view" class="assets-container">
+                        <div ng-repeat="item in tbImagesModel.pagedItems[tbImagesModel.currentPage]" class="item image-item">
+                            <input type="checkbox" ng-model="item.isSelected" ng-change="updateDownloadButtonStatus()" />
+                            <img class="{{item.subtype}}" ng-src="{{getImagePreview(item)}}" alt="" />
+                            <div class="clear"></div>
+                            <label>{{item.name}}</label>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="extra-margin-space">
+                        <button class="button orange button-float-right" ng-disabled="isDownloadButtonDisabled" ng-click="downloadSelected()">Download Selected</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var sortingOrder = 'ProjectName';
+</script>
+
+@section scripts {
+    <script src="~/app/controllers/search-results-controller.js" type="text/javascript"></script>
+}

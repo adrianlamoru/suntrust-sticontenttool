@@ -1,0 +1,36 @@
+﻿<div class="table-block input-spacing">
+    <div class="section-header">
+        <h3>{{number}} Headline</h3>
+        <div class="deactivate-component" ng-show="deactivatable">
+            <span>Deactivate Component</span>
+            <input type="checkbox" name="inactive" ng-checked="component.Inactive" ng-model="component.Inactive" />
+        </div>
+    </div>
+    <div class="section-content">
+        <div class="input-container" ng-if="!showPullDown">
+            <div class="input-spacing">
+                <textarea ng-if="!maxLength"  name="headline" ng-model="component.Data.Headline" placeholder="Enter Headline"></textarea>
+                <textarea ng-if="maxLength"  name="headline" ng-model="component.Data.Headline" placeholder="Enter Headline" maxlength="{{maxLength}}"></textarea>
+
+                <!--
+                    <div name="headline" class="text-editor" text-angular="text-angular" ta-toolbar="{{toolbarOptions}}" ng-model="component.Data.Headline"></div>
+                    -->
+            </div>
+        </div>
+        <div class="input-container" ng-if="showPullDown">
+            <div class="input-spacing">
+                <select name="urlselect" ng-model="component.Data.selectedOption" ng-options="url.Name for url in Options" ng-change="defaultValue = 'NOT_A_DEFAULT'" ng-class="{'color-for-default': defaultValue != 'NOT_A_DEFAULT'}"></select>
+            </div>
+        </div>
+        <div class="section-description">
+            <div class="section-main-details">
+                <p ta-bind ng-model="header"></p>
+            </div>
+            <div class="section-explaination">
+                <p ng-bind-html="details"></p>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+

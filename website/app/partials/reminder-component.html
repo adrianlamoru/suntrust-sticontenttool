@@ -1,0 +1,28 @@
+﻿<div class="table-block input-spacing">
+    <div class="section-header">
+        <h3>{{number}} Reminder</h3>
+        <div class="deactivate-component" ng-show="deactivatable">
+            <span>Deactivate Component</span>
+            <input type="checkbox" name="inactive" ng-checked="component.Inactive" ng-model="component.Inactive" />
+        </div>
+    </div>
+    <div class="section-content">
+        <div class="input-container">
+            <div class="input-spacing">
+                <select name="urlselect" ng-model="component.Data.selectedOption" ng-options="url.Name for url in Options" ng-change="defaultValue = 'NOT_A_DEFAULT'" ng-class="{'color-for-default': defaultValue != 'NOT_A_DEFAULT'}">
+                </select>
+            </div>
+        </div>
+        <div class="section-description">
+            <div class="section-main-details">
+                <p ng-bind-html="header">
+                </p>
+            </div>
+            <div class="section-explaination">
+                <p ng-bind-html="details">
+                </p>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>

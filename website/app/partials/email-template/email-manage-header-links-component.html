@@ -1,0 +1,97 @@
+﻿<div class="table-block input-spacing">
+    <div class="section-header">
+        <h3>{{number}} Header links</h3>
+        <div class="deactivate-component" ng-show="deactivatable">
+            <label><input type="radio" value="0" ng-model="component.Data.NumberOfHeaderLinks" /> No Links</label>
+            <label><input type="radio" value="1" ng-model="component.Data.NumberOfHeaderLinks" /> 1 Link</label>
+            <label><input type="radio" value="2" ng-model="component.Data.NumberOfHeaderLinks" checked="checked" /> 2 Links</label>
+            <label><input type="radio" value="3" ng-model="component.Data.NumberOfHeaderLinks" /> 3 Links</label>
+        </div>
+    </div>
+
+    <div class="section-content">
+        <div ng-if="component.Data.NumberOfHeaderLinks > 0">
+            <div class="input-container">
+                <div class="input-spacing">
+
+                    <input type="text" name="buttonText" ng-model="component.Data.FirstLink.text" placeholder="Insert Link Text" />
+                    <input type="url" name="urlToCall" ng-model="component.Data.FirstLink.url" placeholder="Enter Link URL" />
+                    <div class="error-container no-marging" ng-show="$parent.sectionForm.urlToCall.$error.required">
+                        <span class="error-msg">Required</span>
+                    </div>
+                    <div class="error-container no-marging" ng-show="!$parent.sectionForm.urlToCall.$error.required && $parent.sectionForm.urlToCall.$error.url">
+                        <span class="error-msg">The URL must begin with http://</span>
+                    </div>
+                </div>
+            </div>
+            <div class="section-description">
+                <div class="section-main-details">
+                    <p ng-bind-html="firstLinkHeader">
+                    </p>
+                </div>
+                <div class="section-explaination">
+                    <p ng-bind-html="firstLinkDetails">
+                    <p />
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+
+        <div ng-if="component.Data.NumberOfHeaderLinks > 1">
+            <div class="input-container">
+
+                <div class="input-spacing">
+                    <input type="text" name="linkText" ng-model="component.Data.SecondLink.text" placeholder="Insert Link Text" />
+                    <input type="url" name="urlToCall" ng-model="component.Data.SecondLink.url" placeholder="Enter Link URL" />
+                    <div class="error-container no-marging" ng-show="$parent.sectionForm.urlToCall.$error.required">
+                        <span class="error-msg">Required</span>
+                    </div>
+                    <div class="error-container no-marging" ng-show="!$parent.sectionForm.urlToCall.$error.required && $parent.sectionForm.urlToCall.$error.url">
+                        <span class="error-msg">The URL must begin with http://</span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="section-description">
+                <div class="section-main-details">
+                    <p ng-bind-html="secondLinkHeader">
+                    </p>
+                </div>
+                <div class="section-explaination">
+                    <p ng-bind-html="secondLinkDetails">
+                    <p />
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+
+        <div ng-if="component.Data.NumberOfHeaderLinks > 2">
+            <div class="input-container">
+
+                <div class="input-spacing">
+                    <input type="text" name="linkText" ng-model="component.Data.ThirdLink.text" placeholder="Insert Link Text" />
+                    <input type="url" name="urlToCall" ng-model="component.Data.ThirdLink.url" placeholder="Enter Link URL" />
+                    <div class="error-container no-marging" ng-show="$parent.sectionForm.urlToCall.$error.required">
+                        <span class="error-msg">Required</span>
+                    </div>
+                    <div class="error-container no-marging" ng-show="!$parent.sectionForm.urlToCall.$error.required && $parent.sectionForm.urlToCall.$error.url">
+                        <span class="error-msg">The URL must begin with http://</span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="section-description">
+                <div class="section-main-details">
+                    <p ng-bind-html="thirdLinkHeader">
+                    </p>
+                </div>
+                <div class="section-explaination">
+                    <p ng-bind-html="thirdLinkDetails">
+                    <p />
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+

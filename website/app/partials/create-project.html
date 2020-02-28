@@ -1,0 +1,118 @@
+﻿<div ng-controller="CreateProjectController" >
+    <div class="dialog-block">
+        <div class="form-container hidden" ng-class="{show: offersModel.pagedItems}">
+            <form name="createprojectform" novalidate class="create-project-form">
+                <div class="dialog-header">
+                    <div class="dialog-heading">Create New Project</div>
+                    <div class="close-button" ng-click="closeProjectDialogClick()">&times;</div>
+                </div>
+                <div class="dialog-content hidden" ng-class="{show : showEmpty}">
+                    <div class="instructions">
+                        <p class="not-offers-msg">There are not available offers</p>
+                    </div>
+                </div>
+                <div class="dialog-content">
+                    <div class="hidden" ng-class="{show: offersModel.pagedItems.length > 0}">
+                        <div class=" instructions">
+                            <span class="sentence">Select an Offer on which to base the Project.</span>
+                        </div>
+                        <div class="content-left" ng-class="{'admin-content': isSuperAdmin()}">
+                            <table id="create-project" class="table-content clickable">
+                                <thead>
+                                    <tr>
+                                        <th colspan="2">
+                                            <div ng-click="offersModel.sortBy('Name')">
+                                                <div ng-class="{'empty-block': offersModel.sortingOrder != 'Name', 'hide': offersModel.sortingOrder == 'Name'}"></div>
+                                                <div ng-class="{'hide': offersModel.sortingOrder != 'Name', 'arrow-down': offersModel.reverse == undefined || !offersModel.reverse, 'arrow-up': offersModel.reverse}"></div>
+                                                <span>Offer Name</span>
+                                            </div>
+                                        </th>
+                                        <th>
+                                            <div ng-click="offersModel.sortBy('ID')">
+                                                <div ng-class="{'empty-block': offersModel.sortingOrder != 'ID', 'hide': offersModel.sortingOrder == 'ID'}"></div>
+                                                <div ng-class="{'hide': offersModel.sortingOrder != 'ID', 'arrow-down': offersModel.reverse == undefined || !offersModel.reverse, 'arrow-up': offersModel.reverse}"></div>
+                                                <span>Offer ID</span>
+                                            </div>
+                                        </th>
+                                        <th ng-if="isSuperAdmin()">
+                                            <div ng-click="offersModel.sortBy('OfferType')">
+                                                <div ng-class="{'empty-block': offersModel.sortingOrder != 'OfferType', 'hide': offersModel.sortingOrder == 'OfferType'}"></div>
+                                                <div ng-class="{'hide': offersModel.sortingOrder != 'OfferType', 'arrow-down': offersModel.reverse == undefined || !offersModel.reverse, 'arrow-up': offersModel.reverse}"></div>
+                                                <span>Offer Type</span>
+                                            </div>
+                                        </th>
+                                        <th>
+                                            <div ng-click="offersModel.sortBy('UpdatedDate')">
+                                                <div ng-class="{'empty-block': offersModel.sortingOrder != 'UpdatedDate', 'hide': offersModel.sortingOrder == 'UpdatedDate'}"></div>
+                                                <div ng-class="{'hide': offersModel.sortingOrder != 'UpdatedDate', 'arrow-down': offersModel.reverse == undefined || !offersModel.reverse, 'arrow-up': offersModel.reverse}"></div>
+                                                <span>Date Created</span>
+                                            </div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="item in offersModel.pagedItems[offersModel.currentPage]"
+                                        ng-click="setSelectedOffer(item.ID)" ng-class="{'active' : item.ID == offersModel.selectedItem.ID}">
+                                        <td colspan="2"><div title="{{item.Name}}" class="truncate"> {{item.Name}} </div></td>
+                                        <td><div title="{{item.ID}}" class="truncate"> {{item.ID}} </div></td>
+                                        <td ng-if="isSuperAdmin()"><div title="{{item.OfferType}}" class="truncate"> {{item.OfferType}} </div></td>
+                                        <td class="arrow-extender">
+                                            <div title="{{item.UpdatedDate | date:'medium' }}" class="truncate"> {{item.UpdatedDate | date:'shortDate' }} </div>
+                                            <div class="arrow-right"></div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="content-right" ng-class="{'admin-content': isSuperAdmin()}">
+                            <table class="table-content">
+                                <thead>
+                                    <tr>
+                                        <th><div ng-click="tbActiveProjectsModel.sortBy('OfferName')">Offer Details</div></th>
+                                    </tr>
+                                </thead>
+                            </table>
+                            <div class="description-details">
+                                <div ng-if="offersModel.selectedItem">
+                                    <div class="offer-name" id="offer-name">{{offersModel.selectedItem.Name}}</div>
+                                    <div class="offer-id" id="offer-id"><span ng-show="!offersModel.selectedItem.ID">ID: {{offersModel.selectedItem.ID}}</span></div>
+                                </div>
+                                <div class="offer-details" id="offer-details">
+                                    <p ng-bind-html="textAsHtml(offersModel.selectedItem.Description)"></p>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+
+                        <div ng-if="isAdmin() || isSuperAdmin()" class="link-button" ng-click="openOfferDialogClick()">+ Add a New Offer</div>
+
+                        <div class="pagination-content">
+                            <ul>
+                                <li ng-class="{'disabled' : offersModel.currentPage == 0}">
+                                    <a href="javascript:void(0)" ng-click="offersModel.firstPage()"><div class="square">&lt;&lt;</div></a>
+                                </li>
+                                <li ng-class="{'disabled' : offersModel.currentPage == 0}">
+                                    <a href="javascript:void(0)" ng-click="offersModel.prevPage()"><div class="square">&lt;</div></a>
+                                </li>
+                                <li><span>Page {{offersModel.pageNumber() }} of {{offersModel.pagedItems.length}}</span></li>
+                                <li ng-class="{'disabled': offersModel.currentPage == offersModel.pagedItems.length - 1}">
+                                    <a href="javascript:void(0)" ng-click="offersModel.nextPage()"><div class="square">&gt;</div></a>
+                                </li>
+                                <li ng-class="{'disabled': offersModel.currentPage == offersModel.pagedItems.length - 1}">
+                                    <a href="javascript:void(0)" ng-click="offersModel.lastPage()"><div class="square">&gt;&gt;</div></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="button-container">
+                        <button class="button orange button-float-right" ng-class="{'disabled' : !offersModel.pagedItems.length}" ng-disabled="!offersModel.pagedItems.length || !offersModel.selectedItem" ng-click="createProject()">SELECT</button>
+                        <button class="button orange button-float-right" ng-click="closeProjectDialogClick();">CANCEL</button>
+                        <div class="clear"></div>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

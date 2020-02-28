@@ -1,0 +1,1169 @@
+﻿<div class="">
+    <div class="screen-content">
+        <div class="input-spacing">
+            <label class="label-larger grey-color">Select Content ID to Edit</label>
+            <select name="layout1" class="smaller-size grey-color" ng-model="$parent.projectManager.selectedLayout" ng-options="layout.ID for layout in projectManager.project.Layouts"></select>
+
+            <div ng-if="$parent.projectManager.selectedLayout && isWebProject($parent.projectManager.selectedLayout.LayoutDetail.OfferTypeID)"
+                 class="button blue webteam button-float-right" ng-class="{'disabled': copyContentIDsDisabled()}" ng-click="openCopyContentIDsDlgClick()">
+                <div class="copy-icon"></div>
+                Copy to Content ID(s)
+            </div>
+        </div>
+        <div ng-if="$parent.projectManager.selectedLayout && isWebProject($parent.projectManager.selectedLayout.LayoutDetail.OfferTypeID)">
+            <div class="page-main-title lesser-height">
+                <span>Online Banking - {{projectManager.selectedLayout.ID}}</span>
+            </div>
+            <div class="input-spacing">
+                <div class="description">
+                    Online Banking is a secure application that allows SunTrust clients to view their bank account balances, pay bills, transfer funds, and conduct other self-service functions online at any time from their computer, laptop or mobile device.
+                </div>
+            </div>
+            <div class="input-spacing">
+                <div ng-include="'../app/partials/layout-details.html'"></div>
+            </div>
+            <div class="accordion-container">
+                <div class="table-block input-spacing">
+                    <table class="table-content">
+                        <thead>
+                            <tr>
+                                <th class="clickable">
+                                    <div class="resize-content" ng-click="toggle('primaryBanner')">
+                                        <div class="signs" ng-class="{'hide': opened('primaryBanner') }">+</div>
+                                        <div class="signs" ng-class="{'hide': !opened('primaryBanner')}">&#8211</div>
+                                        <div class="signs-side-heading"><span>Primary Banner</span></div>
+                                        <button class="button blue button-float-right table-button-position" ng-click="showSection('primary-banner')">
+                                            <span ng-if="projectManager.isSectionEditable(1)">Edit</span>
+                                            <span ng-if="!projectManager.isSectionEditable(1)">Create</span>
+                                        </button>
+                                    </div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody ng-class="{'hide': !opened('primaryBanner')}">
+                            <tr>
+                                <td>
+                                    <div class="section">
+                                        <div class="image-container">
+                                            <img src="../Content/images/thumb-primary-banner.jpg" alt="" />
+                                        </div>
+                                        <div class="section-description">
+                                            <div class="section-main-details">
+                                                <p>
+                                                    The Primary Banner displays the highest priority offer to a client in Online Banking.
+                                                </p>
+                                            </div>
+                                            <div class="section-explaination">
+                                                <p>
+                                                    The Primary Banner is an image that is displayed in the middle section of the Accounts Page in Online Banking. The image links to more information pertaining to the offer. Image Size:
+                                                    W: 240 x H: 96 px
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="table-block input-spacing">
+                    <table class="table-content">
+                        <thead>
+                            <tr>
+                                <th class="clickable">
+                                    <div class="resize-content" ng-click="toggle('detailsPage')">
+                                        <div class="signs" ng-class="{'hide': opened('detailsPage')}">+</div>
+                                        <div class="signs" ng-class="{'hide': !opened('detailsPage')}">&#8211</div>
+                                        <div class="signs-side-heading"><span>Details Page</span></div>
+                                        <button class="button blue button-float-right table-button-position" ng-click="showSection('details-page')">
+                                            <span ng-if="projectManager.isSectionEditable(2)">Edit</span>
+                                            <span ng-if="!projectManager.isSectionEditable(2)">Create</span>
+                                        </button>
+                                    </div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody ng-class="{'hide': !opened('detailsPage')}">
+                            <tr>
+                                <td>
+                                    <div class="section">
+                                        <div class="image-container">
+                                            <img src="../Content/images/thumb-details-page.jpg" />
+                                        </div>
+                                        <div class="section-description">
+                                            <div class="section-main-details">
+                                                <p>
+                                                    The details provide features about the offer.
+                                                </p>
+                                            </div>
+                                            <div class="section-explaination">
+                                                <p>
+                                                    The Details Page displays an image, offer details, and disclosures for an offer.Note: All offers do not require a Details Page.
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="table-block input-spacing">
+                    <table class="table-content">
+                        <thead>
+                            <tr>
+                                <th class="clickable">
+                                    <div class="resize-content" ng-click="toggle('recommendedAccounts')">
+                                        <div class="signs" ng-class="{'hide': opened('recommendedAccounts')}">+</div>
+                                        <div class="signs" ng-class="{'hide': !opened('recommendedAccounts')}">&#8211</div>
+                                        <div class="signs-side-heading"><span>Ghost</span></div>
+                                        <button class="button blue button-float-right table-button-position" ng-click="showSection('recommended-accounts')">
+                                            <span ng-if="projectManager.isSectionEditable(3)">Edit</span>
+                                            <span ng-if="!projectManager.isSectionEditable(3)">Create</span>
+                                        </button>
+                                    </div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody ng-class="{'hide': !opened('recommendedAccounts')}">
+                            <tr>
+                                <td>
+                                    <div class="section">
+                                        <div class="image-container">
+                                            <img src="../Content/images/thumb-recommended-accounts.jpg" alt="" />
+                                        </div>
+                                        <div class="section-description">
+                                            <div class="section-main-details">
+                                                <p>
+                                                    The Ghost is an offer displayed in the Account list.
+                                                </p>
+                                            </div>
+                                            <div class="section-explaination">
+                                                <p>
+                                                    The Ghost is displayed in the Account list on the left panel similar to an active SunTrust account. It includes the Account name and a Call to Action (CTA) button.
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="table-block input-spacing">
+                    <table class="table-content">
+                        <thead>
+                            <tr>
+                                <th class="clickable">
+                                    <div class="resize-content" ng-click="toggle('allOffers')">
+                                        <div class="signs" ng-class="{'hide': opened('allOffers')}">+</div>
+                                        <div class="signs" ng-class="{'hide': !opened('allOffers')}">&#8211</div>
+                                        <div class="signs-side-heading"><span>All Offers</span></div>
+                                        <button class="button blue button-float-right table-button-position" ng-click="showSection('all-offers')">
+                                            <span ng-if="projectManager.isSectionEditable(4)">Edit</span>
+                                            <span ng-if="!projectManager.isSectionEditable(4)">Create</span>
+                                        </button>
+                                    </div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody ng-class="{'hide': !opened('allOffers')}">
+                            <tr>
+                                <td>
+                                    <div class="section">
+                                        <div class="image-container">
+                                            <img src="../Content/images/thumb-all-offers.jpg" />
+                                        </div>
+                                        <div class="section-description">
+                                            <div class="section-main-details">
+                                                <p>
+                                                    The All Offers Banner is an image that is displayed within the “Recommendations for You” page within Online Banking.
+                                                </p>
+                                            </div>
+                                            <div class="section-explaination">
+                                                <p>
+                                                    The image provides a high level overview of the offer, and links to more information pertaining to the offer. The All Offers image size is –W: 736 x H: 344px.
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="table-block input-spacing">
+                    <table class="table-content">
+                        <thead>
+                            <tr>
+                                <th class="clickable">
+                                    <div class="resize-content" ng-click="toggle('splashPage')">
+                                        <div class="signs" ng-class="{'hide': opened('splashPage')}">+</div>
+                                        <div class="signs" ng-class="{'hide': !opened('splashPage')}">&#8211</div>
+                                        <div class="signs-side-heading"><span>Splash Page</span></div>
+                                        <button class="button blue button-float-right table-button-position" ng-click="showSection('splash-page')">
+                                            <span ng-if="projectManager.isSectionEditable(5)">Edit</span>
+                                            <span ng-if="!projectManager.isSectionEditable(5)">Create</span>
+                                        </button>
+                                    </div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody ng-class="{'hide': !opened('splashPage')}">
+                            <tr>
+                                <td>
+                                    <div class="section">
+                                        <div class="image-container">
+                                            <img src="../Content/images/thumb-splash-page.jpg" />
+                                        </div>
+                                        <div class="section-description">
+                                            <div class="section-main-details">
+                                                <p>
+                                                    The Splash Page displays an offer in a modal window.
+                                                </p>
+                                            </div>
+                                            <div class="section-explaination">
+                                                <p>
+                                                    The Splash Page offer, in the modal window (similar to a pop-up), is presented to the client before the Online Banking page is displayed.
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="table-block input-spacing extra-margin-bottom">
+                    <table class="table-content">
+                        <thead>
+                            <tr>
+                                <th class="clickable">
+                                    <div class="resize-content" ng-click="toggle('signoffPage')">
+                                        <div class="signs" ng-class="{'hide': opened('signoffPage')}">+</div>
+                                        <div class="signs" ng-class="{'hide': !opened('signoffPage')}">&#8211</div>
+                                        <div class="signs-side-heading"><span>Sign-off Page</span></div>
+                                        <button class="button blue button-float-right table-button-position" ng-click="showSection('sign-off-page')">
+                                            <span ng-if="projectManager.isSectionEditable(6)">Edit</span>
+                                            <span ng-if="!projectManager.isSectionEditable(6)">Create</span>
+                                        </button>
+                                    </div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody ng-class="{'hide': !opened('signoffPage')}">
+                            <tr>
+                                <td>
+                                    <div class="section">
+                                        <div class="image-container">
+                                            <img src="../Content/images/thumb-sign-off-page.jpg" />
+                                        </div>
+                                        <div class="section-description">
+                                            <div class="section-main-details">
+                                                <p>
+                                                    The Sign-off page is what the user sees when they Sign off.
+                                                </p>
+                                            </div>
+                                            <div class="section-explaination">
+                                                <p>
+                                                    The Sign-off page displays a targeted offer when the client clicks the “Sign Off” button or the Online Banking session times out.
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="page-main-title lesser-height">
+                <span>New Account Center - {{projectManager.selectedLayout.ID}}</span>
+            </div>
+            <div class="input-spacing">
+                <div class="description">
+                    This section allows you to develop and edit New Account Center offers for Credit Cards, Deposits, Home Equity, and Certificates of Deposit.
+                </div>
+            </div>
+            <div class="accordion-container">
+                <div class="table-block input-spacing">
+                    <table class="table-content">
+                        <thead>
+                            <tr>
+                                <th class="clickable">
+                                    <div class="resize-content" ng-click="toggle('creditCards')">
+                                        <div class="signs" ng-class="{'hide': opened('creditCards')}">+</div>
+                                        <div class="signs" ng-class="{'hide': !opened('creditCards')}">&#8211</div>
+                                        <div class="signs-side-heading"><span>Credit Cards</span></div>
+                                        <button class="button blue button-float-right table-button-position" ng-click="showSection('credit-cards')">
+                                            <span ng-if="projectManager.isSectionEditable(7)">Edit</span>
+                                            <span ng-if="!projectManager.isSectionEditable(7)">Create</span>
+                                        </button>
+                                    </div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody ng-class="{'hide': !opened('creditCards')}">
+                            <tr>
+                                <td>
+                                    <div class="section">
+                                        <div class="image-container">
+                                            <img src="../Content/images/thumb-cc.jpg" />
+                                        </div>
+                                        <div class="section-description">
+                                            <div class="section-main-details">
+                                                <p>
+                                                    The Credit Card Page Layout includes extensive details for Credit Card offers.
+                                                </p>
+                                            </div>
+                                            <div class="section-explaination">
+                                                <p>
+                                                    This layout consists of a large image [W: 610 x H: 427 px] in size with text-based details (content). It requires setting of Call-to-Action behavior and a link to existing Terms and Conditions.
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="table-block input-spacing">
+                    <table class="table-content">
+                        <thead>
+                            <tr>
+                                <th class="clickable">
+                                    <div class="resize-content" ng-click="toggle('deposits')">
+                                        <div class="signs" ng-class="{'hide': opened('deposits')}">+</div>
+                                        <div class="signs" ng-class="{'hide': !opened('deposits')}">&#8211</div>
+                                        <div class="signs-side-heading"><span>Deposits</span></div>
+                                        <button class="button blue button-float-right table-button-position" ng-click="showSection('deposits')">
+                                            <span ng-if="projectManager.isSectionEditable(8)">Edit</span>
+                                            <span ng-if="!projectManager.isSectionEditable(8)">Create</span>
+                                        </button>
+                                    </div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody ng-class="{'hide': !opened('deposits')}">
+                            <tr>
+                                <td>
+                                    <div class="section">
+                                        <div class="image-container">
+                                            <img src="../Content/images/thumb-deposits.jpg" />
+                                        </div>
+                                        <div class="section-description">
+                                            <div class="section-main-details">
+                                                <p>
+                                                    The Deposit layout provides the parameters of an offer presentment in NAC.
+                                                </p>
+                                            </div>
+                                            <div class="section-explaination">
+                                                <p>
+                                                    The layout consists of an Offer Headline, Details (bullet point content) and a Terms & Condition URL link (PDF format only).
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="table-block input-spacing">
+                    <table class="table-content">
+                        <thead>
+                            <tr>
+                                <th class="clickable">
+                                    <div class="resize-content" ng-click="toggle('equity')">
+                                        <div class="signs" ng-class="{'hide': opened('equity')}">+</div>
+                                        <div class="signs" ng-class="{'hide': !opened('equity')}">&#8211</div>
+                                        <div class="signs-side-heading"><span>Equity</span></div>
+                                        <button class="button blue button-float-right table-button-position" ng-click="showSection('equity')">
+                                            <span ng-if="projectManager.isSectionEditable(9)">Edit</span>
+                                            <span ng-if="!projectManager.isSectionEditable(9)">Create</span>
+                                        </button>
+                                    </div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody ng-class="{'hide': !opened('equity')}">
+                            <tr>
+                                <td>
+                                    <div class="section">
+                                        <div class="image-container">
+                                            <img src="../Content/images/thumb-equity.jpg" />
+                                        </div>
+                                        <div class="section-description">
+                                            <div class="section-main-details">
+                                                <p>
+                                                    The Equity layout provides the details of an offer presentment in NAC.
+                                                </p>
+                                            </div>
+                                            <div class="section-explaination">
+                                                <p>
+                                                    The layout consists of an Offer Headline, Details (content) and Terms &amp; Conditions.
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="table-block input-spacing">
+                    <table class="table-content">
+                        <thead>
+                            <tr>
+                                <th class="clickable">
+                                    <div class="resize-content" ng-click="toggle('certificates')">
+                                        <div class="signs" ng-class="{'hide': opened('certificates')}">+</div>
+                                        <div class="signs" ng-class="{'hide': !opened('certificates')}">&#8211</div>
+                                        <div class="signs-side-heading"><span>Certificates of Deposit</span></div>
+                                        <button class="button blue button-float-right table-button-position" ng-click="showSection('certificates')">
+                                            <span ng-if="projectManager.isSectionEditable(10)">Edit</span>
+                                            <span ng-if="!projectManager.isSectionEditable(10)">Create</span>
+                                        </button>
+                                    </div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody ng-class="{'hide': !opened('certificates')}">
+                            <tr>
+                                <td>
+                                    <div class="section">
+                                        <div class="image-container">
+                                            <img src="../Content/images/thumb-certificates.jpg" />
+                                        </div>
+                                        <div class="section-description">
+                                            <div class="section-main-details">
+                                                <p>
+                                                    The Certificate of Deposit layout provides the parameters of an offer presentment in NAC.
+                                                </p>
+                                            </div>
+                                            <div class="section-explaination">
+                                                <p>
+                                                    The layout consists of an Offer Headline, Details (bullet point content) and a Terms & Conditions URL link (PDF format only).
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+            <div class="page-main-title lesser-height">
+                <span>Bulletin Zone - {{projectManager.selectedLayout.ID}}</span>
+            </div>
+            <div class="input-spacing">
+                <div class="description">
+                </div>
+            </div>
+            <div class="accordion-container">
+                <div class="table-block input-spacing">
+                    <table class="table-content">
+                        <thead>
+                            <tr>
+                                <th class="clickable">
+                                    <div class="resize-content" ng-click="toggle('bulletinZone')">
+                                        <div class="signs" ng-class="{'hide': opened('bulletinZone')}">+</div>
+                                        <div class="signs" ng-class="{'hide': !opened('bulletinZone')}">&#8211</div>
+                                        <div class="signs-side-heading"><span>Details</span></div>
+                                        <button class="button blue button-float-right table-button-position" ng-click="showSection('bulletin-zone')">
+                                            <span ng-if="projectManager.isSectionEditable(11)">Edit</span>
+                                            <span ng-if="!projectManager.isSectionEditable(11)">Create</span>
+                                        </button>
+                                    </div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody ng-class="{'hide': !opened('bulletinZone')}">
+                            <tr>
+                                <td>
+                                    <div class="section">
+                                        <div class="image-container">
+                                            <img src="../Content/images/thumb-bulletin-zone.jpg" />
+                                        </div>
+                                        <div class="section-description">
+                                            <div class="section-main-details">
+                                                <p>
+                                                    The details provide features about the offer.
+                                                </p>
+                                            </div>
+                                            <div class="section-explaination">
+                                                <p>
+                                                    The detail is the bulleted content for the offer and should be kept brief as content is used on all form factors, mobile included. The content must always be in bullet point format and convey the main details and/or benefits of the offer.
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="page-main-title lesser-height">
+                <span>PWM - {{projectManager.selectedLayout.ID}}</span>
+            </div>
+            <div class="input-spacing">
+                <div class="description">
+                    PWM is a customized Online Banking portal that allows SunTrust high value clients a secure application to view their bank account balances, learn about unique programs and offers designed for them, pay bills, transfer funds, and conduct other self-service functions online at any time from their computer, laptop or mobile device.
+                </div>
+            </div>
+            <div class="accordion-container">
+                <div class="table-block input-spacing">
+                    <table class="table-content">
+                        <thead>
+                            <tr>
+                                <th class="clickable">
+                                    <div class="resize-content" ng-click="toggle('heroOffer')">
+                                        <div class="signs" ng-class="{'hide': opened('heroOffer') }">+</div>
+                                        <div class="signs" ng-class="{'hide': !opened('heroOffer')}">&#8211</div>
+                                        <div class="signs-side-heading"><span>Hero Offer</span></div>
+                                        <button class="button blue button-float-right table-button-position" ng-click="showSection('hero-offer')">
+                                            <span ng-if="projectManager.isSectionEditable(12)">Edit</span>
+                                            <span ng-if="!projectManager.isSectionEditable(12)">Create</span>
+                                        </button>
+                                    </div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody ng-class="{'hide': !opened('heroOffer')}">
+                            <tr>
+                                <td>
+                                    <div class="section">
+                                        <div class="image-container">
+                                            <img src="../Content/images/thumb-primary-banner.jpg" alt="" />
+                                        </div>
+                                        <div class="section-description">
+                                            <div class="section-main-details">
+                                                <p>
+                                                    The Hero Offer displays the highest priority offer to a client in Online Banking.
+                                                </p>
+                                            </div>
+                                            <div class="section-explaination">
+                                                <p>
+                                                    The Hero Offer is an image that is displayed in the middle section of the Accounts Page in Online Banking. The image links to more information pertaining to the offer. Image Height:
+                                                    240 px
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="table-block input-spacing">
+                    <table class="table-content">
+                        <thead>
+                            <tr>
+                                <th class="clickable">
+                                    <div class="resize-content" ng-click="toggle('eduOffer')">
+                                        <div class="signs" ng-class="{'hide': opened('eduOffer')}">+</div>
+                                        <div class="signs" ng-class="{'hide': !opened('eduOffer')}">&#8211</div>
+                                        <div class="signs-side-heading"><span>Resource Center</span></div>
+                                        <button class="button blue button-float-right table-button-position" ng-click="showSection('edu-offer')">
+                                            <span ng-if="projectManager.isSectionEditable(13)">Edit</span>
+                                            <span ng-if="!projectManager.isSectionEditable(13)">Create</span>
+                                        </button>
+                                    </div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody ng-class="{'hide': !opened('eduOffer')}">
+                            <tr>
+                                <td>
+                                    <div class="section">
+                                        <div class="image-container">
+                                            <img src="../Content/images/thumb-details-page.jpg" />
+                                        </div>
+                                        <div class="section-description">
+                                            <div class="section-main-details">
+                                                <p>
+                                                    The details provide features about the Resource Center.
+                                                </p>
+                                            </div>
+                                            <div class="section-explaination">
+                                                <p>
+                                                    The Resource Center displays an image, offer details, and disclosures for an offer.Note: All offers do not require a Details Page.
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="table-block input-spacing">
+                    <table class="table-content">
+                        <thead>
+                            <tr>
+                                <th class="clickable">
+                                    <div class="resize-content" ng-click="toggle('prodOffer')">
+                                        <div class="signs" ng-class="{'hide': opened('prodOffer')}">+</div>
+                                        <div class="signs" ng-class="{'hide': !opened('prodOffer')}">&#8211</div>
+                                        <div class="signs-side-heading"><span>Special Offer</span></div>
+                                        <button class="button blue button-float-right table-button-position" ng-click="showSection('prod-offer')">
+                                            <span ng-if="projectManager.isSectionEditable(14)">Edit</span>
+                                            <span ng-if="!projectManager.isSectionEditable(14)">Create</span>
+                                        </button>
+                                    </div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody ng-class="{'hide': !opened('prodOffer')}">
+                            <tr>
+                                <td>
+                                    <div class="section">
+                                        <div class="image-container">
+                                            <img src="../Content/images/thumb-recommended-accounts.jpg" alt="" />
+                                        </div>
+                                        <div class="section-description">
+                                            <div class="section-main-details">
+                                                <p>
+                                                    The Recommended Account is an offer displayed in the Account list.
+                                                </p>
+                                            </div>
+                                            <div class="section-explaination">
+                                                <p>
+                                                    The Recommended Account is displayed in the Account list on the left panel similar to an active SunTrust account. It includes the Account name and a Call to Action (CTA) button.
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="table-block input-spacing">
+                    <table class="table-content">
+                        <thead>
+                            <tr>
+                                <th class="clickable">
+                                    <div class="resize-content" ng-click="toggle('pwmBulletin')">
+                                        <div class="signs" ng-class="{'hide': opened('pwmBulletin')}">+</div>
+                                        <div class="signs" ng-class="{'hide': !opened('pwmBulletin')}">&#8211</div>
+                                        <div class="signs-side-heading"><span>PWM Bulletin</span></div>
+                                        <button class="button blue button-float-right table-button-position" ng-click="showSection('pwm-bulletin')">
+                                            <span ng-if="projectManager.isSectionEditable(15)">Edit</span>
+                                            <span ng-if="!projectManager.isSectionEditable(15)">Create</span>
+                                        </button>
+                                    </div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody ng-class="{'hide': !opened('pwmBulletin')}">
+                            <tr>
+                                <td>
+                                    <div class="section">
+                                        <div class="image-container">
+                                            <img src="../Content/images/thumb-bulletin-zone.jpg" />
+                                        </div>
+                                        <div class="section-description">
+                                            <div class="section-main-details">
+                                                <p>
+                                                    The bulletin provide features about the offer.
+                                                </p>
+                                            </div>
+                                            <div class="section-explaination">
+                                                <p>
+                                                    The bulletin is the bulleted content for the offer and should be kept brief as content is used on all form factors, mobile included. The content must always be in bullet point format and convey the main details and/or benefits of the offer.
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="table-block input-spacing">
+                    <table class="table-content">
+                        <thead>
+                            <tr>
+                                <th class="clickable">
+                                    <div class="resize-content" ng-click="toggle('pwmDetailsPage')">
+                                        <div class="signs" ng-class="{'hide': opened('pwmDetailsPage')}">+</div>
+                                        <div class="signs" ng-class="{'hide': !opened('pwmDetailsPage')}">&#8211</div>
+                                        <div class="signs-side-heading"><span>PWM Offer Details</span></div>
+                                        <button class="button blue button-float-right table-button-position" ng-click="showSection('pwm-details')">
+                                            <span ng-if="projectManager.isSectionEditable(16)">Edit</span>
+                                            <span ng-if="!projectManager.isSectionEditable(16)">Create</span>
+                                        </button>
+                                    </div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody ng-class="{'hide': !opened('pwmDetailsPage')}">
+                            <tr>
+                                <td>
+                                    <div class="section">
+                                        <div class="image-container">
+                                            <img src="../Content/images/thumb-details-page.jpg" />
+                                        </div>
+                                        <div class="section-description">
+                                            <div class="section-main-details">
+                                                <p>
+                                                    The Offer Details provide features about the offer.
+                                                </p>
+                                            </div>
+                                            <div class="section-explaination">
+                                                <p>
+                                                    The Offer Details displays an image, offer details, and disclosures for an offer.Note: All offers do not require a Learn More.
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="table-block input-spacing">
+                    <table class="table-content">
+                        <thead>
+                            <tr>
+                                <th class="clickable">
+                                    <div class="resize-content" ng-click="toggle('pwmPrimaryBanner')">
+                                        <div class="signs" ng-class="{'hide': opened('pwmPrimaryBanner') }">+</div>
+                                        <div class="signs" ng-class="{'hide': !opened('pwmPrimaryBanner')}">&#8211</div>
+                                        <div class="signs-side-heading"><span>OLB Primary Banner</span></div>
+                                        <button class="button blue button-float-right table-button-position" ng-click="showSection('pwm-primary-bann')">
+                                            <span ng-if="projectManager.isSectionEditable(17)">Edit</span>
+                                            <span ng-if="!projectManager.isSectionEditable(17)">Create</span>
+                                        </button>
+                                    </div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody ng-class="{'hide': !opened('pwmPrimaryBanner')}">
+                            <tr>
+                                <td>
+                                    <div class="section">
+                                        <div class="image-container">
+                                            <img src="../Content/images/thumb-primary-banner.jpg" alt="" />
+                                        </div>
+                                        <div class="section-description">
+                                            <div class="section-main-details">
+                                                <p>
+                                                    The OLB Primary Banner displays the highest priority offer to a client in Online Banking.
+                                                </p>
+                                            </div>
+                                            <div class="section-explaination">
+                                                <p>
+                                                    The OLB Primary Banner is an image that is displayed in the middle section of the Accounts Page in Online Banking. The image links to more information pertaining to the offer. Image Size:
+                                                    W: 240 x H: 96 px
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="table-block input-spacing">
+                    <table class="table-content">
+                        <thead>
+                            <tr>
+                                <th class="clickable">
+                                    <div class="resize-content" ng-click="toggle('viewAll')">
+                                        <div class="signs" ng-class="{'hide': opened('viewAll')}">+</div>
+                                        <div class="signs" ng-class="{'hide': !opened('viewAll')}">&#8211</div>
+                                        <div class="signs-side-heading"><span>OLB View All</span></div>
+                                        <button class="button blue button-float-right table-button-position" ng-click="showSection('view-all')">
+                                            <span ng-if="projectManager.isSectionEditable(18)">Edit</span>
+                                            <span ng-if="!projectManager.isSectionEditable(18)">Create</span>
+                                        </button>
+                                    </div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody ng-class="{'hide': !opened('viewAll')}">
+                            <tr>
+                                <td>
+                                    <div class="section">
+                                        <div class="image-container">
+                                            <img src="../Content/images/thumb-all-offers.jpg" />
+                                        </div>
+                                        <div class="section-description">
+                                            <div class="section-main-details">
+                                                <p>
+                                                    The OLB View All Banner is an image that is displayed within the “Recommendations for You” page within Online Banking.
+                                                </p>
+                                            </div>
+                                            <div class="section-explaination">
+                                                <p>
+                                                    The image provides a high level overview of the offer, and links to more information pertaining to the offer. The OLB View All image size is –W: 736 x H: 344px.
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="table-block input-spacing">
+                    <table class="table-content">
+                        <thead>
+                            <tr>
+                                <th class="clickable">
+                                    <div class="resize-content" ng-click="toggle('olbBulletin')">
+                                        <div class="signs" ng-class="{'hide': opened('olbBulletin')}">+</div>
+                                        <div class="signs" ng-class="{'hide': !opened('olbBulletin')}">&#8211</div>
+                                        <div class="signs-side-heading"><span>OLB Bulletin Zone</span></div>
+                                        <button class="button blue button-float-right table-button-position" ng-click="showSection('olb-bulletin')">
+                                            <span ng-if="projectManager.isSectionEditable(19)">Edit</span>
+                                            <span ng-if="!projectManager.isSectionEditable(19)">Create</span>
+                                        </button>
+                                    </div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody ng-class="{'hide': !opened('olbBulletin')}">
+                            <tr>
+                                <td>
+                                    <div class="section">
+                                        <div class="image-container">
+                                            <img src="../Content/images/thumb-bulletin-zone.jpg" />
+                                        </div>
+                                        <div class="section-description">
+                                            <div class="section-main-details">
+                                                <p>
+                                                    The details provide features about the offer.
+                                                </p>
+                                            </div>
+                                            <div class="section-explaination">
+                                                <p>
+                                                    The detail is the bulleted content for the offer and should be kept brief as content is used on all form factors, mobile included. The content must always be in bullet point format and convey the main details and/or benefits of the offer.
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="table-block input-spacing">
+                    <table class="table-content">
+                        <thead>
+                            <tr>
+                                <th class="clickable">
+                                    <div class="resize-content" ng-click="toggle('ghostOffer')">
+                                        <div class="signs" ng-class="{'hide': opened('ghostOffer')}">+</div>
+                                        <div class="signs" ng-class="{'hide': !opened('ghostOffer')}">&#8211</div>
+                                        <div class="signs-side-heading"><span>OLB Ghost</span></div>
+                                        <button class="button blue button-float-right table-button-position" ng-click="showSection('ghost-offer')">
+                                            <span ng-if="projectManager.isSectionEditable(20)">Edit</span>
+                                            <span ng-if="!projectManager.isSectionEditable(20)">Create</span>
+                                        </button>
+                                    </div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody ng-class="{'hide': !opened('ghostOffer')}">
+                            <tr>
+                                <td>
+                                    <div class="section">
+                                        <div class="image-container">
+                                            <img src="../Content/images/thumb-recommended-accounts.jpg" alt="" />
+                                        </div>
+                                        <div class="section-description">
+                                            <div class="section-main-details">
+                                                <p>
+                                                    The OLB Ghost is an offer displayed in the Account list.
+                                                </p>
+                                            </div>
+                                            <div class="section-explaination">
+                                                <p>
+                                                    The OLB Ghost is displayed in the Account list on the left panel similar to an active SunTrust account. It includes the Account name and a Call to Action (CTA) button.
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="table-block input-spacing">
+                    <table class="table-content">
+                        <thead>
+                            <tr>
+                                <th class="clickable">
+                                    <div class="resize-content" ng-click="toggle('olbLearnMore')">
+                                        <div class="signs" ng-class="{'hide': opened('olbLearnMore')}">+</div>
+                                        <div class="signs" ng-class="{'hide': !opened('olbLearnMore')}">&#8211</div>
+                                        <div class="signs-side-heading"><span>OLB Offer Details</span></div>
+                                        <button class="button blue button-float-right table-button-position" ng-click="showSection('olb-learn-more')">
+                                            <span ng-if="projectManager.isSectionEditable(21)">Edit</span>
+                                            <span ng-if="!projectManager.isSectionEditable(21)">Create</span>
+                                        </button>
+                                    </div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody ng-class="{'hide': !opened('olbLearnMore')}">
+                            <tr>
+                                <td>
+                                    <div class="section">
+                                        <div class="image-container">
+                                            <img src="../Content/images/thumb-details-page.jpg" />
+                                        </div>
+                                        <div class="section-description">
+                                            <div class="section-main-details">
+                                                <p>
+                                                    The OLB Offer Details provide features about the offer.
+                                                </p>
+                                            </div>
+                                            <div class="section-explaination">
+                                                <p>
+                                                    The OLB Offer Details displays an image, offer details, and disclosures for an offer.Note: All offers do not require a Details Page.
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+            <div class="page-main-title lesser-height">
+                <span>RTO Mobile - {{projectManager.selectedLayout.ID}}</span>
+            </div>
+            <div class="input-spacing">
+                <div class="description">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum porta molestie nulla. Nulla aliquam augue a nisl tempus facilisis. Sed ex purus, faucibus at bibendum nec, pretium in ligula. Integer mollis quis nunc eget tincidunt.
+                </div>
+            </div>
+            <div class="accordion-container">
+                <div class="table-block input-spacing">
+                    <table class="table-content">
+                        <thead>
+                            <tr>
+                                <th class="clickable">
+                                    <div class="resize-content" ng-click="toggle('rtoPrimaryBanner')">
+                                        <div class="signs" ng-class="{'hide': opened('rtoPrimaryBanner') }">+</div>
+                                        <div class="signs" ng-class="{'hide': !opened('rtoPrimaryBanner')}">&#8211</div>
+                                        <div class="signs-side-heading"><span>Primary Banner</span></div>
+                                        <button class="button blue button-float-right table-button-position" ng-click="showSection('rto-primary-bann')">
+                                            <span ng-if="projectManager.isSectionEditable(22)">Edit</span>
+                                            <span ng-if="!projectManager.isSectionEditable(22)">Create</span>
+                                        </button>
+                                    </div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody ng-class="{'hide': !opened('rtoPrimaryBanner')}">
+                            <tr>
+                                <td>
+                                    <div class="section">
+                                        <div class="image-container">
+                                            <img src="../Content/images/thumb-primary-banner.jpg" alt="" />
+                                        </div>
+                                        <div class="section-description">
+                                            <div class="section-main-details">
+                                                <p>
+                                                    The Primary Banner displays the highest priority offer to a client in Online Banking.
+                                                </p>
+                                            </div>
+                                            <div class="section-explaination">
+                                                <p>
+                                                    The Primary Banner is an image that is displayed in the middle section of the Accounts Page in Online Banking. The image links to more information pertaining to the offer. Image Size:
+                                                    W: 320 x H: 128 px
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="table-block input-spacing">
+                    <table class="table-content">
+                        <thead>
+                            <tr>
+                                <th class="clickable">
+                                    <div class="resize-content" ng-click="toggle('rtoDetailsPage')">
+                                        <div class="signs" ng-class="{'hide': opened('rtoDetailsPage')}">+</div>
+                                        <div class="signs" ng-class="{'hide': !opened('rtoDetailsPage')}">&#8211</div>
+                                        <div class="signs-side-heading"><span>Offer Details</span></div>
+                                        <button class="button blue button-float-right table-button-position" ng-click="showSection('rto-details')">
+                                            <span ng-if="projectManager.isSectionEditable(23)">Edit</span>
+                                            <span ng-if="!projectManager.isSectionEditable(23)">Create</span>
+                                        </button>
+                                    </div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody ng-class="{'hide': !opened('rtoDetailsPage')}">
+                            <tr>
+                                <td>
+                                    <div class="section">
+                                        <div class="image-container">
+                                            <img src="../Content/images/thumb-details-page.jpg" />
+                                        </div>
+                                        <div class="section-description">
+                                            <div class="section-main-details">
+                                                <p>
+                                                    The Offer Details provide features about the offer.
+                                                </p>
+                                            </div>
+                                            <div class="section-explaination">
+                                                <p>
+                                                    The Offer Details displays an image, offer details, and disclosures for an offer.Note: All offers do not require a Learn More.
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="table-block input-spacing">
+                    <table class="table-content">
+                        <thead>
+                            <tr>
+                                <th class="clickable">
+                                    <div class="resize-content" ng-click="toggle('rtoAllOffers')">
+                                        <div class="signs" ng-class="{'hide': opened('rtoAllOffers')}">+</div>
+                                        <div class="signs" ng-class="{'hide': !opened('rtoAllOffers')}">&#8211</div>
+                                        <div class="signs-side-heading"><span>View All</span></div>
+                                        <button class="button blue button-float-right table-button-position" ng-click="showSection('rto-allOffers')">
+                                            <span ng-if="projectManager.isSectionEditable(25)">Edit</span>
+                                            <span ng-if="!projectManager.isSectionEditable(25)">Create</span>
+                                        </button>
+                                    </div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody ng-class="{'hide': !opened('rtoAllOffers')}">
+                            <tr>
+                                <td>
+                                    <div class="section">
+                                        <div class="image-container">
+                                            <img src="../Content/images/thumb-all-offers.jpg" />
+                                        </div>
+                                        <div class="section-description">
+                                            <div class="section-main-details">
+                                                <p>
+                                                    The All Offers Banner is an image that is displayed within the “Recommendations for You” page within Online Banking.
+                                                </p>
+                                            </div>
+                                            <div class="section-explaination">
+                                                <p>
+                                                    The image provides a high level overview of the offer, and links to more information pertaining to the offer. The All Offers image size is –W: 736 x H: 344px.
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div ng-if="!isWebProject($parent.projectManager.selectedLayout.LayoutDetail.OfferTypeID)">
+            <div class="page-main-title lesser-height">
+                <span>Email Template - {{projectManager.selectedLayout.ID}}</span>
+            </div>
+            <div class="input-spacing">
+                <div class="description">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean eu ullamcorper orci. Nunc venenatis, magna vehicula eleifend fringilla, orci lectus pretium diam, vitae vestibulum augue quam ut nisi. Sed eget libero aliquam, aliquet mauris non, aliquet justo.
+                </div>
+            </div>
+            <div class="input-spacing">
+                <div ng-include="'../app/partials/layout-details.html'"></div>
+            </div>
+            <div class="accordion-container">
+                <div class="table-block input-spacing">
+                    <table class="table-content">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <div class="resize-content" ng-click="toggle('emailTemplate')">
+                                        <div class="signs-side-heading"><span>Email Template</span></div>
+                                        <button class="button blue button-float-right table-button-position" ng-click="showSection('email-template')">
+                                            <span ng-if="projectManager.isSectionEditable(24)">Edit</span>
+                                            <span ng-if="!projectManager.isSectionEditable(24)">Create</span>
+                                        </button>
+                                    </div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="section">
+                                        <div class="image-container">
+                                            <img src="../Content/images/thumb-primary-banner.jpg" alt="" />
+                                        </div>
+                                        <div class="section-description">
+                                            <div class="section-main-details">
+                                                <p>
+                                                   
+                                                </p>
+                                            </div>
+                                            <div class="section-explaination">
+                                                <p>
+                                                   
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

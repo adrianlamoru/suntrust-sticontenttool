@@ -1,0 +1,98 @@
+﻿@model st1001.website.Models.LoginModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en" data-ng-app="MainApp">
+<head>
+    <meta charset="utf-8" />
+    <title>Digital Creative Content Solution - Login</title>
+    <link href="~/Content/images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <link href="~/Content/styles/normalize.css" rel="stylesheet" />
+    <link href="~/Content/styles/styles.css" rel="stylesheet" />
+
+
+    <link href='http://fonts.googleapis.com/css?family=Noto+Sans' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Noto+Sans:700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Noto+Sans:400italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Petrona' rel='stylesheet' type='text/css'>
+</head>
+<body>
+    <div id="login-container">
+        <div class="header">
+            <div class="header-content">
+                <div class="site-page">
+                    <a href="@Url.Action("Dashboard", "Home")" class="logo green-background"></a>
+                    <div class="page-header-text"><span>Digital Creative Content Solution</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+        <div class="admin-menu">
+            <ul></ul>
+        </div>
+        <div class="content">
+            <div class="site-page login">
+                <div class="screen-content">
+                    <div class="page-main-title">
+                        <span>Please Log In</span><br />
+                        <span class="description">Enter your email address and password to sign in.</span>
+                        <div class="clear"></div>
+                    </div>
+
+                    <div>
+                        @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form", role = "form" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="table-block input-spacing">
+                                <table class="table-content">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                @Html.LabelFor(m => m.Email, new { @class = "no-margin" })
+                                                @Html.TextBoxFor(m => m.Email)
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                @Html.LabelFor(m => m.Password)
+                                                @Html.PasswordFor(m => m.Password)
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="links-display">
+                                                    <a href="mailto:Somnioadmin@suntrust.com" target="_blank">Forgot your password?</a>
+                                                    <a href="mailto:Somnioadmin@suntrust.com" target="_blank">Please email the administrator for assistance.</a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div>
+                                <input class="button orange button-float-right" type="submit" value="Submit">
+                                <div class="error-container">
+                                    @Html.ValidationSummary(true)
+                                </div>
+                            </div>
+                        }
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="footer">
+                <div class="site-page">
+                    <div class="page-footer-text"><span>Digital Creative Content Solution Version 1.0&nbsp;&nbsp;&nbsp;&nbsp;&copy;&nbsp;2014 SunTrust Banks, Inc.</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

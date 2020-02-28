@@ -1,0 +1,72 @@
+﻿<div class="bg-credit-card">
+    <div class="banner">
+        <h1 class="page-title">
+            Special Offer
+        </h1>
+        <div class="dark-widget">
+            <div class="image-container">
+                <a href="" target="_blank">
+                    <img class="img-banner" fallback-src="{{DEFAULT_IMAGE_URL}}" ng-src="{{getSrc(ComponentType.MAIN_IMAGE)}}"/>
+                    <!--<div class="headline-subheadline-container">
+                        <div class="html-view subheadline" ng-bind-html="getComponent(ComponentType.SUB_HEADLINE).Data.Description"></div>
+                    </div>-->
+                </a>
+            </div>
+            <div class="text-containter">
+                <div class="text-header">
+                    <div ng-bind="getComponent(ComponentType.HEADLINE).Data.Headline"></div>
+                </div>
+                <div class="text-content">
+                    <div class="html-view" ng-bind-html="getComponent(ComponentType.DETAILS).Data.Description"></div>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <div ng-if="getComponent(ComponentType.TERMS_CONDITIONS).Data.url">
+                <img ng-src="{{PDF_IMAGE_URL}}" class="pdf-icon" />
+                <a ng-href="{{getComponent(ComponentType.TERMS_CONDITIONS).Data.url}}" href="" target="_blank" class="link-conditions">Terms and Conditions</a>
+            </div>
+            <div class="options">
+                <a ng-href="{{getHref(ComponentType.CALL_TO_ACTION)}}" href="" target="_blank" ng-if="isVisible(ComponentType.CALL_TO_ACTION)" class="btn action">
+                    Apply Now
+                </a>
+            </div>
+        </div>
+        <div class="or-skip-row">
+            <strong>OR</strong>
+            <br />
+            <br />
+            <a href="">Skip this and continue with your original product selection »</a>
+        </div>
+    </div>
+</div>
+<div class="bg-cc-footer">
+
+</div>
+<div class="pdf-conplete-content">
+    <h3>Complete Content:</h3>
+    <hr />
+    <div class="pdf-complete-content-text" ng-if="!isEmptyOrWhiteSpace(display(ComponentType.HEADLINE))">
+        <h4>Headline:</h4>
+        <div class="overlay-text-viewer">
+            <div ng-bind="getComponent(ComponentType.HEADLINE).Data.Headline"></div>
+        </div>
+    </div>
+    <div class="pdf-complete-content-text">
+        <h4>Sub Headline:</h4>
+        <div class="html-view subheadline" ng-bind-html="getComponent(ComponentType.SUB_HEADLINE).Data.Description"></div>
+    </div>
+    <div class="pdf-complete-content-text" ng-if="isVisible(ComponentType.DETAILS)">
+        <h4>Details:</h4>
+        <div class="overlay-text-viewer html-view" ng-bind-html="getComponent(ComponentType.DETAILS).Data.Description"></div>
+    </div>
+    <div class="pdf-complete-content-text" ng-if="!isEmptyOrWhiteSpace(getCTALink(ComponentType.CALL_TO_ACTION))">
+        <div class="overlay-text-viewer">
+            <div ng-if="isALink(ComponentType.CALL_TO_ACTION)">
+                <span class="cta-link-text">CTA Link:</span> <a href="{{getCTALink(ComponentType.CALL_TO_ACTION)}}" target="_blank">{{getCTALink(ComponentType.CALL_TO_ACTION)}}</a>  
+            </div>
+            <div ng-if="!isALink(ComponentType.CALL_TO_ACTION)">
+                <span class="cta-link-text">CTA Link:</span> {{getCTALink(ComponentType.CALL_TO_ACTION)}}
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,61 @@
+﻿<div class="table-block input-spacing">
+    <div class="section-header">
+        <h3>{{number}} Call to Action</h3>
+        <div class="deactivate-component" ng-show="deactivatable">
+            <span>Deactivate Component</span>
+            <input type="checkbox" name="inactive" ng-checked="component.Inactive" ng-model="component.Inactive" />
+        </div>
+    </div>
+
+    <div class="section-content">
+        <div class="input-container">
+            <div class="input-spacing" ng-show="buttomTextVisible">
+                <input type="text" name="buttonText" ng-model="component.Data.buttonText" placeholder="Insert Button Text" />
+            </div>
+            <div ng-if="!pwmCallAction">
+                <div class="input-spacing">
+                    <select name="urlselect" ng-model="component.Data.selectedOption" ng-options="url.Name for url in Options" ng-change="defaultValue = 'NOT_A_DEFAULT'; clearCustomURL()" ng-class="{'color-for-default': defaultValue != 'NOT_A_DEFAULT'}"></select>
+                </div>
+                <div class="input-spacing" ng-show="isCustomURLSelected">
+                    <input type="url" name="urlToCall" ng-model="component.Data.url" ng-required="isCustomURLSelected && !component.Inactive" placeholder="Enter URL" />
+                    <div class="error-container no-marging" ng-show="$parent.sectionForm.urlToCall.$error.required">
+                        <span class="error-msg">Required</span>
+                    </div>
+                    <div class="error-container no-marging" ng-show="!$parent.sectionForm.urlToCall.$error.required && $parent.sectionForm.urlToCall.$error.url">
+                        <span class="error-msg">The URL must begin with http://</span>
+                    </div>
+                </div>
+            </div>
+            <div ng-if="pwmCallAction">
+                <div class="input-spacing" ng-show="false">
+                    <select name="urlselect" ng-model="component.Data.selectedOption" ng-options="url.Name for url in Options" ng-change="defaultValue = 'NOT_A_DEFAULT'; clearCustomURL()" ng-class="{'color-for-default': defaultValue != 'NOT_A_DEFAULT'}"></select>
+                </div>
+                <div class="input-spacing">
+                    <input type="url" name="urlToCall" ng-model="component.Data.url" ng-required="isCustomURLSelected && !component.Inactive" placeholder="Enter URL" />
+                    <div class="error-container no-marging" ng-show="$parent.sectionForm.urlToCall.$error.required">
+                        <span class="error-msg">Required</span>
+                    </div>
+                    <div class="error-container no-marging" ng-show="!$parent.sectionForm.urlToCall.$error.required && $parent.sectionForm.urlToCall.$error.url">
+                        <span class="error-msg">The URL must begin with http://</span>
+                    </div>
+                </div>
+            </div>
+            <div class="input-spacing" ng-class="{'hide': !agreementVisible}">
+                <input class="button-float-left" type="checkbox" id="tcAgreement" name="tcAgreement" ng-checked="component.Data.tcAgreement" ng-model="component.Data.tcAgreement" />
+                <label class="label-larger" for="tcAgreement">Requires T&amp;C Agreement</label>
+            </div>
+        </div>
+        <div class="section-description">
+            <div class="section-main-details">
+                <p ng-bind-html="header">
+                </p>
+            </div>
+            <div class="section-explaination">
+                <p ng-bind-html="details">
+                <p/>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+

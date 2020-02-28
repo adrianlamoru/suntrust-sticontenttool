@@ -1,0 +1,28 @@
+﻿<div class="table-block input-spacing">
+    <div class="section-header">
+        <h3>{{number}} Sub-Headline</h3>
+        <div class="deactivate-component" ng-show="deactivatable">
+            <span>Deactivate Component</span>
+            <input type="checkbox" name="inactive" ng-checked="component.Inactive" ng-model="component.Inactive"/>
+        </div>
+    </div>
+
+    <div class="section-content">
+        <div class="input-container">
+            <div class="text-editor" text-angular="text-angular" name="details" 
+                 ta-toolbar="{{toolbarOptions}}" ng-model="component.Data.Description"></div>
+        </div>
+        <div class="section-description">
+            <div class="section-main-details">
+                <p ta-bind ng-model="header">
+                    {{header}}
+                </p>
+            </div>
+            <div class="section-explaination">
+                <p ng-bind-html="details">
+                </p>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+﻿<div class="">
+    <div class="dialog-block">
+        <div class="form-container">
+            <form name="inputForm" novalidate>
+                <div id="confirm" class="dialog-header">
+                    <div class="dialog-heading">{{inputDialogTitle}}</div>
+                    <div class="close-button" ng-click="closeInputDialogClick()">&times;</div>
+                </div>
+                <div class="dialog-content">
+                    <div class="instructions">
+                        <span class="sentence" ng-bind-html="inputDialogMessage"></span>
+                    </div>
+                    <div>
+                        <input class="input-bigger-size" type="text" name="inputValue" ng-model="inputFormData.textData" />
+                    </div>
+
+                    <div class="button-container">
+                        <button class="button orange button-float-right" ng-click="inputDialogOKClick()" ng-disabled="inputForm.inputValue.$pristine">{{inputBtnOkText}}</button>
+                        <button class="button orange button-float-right" ng-click="closeInputDialogClick()">Cancel</button>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

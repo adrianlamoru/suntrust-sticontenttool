@@ -1,0 +1,121 @@
+﻿<div class="dialog-block" ng-controller="CreateOfferController">
+    <div class="form-container">
+        <form name="createOfferForm" novalidate class="create-offer-form">
+            <div class="dialog-header">
+                <div class="dialog-heading">Create New Offer</div>
+                <div class="close-button" ng-click="cancelButtonClick()">&times;</div>
+            </div>
+            <div class="dialog-content">
+
+                <div class="instructions"><span class="sentence">Please provide information about the offer.</span></div>
+
+                <div class="input-spacing" ng-if="isSuperAdmin()">
+                    <label for="offerType">Select Offer Type</label>
+                    <input class="input-smaller-size hidden" type="text" name="OfferType" ng-model="selectedOfferType.Name" ng-show="!enableFiledsForEdit() || !(isSuperAdmin()) || isCurrentUser()" ng-disabled="!enableFiledsForEdit() || isCurrentUser()" />
+
+                    <select name="offerTypeSelect" class="filter-select input-smaller-size" ng-model="selectedOfferType" ng-options="offerType.Name for offerType in offerTypes" required>
+                        <option value="" selected>Select a Type</option>
+                    </select>
+                </div>
+
+
+
+
+                <div class="input-spacing">
+                    <label for="offerID">Enter Offer ID</label>
+                    <input type="text" name="offerID" ng-model="createOfferModel.ID" ng-required ng-pattern="/^\d+$/" maxlength="6" />
+
+                    <div class="error-container" ng-show="createOfferForm.offerID.$invalid">
+                        <span class="error-msg" ng-show="isFormSubmitted && createOfferForm.offerID.$error.required">Offer ID is required</span>
+                        <span class="error-msg" ng-show="createOfferForm.offerID.$error.pattern">Offer ID must be a number</span>
+                    </div>
+                    <div class="error-container" ng-show="existingOfferIDErrorVisible">
+                        <span class="error-msg">This ID already exists.</span>
+                    </div>
+                </div>
+
+                <div class="input-spacing">
+                    <div class="char-counter" ng-show="createOfferModel.Name.length > 0">
+                        <span>({{50 - createOfferModel.Name.length}}&nbsp;char.)</span>
+                    </div>
+
+                    <label for="offerName">Enter Offer Name</label>
+                    <input type="text" name="offerName" ng-model="createOfferModel.Name" required maxlength="50" />
+
+                    <div class="error-container" ng-show="isFormSubmitted && createOfferForm.offerName.$invalid">
+                        <span class="error-msg" ng-show="createOfferForm.offerName.$error.required">Offer Name is required</span>
+                    </div>
+                </div>
+
+                <div class="input-spacing">
+                    <label for="offerDescription">Enter Offer Description</label>
+                    <textarea name="offerDescription" ng-model="createOfferModel.Description" required></textarea>
+
+                    <div class="error-container" ng-show="isFormSubmitted && createOfferForm.offerDescription.$invalid">
+                        <span class="error-msg" ng-show="createOfferForm.offerDescription.$error.required">Offer Description is required</span>
+                    </div>
+                </div>
+
+
+
+
+
+
+                <div class="input-spacing">
+                    <label for="offerType">Select Offer Type</label>
+                    <select name="offerTypeSelect" class="filter-select input-smaller-size" ng-model="selectedOfferType" required>
+                        <option value="" selected>Select a Type</option>
+                        <option value="" selected>BRAND MESSAGE</option>
+                        <option value="" selected>CONSUMER LENDING</option>
+                        <option value="" selected>INVESTMENTS</option>
+                        <option value="" selected>PRIVATE WEALTH MANAGEMENT</option>
+                        <option value="" selected>MORTGAGE</option>
+                        <option value="" selected>DEPOSITS</option>
+                        <option value="" selected>CREDIT CARD ACCOUNT MANAGEMENT</option>
+                        <option value="" selected>CREDIT CARD ACQUISITION</option>
+                        <option value="" selected>CONTROL</option>
+                        <option value="" selected>INFORMATION</option>
+                        <option value="" selected>UTILITIES</option>
+                        <option value="" selected>OTHER</option>
+                    </select>
+                </div>
+                <div class="input-spacing">
+                    <label for="offerLiveDate">Offer Live Date</label>
+                    <input type="text" name="offerLiveDate" placeholder="2019/03/05" required maxlength="50" />
+                </div>
+                <div class="input-spacing">
+                    <label for="offerEndDate">Offer End Date</label>
+                    <input type="text" name="offerEndDate" placeholder="2019/12/31" required maxlength="50" />
+                </div>
+
+
+
+                <div class="input-spacing">
+                    <label class="label-contentID" for="offerContentID">Enter Content IDs</label>
+                    <div class="contentID-container">
+                        <div id="contentID-holder" class="contentID-holder">
+                            <div ng-repeat="contentID in createOfferModel.ContentIDArray" class="contentID-holder-input">
+                                <input name="{{'offerContentID' + $index}}" value="{{contentID}}" type="text" readonly />
+                                <div class="close-button" ng-click="removeContentID($index)">&times;</div>
+                            </div>
+                            <input type="text" name="offerContentID" ng-model="createOfferModel.ContentIDtoAdd" maxlength="20" alphanumeric />
+                        </div>
+                        <div class="error-container">
+                            <span class="error-msg" ng-show="contentIDsErrorVisible">{{contentIDsErrorText}}</span>
+                            <span class="error-msg" ng-show="createOfferForm.offerContentID.$error.alphanumeric">Only alphanumeric characters are allowed [a-z, 0-9]</span>
+                        </div>
+                        <div class="contentID-button" ng-click="addContentID()">+ Add Content ID</div>
+                    </div>
+                </div>
+
+                <div class="button-container">
+                    <button class="button orange button-float-right" ng-click="createOffer(createOfferForm, true)" ng-disabled="isCommitDisabled(createOfferForm)">Create Project</button>
+                    <button class="button orange button-float-right" ng-click="createOffer(createOfferForm)" ng-disabled="isCommitDisabled(createOfferForm)">Save Offer</button>
+                    <button class="button orange button-float-right" ng-click="cancelButtonClick()">Cancel</button>
+                    <div class="clear"></div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>

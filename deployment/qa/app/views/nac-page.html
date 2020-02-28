@@ -1,0 +1,44 @@
+﻿<div class="screen-content">
+    <div class="input-spacing" ng-click="showView('layout-menu')">
+        <div class="arrow-holder clickable">
+            <div class="arrow-left"></div>
+        </div>
+        <label class="label-larger grey-color clickable">Back to Layout Menu</label>
+    </div>
+    <div class="input-spacing page-main-title lesser-height">
+        <span>NAC Page - {{projectManager.selectedLayout.ID}}</span>
+    </div>
+
+    <form name="sectionForm" novalidate>
+        <wg-main-image number="01."
+                       header="Upload the image for the NAC Page Banner."
+                       details="The NAC Page image size is - W: 610 x H: 427 px. &lt;br /&gt; Use the text area field to enter the content that should appear on top of the image. &lt;br /&gt;&lt;i&gt;Note: Images with other size specifications cannot be uploaded.&lt;/i&gt;"
+                       width="610"
+                       height="427"
+                       show-tc-text-editor="true"
+                       open-upload-image-dialog-click="openUploadImageDialogClick(callbackOK)">
+        </wg-main-image>
+        <wg-headline number="02."
+                     max-length="2000" 
+                     header="The headline is a bolded title for the offer."
+                     details="The headline is the bolded title for the offer, and should be kept brief as content is used on all form factors (mobile).">
+        </wg-headline>
+        <wg-details number="03."
+                    header="Enter NAC Page copy/text."
+                    details="Please enter the offer copy in the text field provided and format the text as needed.">
+        </wg-details>
+        <wg-call-to-action number="04."
+                           header="Button with static text controlled by NAC not RTO."
+                           details="Button with static text controlled by NAC (not RTO) stating “apply for this card”"
+                           agreement-visible="true">
+        </wg-call-to-action>
+        <wg-terms-conditions number="05."
+                             header="HTTPS URL link to the Terms & Conditions document must be PDF format."
+                             details="This is a URL to the Terms & Conditions of the Offer, which needs to be in secure URL https:// structure and PDF file format."
+                             show-tc-url="true">
+        </wg-terms-conditions>
+        <div ng-include="'../app/partials/action-bar-components.html'"></div>
+    </form>
+</div>
+<div class="dialog noselect" ng-class="{'open': isPreviewDlgVisible }"
+     ng-include="previewUrl()"></div>

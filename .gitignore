@@ -1,0 +1,8 @@
+/packages
+/website/bin
+/website/obj
+/Tests/bin
+/Tests/obj
+/data-model/bin
+/data-model/obj
+/.vs

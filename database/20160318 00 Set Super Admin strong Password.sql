@@ -1,0 +1,1 @@
+update [User] set [Password] = 'k5bwImMzGf4z07tBfomVsueBBnQ=' where Email = 'superadmin@suntrust.com'

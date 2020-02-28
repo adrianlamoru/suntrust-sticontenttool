@@ -1,0 +1,39 @@
+﻿<div class="dialog-block" ng-controller="CopyProjectController">
+    <div class="form-container">
+        <form name="copyContentIDsForm" novalidate class="projects-selection-form">
+            <div class="dialog-header">
+                <div class="dialog-heading">{{dlgTitle}}</div>
+                <div class="close-button" ng-click="cancelButtonClick()">&times;</div>
+            </div>
+            <div class="dialog-content">
+                <div class="instructions">
+                    <span class="sentence">{{dlgDescription}}</span>
+                </div>
+                <div ng-show="!showCopyMessage">
+                    <select name="layout1" class="grey-color" ng-model="selectedProjectToCopy" ng-options="project.OfferName for project in activeProjects"></select>
+
+                    <div ng-if="selectedProjectToCopy" class="from-to-copy-content" style="margin-top: 10px;">
+                        <span>FROM:</span><span style="margin-left: 200px;">TO:</span>
+                        <div class="copy-options" style="max-height: 230px; overflow-x: hidden; overflow-y: auto;">
+                            <div class="source-contentID-container" ng-repeat="item in formData.contentIDs" style="margin-top: 10px;">
+                                <select name="layout1" class="grey-color smaller-size" ng-click="updateSourceContentID($index, this)" ng-model="selected" ng-options="contentID for contentID in sourceContentIDs"></select>
+                                <span style="margin-left: 36px;">{{item.id}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+
+                <div class="button-container" ng-if="!showCopyMessage">
+                    <button class="button orange button-float-right" ng-click="copyButtonClick()" ng-class="{'disabled' : copyButtonDisabled}">Copy</button>
+                    <button class="button orange button-float-right" ng-click="cancelButtonClick()">Cancel</button>
+                    <div class="clear"></div>
+                </div>
+                <div class="button-container" ng-if="showCopyMessage">
+                    <button class="button orange button-float-right" ng-click="reloadProject()">OK</button>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

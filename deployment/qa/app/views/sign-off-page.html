@@ -1,0 +1,44 @@
+﻿<div class="screen-content">
+    <div class="input-spacing" ng-click="showView('layout-menu')">
+        <div class=" arrow-holder clickable">
+            <div class="arrow-left"></div>
+        </div>
+        <label class="label-larger grey-color clickable">Back to Layout Menu</label>
+    </div>
+    <div class="input-spacing page-main-title lesser-height">
+        <span>Sign-off Page - {{projectManager.selectedLayout.ID}}</span>
+    </div>
+    <form name="sectionForm" novalidate>
+        <wg-main-image number="01."
+                       header="Upload the image for the Sign Off Page."
+                       details="The Sign-Off Page image size is - W: 324 x H: 192 px. &lt;br /&gt;&lt;br /&gt;&lt;i&gt;Note: Images with other size specifications cannot be uploaded.&lt;/i&gt;"
+                       width="324"
+                       height="192"
+                       open-upload-image-dialog-click="openUploadImageDialogClick(callbackOK)">
+
+        </wg-main-image>
+
+        <!--<wg-headline number="02."
+                     header="The headline is a bolded title for the offer."
+                     max-length="2000"
+                     details="The headline is the bolded title for the offer, and should be kept brief as content is used on all form factors (mobile).">
+        </wg-headline>
+
+        <wg-sub-headline number="03."
+                         header="Enter Sub-Headline copy/text."
+                         details="Please enter the offer copy in the text field provided and format the text as needed.">
+        </wg-sub-headline>-->
+
+        <wg-call-to-action number="02."
+                           header="Select the Call to Action (CTA) for the offer."
+                           details="The Call to Action (CTA) determines how an offer will be fulfilled. Please select the appropriate CTA from the drop down menu. &lt;br /&gt; &lt;br /&gt;&lt;i&gt;Note: When the URL CTA is selected, please enter the hyperlink to the appropriate location.&lt;/i&gt;"
+                           balance-transfer-opt="true"
+                           add-olb-options="true"
+                           add-olb-deep-links-options="true">
+        </wg-call-to-action>
+
+        <div ng-include="'../app/partials/action-bar-components.html'"></div>
+    </form>
+</div>
+<div class="dialog noselect" ng-class="{'open': isPreviewDlgVisible }"
+     ng-include="previewUrl()"></div>

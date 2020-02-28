@@ -1,0 +1,97 @@
+﻿@{
+    ViewBag.Title = "User Profile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="site-page">
+    <div class="screen-content" ng-controller="UserProfileController" ng-class="{'loading' : loading}">
+        <div class="page-main-title no-description">
+            <span>User Profile</span>
+        </div>
+        <div class="input-spacing" ng-hide="viewMode == 'Create' || !(isAdmin() || isSuperAdmin()) || isCurrentUser()">
+            <button class="button orange no-margin-left" ng-click="deleteUser()">Delete User</button>
+        </div>
+        <form class="table-block input-spacing" novalidate name="userForm">
+            <table class="table-content table-content-more-padding">
+                <tbody>
+                    <tr>
+                        <td>
+                            <label> Email </label>
+                            <input class="input-smaller-size" type="email" name="Email" ng-model="user.Email" ng-disabled="!enableFiledsForEdit()" required />
+                            <span class="error-label" ng-show="userForm.Email.$error.required">*</span>
+                            <span class="error-label" ng-show="userForm.Email.$error.email">*The specified value is not a valid email address.</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>Password </label>
+                            <input class="input-smaller-size" type="password" name="Password" ng-model="user.Password" ng-disabled="!enableFiledsForEdit()" required />
+                            <span class="error-label" ng-show="userForm.Password.$error.required">*</span>
+                        </td>
+                    </tr>
+                    <tr ng-hide="viewMode == 'View'">
+                        <td>
+                            <label>Password Confirmation </label>
+                            <input class="input-smaller-size" type="password" name="ConfirmPassword" ng-model="user.ConfirmPassword" ng-disabled="!enableFiledsForEdit()" required />
+                            <span class="error-label" ng-show="userForm.ConfirmPassword.$error.required">*</span>
+                            <span class="error-label" ng-show="!userForm.ConfirmPassword.$error.required && !passwordMatch()">*Passwords do not match</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label> First Name </label>
+                            <input class="input-smaller-size" type="text" name="FirstName" ng-model="user.FirstName" value="America" ng-disabled="!enableFiledsForEdit()" required />
+                            <span class="error-label" ng-show="userForm.FirstName.$error.required">*</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label> Last Name </label>
+                            <input class="input-smaller-size" type="text" name="LastName" ng-model="user.LastName" value="North" ng-disabled="!enableFiledsForEdit()" required />
+                            <span class="error-label" ng-show="userForm.LastName.$error.required">*</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label> Role </label>
+                            <input class="input-smaller-size" type="text" name="Role" value="Admin" ng-model="selectedRole.Name" ng-show="!enableFiledsForEdit() || !(isAdmin() || isSuperAdmin()) || isCurrentUser()" ng-disabled="!enableFiledsForEdit() || !isAdmin() || isCurrentUser()" />
+                            <select name="rolesSelect" class="filter-select input-smaller-size" ng-show="enableFiledsForEdit() && (isAdmin() || isSuperAdmin()) && !isCurrentUser()" ng-model="selectedRole" ng-options="rol.Name for rol in roles" required>
+                                <option value="" selected>Select a Role</option>
+                            </select>
+                            <span class="error-label" ng-show="userForm.rolesSelect.$error.required">*</span>
+                        </td>
+                    </tr>
+                    <tr ng-if="isSuperAdmin()">
+                        <td>
+                            <label> User Type </label>
+                            <input class="input-smaller-size" type="text" name="UserType" value="Admin" ng-model="selectedUserType.Name" ng-show="!enableFiledsForEdit() || !(isAdmin() || isSuperAdmin()) || isCurrentUser()" ng-disabled="!enableFiledsForEdit() || !isAdmin() || isCurrentUser()" />
+                            <select name="userTypeSelect" class="filter-select input-smaller-size" ng-show="enableFiledsForEdit() && (isAdmin() || isSuperAdmin()) && !isCurrentUser()" ng-model="selectedUserType" ng-options="userType.Name for userType in userTypes" required>
+                                <option value="" selected>Select a Type</option>
+                            </select>
+                            <span class="error-label" ng-show="userForm.userTypeSelect.$error.required">*</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+        <div class="clear"></div>
+        <div class="input-spacing" ng-hide="enableFiledsForEdit()">
+            <input class="button orange button-float-right" type="submit" value="Edit" ng-click="updateViewMode('Edit')" >
+        </div>
+        <div class="input-spacing" ng-hide="!enableFiledsForEdit()">
+            <button class="button orange button-float-right" ng-class="{'loading' : loading}" ng-disabled="userForm.$invalid || !passwordMatch() || userForm.$pristine || loading" ng-click="save()">Save</button>
+            <button class="button orange button-float-right" ng-class="{'loading' : loading}" ng-click="cancel()">Cancel</button>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<div class="clear"></div>
+
+@section scripts {
+    <script src="~/app/controllers/user-profile-controller.js" type="text/javascript"></script>
+}
+
+

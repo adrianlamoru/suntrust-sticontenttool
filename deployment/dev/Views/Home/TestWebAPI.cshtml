@@ -1,0 +1,137 @@
+﻿@{
+    ViewBag.Title = "Test WebAPI";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="overall-title">
+    <span>Test WebAPI</span>
+</div>
+<div class="site-page" ng-controller="TestWebAPIController">
+    <div class="screen-content">
+        <div class="row">
+            <button class="button blue" ng-click="getOffers()">/api/Offer (List of Offers)</button>
+        </div>
+        <div class="row">
+            <button class="button blue" ng-click="getOfferById()">/api/Offer/1 (Get Offer by Id)</button>
+            <input type="text" ng-model="offerID" />
+
+        </div>
+        <div class="row">
+            <button class="button blue" ng-click="getProjects()">/api/Project (List of Projects)</button>
+        </div>
+        <div class="row">
+            <button class="button blue" ng-click="getProjectById(projectID)">/api/Project/1 (Get Project by Id)</button>
+            <input type="text" ng-model="projectID" />
+
+        </div>
+        <div class="row">
+            <button class="button blue" ng-click="getAvailableOffers()">POST: /api/Offer/Availables (List of Availables Offers)</button>
+        </div>
+
+        <div class="row">
+            <button class="button blue" ng-click="createProject()">POST: /api/Project/Create (Create a project with ID = 1)</button>
+        </div>
+
+        <div class="row">
+            <button class="button blue" ng-click="updateProject()">POST: /api/Project/Update/1 (Update the project with ID=1)</button>
+        </div>
+
+        <div class="row">
+            <button class="button blue" ng-click="deleteProject()">POST: /api/Project/Delete/1 (Delete the project with ID=1)</button>
+        </div>
+
+        <div class="row">
+            <button class="button blue" ng-click="changeProjectStatus()">POST: /api/Project/Aproved/1/true (Change the project status with ID=1)</button>
+        </div>
+
+        <div class="row">
+            <button class="button blue" ng-click="getImagesForProject()">POST: /api/Media/ImagesForProject/{projectId}</button>
+            <input type="text" ng-model="mediaProjectID" />
+        </div>
+
+        <div class="row">
+            <button class="button blue" ng-click="getAllAssets()">POST: /api/Media/AllAssets</button>
+            <input type="text" ng-model="assetType" /> <label>ALL, PROJECT_FOLDERS, CUSTOM_FOLDERS, FILES</label>
+        </div>
+
+        <div class="row">
+            <button class="button blue" ng-click="getAssetsInFolder()">POST: /api/Media/AssetsInFolder</button>
+            <input type="text" ng-model="folderPath" />
+        </div>
+
+        
+    </div>
+
+</div>
+
+<div class="site-page" ng-controller="TestFileUploadController" nv-file-drop="" uploader="uploader">
+    <div class="screen-content">
+        <h1>Upload Files Example</h1>
+
+        <!-- 3. nv-file-over uploader="link" over-class="className" -->
+        <div ng-show="uploader.isHTML5">
+            <div class="zone with-border" nv-file-over="" uploader="uploader" options="{}" over-class="over">
+                Base drop zone indication
+            </div>
+        </div>
+        <br />
+        <!-- Example: nv-file-select="" uploader="{Object}" options="{Object}" filters="{String}" -->
+        <input type="file" nv-file-select="" uploader="uploader" />
+        <hr />
+        <h2>The queue. Length: {{ uploader.queue.length }}</h2>
+        <ul>
+            <li ng-repeat="item in uploader.queue">
+                <div>Name: {{ item.file.name }}</div>
+                <div>Size: {{ item.file.size/1024/1024|number:2 }} Mb</div>
+                <div ng-show="uploader.isHTML5">
+                    Progress: {{ item.progress }}
+                    <div class="item-progress-box">
+                        <div class="item-progress" ng-style="{ 'width': item.progress + '%' }"></div>
+                    </div>
+                </div>
+                <div ng-if="controller.isImage(item._file)">
+                    Thumbnail (only images):
+                    <!-- height and width are optionals -->
+                    <div ng-thumb="{ file: item._file, height: 100, width: 100 }"></div>
+                </div>
+                <div>
+                    <button ng-click="item.upload()" ng-disabled="item.isReady || item.isUploading || item.isSuccess">Upload</button>
+                    <button ng-click="item.cancel()" ng-disabled="!item.isUploading">Cancel</button>
+                    <button ng-click="item.remove()">Remove</button>
+                </div>
+            </li>
+        </ul>
+        <hr />
+        <div>
+            <div>
+                Total progress: {{ uploader.progress }}
+                <div class="total-progress-box">
+                    <div class="total-progress" ng-style="{ 'width': uploader.progress + '%' }"></div>
+                </div>
+            </div>
+            <button ng-click="uploader.uploadAll()" ng-disabled="!uploader.getNotUploadedItems().length">Upload all</button>
+            <button ng-click="uploader.cancelAll()" ng-disabled="!uploader.isUploading">Cancel all</button>
+            <button ng-click="uploader.clearQueue()" ng-disabled="!uploader.queue.length">Remove all</button>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    
+    <script src="~/app/services/project-service.js" type="text/javascript"></script>
+    <script src="~/app/services/dashboard-service.js" type="text/javascript"></script>
+    <script src="~/app/services/common-service.js" type="text/javascript"></script>
+    <script src="~/app/controllers/test-web-api-controller.js" type="text/javascript"></script>
+
+    <script src="~/app/controllers/test-file-upload-controller.js" type="text/javascript"></script>
+
+    <!-- ES5 shim for old browsers -->
+    <!--
+    <script src="http://nervgh.github.io/js/es5-shim.min.js" type="text/javascript"></script>
+    <script src="http://nervgh.github.io/js/es5-sham.min.js" type="text/javascript"></script>
+    -->
+    
+}
+
+
+
+

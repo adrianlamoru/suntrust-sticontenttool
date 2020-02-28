@@ -1,0 +1,30 @@
+﻿<div class="screen-content">
+    <div class="input-spacing" ng-click="showView('layout-menu')">
+        <div class=" arrow-holder clickable">
+            <div class="arrow-left"></div>
+        </div>
+        <label class="label-larger grey-color clickable">Back to Layout Menu</label>
+    </div>
+    <div class="input-spacing page-main-title lesser-height">
+        <span>OLB Bulletin Zone - {{projectManager.selectedLayout.ID}}</span>
+    </div>
+    <form name="sectionForm" novalidate>
+        <wg-headline 
+            number="01."
+            header="The headline is a bolded title for the offer."
+            max-length="100" 
+            details="The headline is the bolded title for the offer, and should be kept brief as content is used on all form factors (mobile).">
+        </wg-headline>
+
+        <wg-bulletin-details
+            number="02."
+            header="The details provide features about the offer."
+            details="The detail is the bulleted content for the offer and should be kept brief as content is used on all form factors, mobile included. The content must always be in bullet point format and convey the main details and/or benefits of the offer.">
+        </wg-bulletin-details>
+
+
+        <div ng-include="'../app/partials/action-bar-components.html'"></div>
+    </form>
+</div>
+<div class="dialog noselect" ng-class="{'open': isPreviewDlgVisible }"
+     ng-include="previewUrl()"></div>

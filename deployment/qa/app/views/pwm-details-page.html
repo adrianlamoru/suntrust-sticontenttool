@@ -1,0 +1,80 @@
+﻿<div class="screen-content">
+    <div class="input-spacing" ng-click="showView('layout-menu')">
+        <div class=" arrow-holder clickable">
+            <div class="arrow-left"></div>
+        </div>
+        <label class="label-larger grey-color clickable">Back to Layout Menu</label>
+    </div>
+    <div class="input-spacing page-main-title lesser-height">
+        <span>PWM Offer Details - {{projectManager.selectedLayout.ID}}</span>
+    </div>
+    <form name="sectionForm" novalidate>
+        <wg-main-image 
+                        number="01." 
+                        width="736" 
+                        height="344"
+                        header="Upload the image for the Offer Details Page."
+                        details="The PWM Offer Details Page image size is - W: 736 x H: 344 px. &lt;br /&gt; &lt;br /&gt; &lt;i&gt;Note: Images with other size specifications cannot be uploaded.&lt;/i&gt;"
+                        open-upload-image-dialog-click="openUploadImageDialogClick(callbackOK)">
+        </wg-main-image>
+
+        <!--<wg-headline number="02."
+                     header="The headline is a bolded title for the offer."
+                     max-length="2000"
+                     details="The headline is the bolded title for the offer, and should be kept brief as content is used on all form factors (mobile).">
+        </wg-headline>
+
+        <wg-sub-headline number="03."
+                    header="Enter Sub-Headline copy/text."
+                    details="Please enter the offer copy in the text field provided and format the text as needed.">
+        </wg-sub-headline>-->
+
+        <wg-details 
+                    number="02." 
+                    header="Enter Learn More Page offer copy/text."
+                    details="Please enter the offer copy in the text field provided and format the text as needed.">
+        </wg-details>
+        <wg-call-to-action 
+                            number="03." 
+                            header="Select the Call to Action (CTA) for the offer."
+                            details="The Call to Action (CTA) determines how an offer will be fulfilled. Please select the appropriate CTA from the drop down menu. &lt;br /&gt; &lt;br /&gt; &lt;i&gt;Note: When the URL CTA is selected, please enter the hyperlink to the appropriate location.&lt;/i&gt;"
+                            deactivatable="true" 
+                            buttom-text-visible="true"
+                            add-pwm-options="true">
+        </wg-call-to-action>
+        
+        <wg-call-to-action
+                            number="04." 
+                            header="Select the Call to Action (CTA) for the offer."
+                            details="The Call to Action (CTA) determines how an offer will be fulfilled. Please select the appropriate CTA from the drop down menu. &lt;br /&gt; &lt;br /&gt; &lt;i&gt;Note: When the URL CTA is selected, please enter the hyperlink to the appropriate location.&lt;/i&gt;"
+                            deactivatable="true"
+                            buttom-text-visible="true"
+                            type-id="10"
+                            add-pwm-options="true">
+        </wg-call-to-action>
+        
+        <wg-disclaimer 
+                        number="05." 
+                        header="[TBD - Provided by Client]" 
+                        details="TBD - Provided by Client]" 
+                        deactivatable="true">
+        </wg-disclaimer>
+        <wg-reminder 
+                        number="06." 
+                        header="Set up the Reminder Call to Action (CTA)" 
+                        details="The Reminder CTA allows the client to request to see the offer again at another time, without accepting or rejecting the offer. Please select the appropriate reminder text from the drop down menu. &lt;br /&gt; &lt;br /&gt;&lt;i&gt;Note: The Reminder CTA is not needed for marketing only messaging that require no fulfillment. Select “Deactivate Component” if the offer does not require a Reminder CTA.&lt;/i&gt;" 
+                        deactivatable="true">
+        </wg-reminder>
+        <wg-offer-rejection 
+                            number="07." 
+                            header="Set up the Rejection Call to Action (CTA)."
+                            details="The Rejection CTA allows the client to reject the offer and the offer will not display again. Please select the appropriate rejection text from the drop down menu."
+                            deactivatable="true">
+        </wg-offer-rejection>
+
+
+        <div ng-include="'../app/partials/action-bar-components.html'"></div>
+    </form>
+</div>
+<div class="dialog noselect" ng-class="{'open': isPreviewDlgVisible }"
+     ng-include="previewUrl()"></div>

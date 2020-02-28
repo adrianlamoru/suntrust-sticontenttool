@@ -1,0 +1,58 @@
+﻿<div class="bg-splash-page">
+    <div class="banner">
+        <div class="image-container">
+            <img class="img-banner" fallback-src="{{DEFAULT_IMAGE_URL}}" ng-src="{{getSrc(ComponentType.MAIN_IMAGE)}}"/>
+            <!--<div class="headline-subheadline-container">
+                <span class="headline">{{getComponent(ComponentType.HEADLINE).Data.Headline}}</span>
+                <div class="html-view subheadline" ng-bind-html="getComponent(ComponentType.SUB_HEADLINE).Data.Description"></div>
+            </div>-->
+        </div>
+        <div class="preview-details">
+            <div class="html-view" ng-bind-html="getComponent(ComponentType.DETAILS).Data.Description"></div>
+            <div class="html-view sup" ng-if="isVisible(ComponentType.DISCLAIMER)" ng-bind-html="getComponent(ComponentType.DISCLAIMER).Data.Description"></div>
+        </div>
+        <div class="options">
+            <div class="pull-left">
+                <a class="btn first-btn rejection" ng-if="isVisible(ComponentType.OFFER_REJECTION)"
+                   ng-href="">{{display(ComponentType.OFFER_REJECTION)}}</a>
+            </div>
+            <div class="pull-right">
+                <a class="btn rejection" ng-if="isVisible(ComponentType.REMINDER)"
+                   ng-href="">{{display(ComponentType.REMINDER)}}</a>
+                <a class="btn action" ng-if="isVisible(ComponentType.CALL_TO_ACTION)" href="" target="_blank"
+                   ng-href="{{getHref(ComponentType.CALL_TO_ACTION)}}">{{display(ComponentType.CALL_TO_ACTION)}}</a>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+<div class="pdf-conplete-content">
+    <h3>Complete Content:</h3>
+    <hr/>
+    <!--<div class="pdf-complete-content-text">
+        <h4>Headline:</h4>
+        <span class="headline">{{getComponent(ComponentType.HEADLINE).Data.Headline}}</span>
+    </div>
+    <div class="pdf-complete-content-text">
+        <h4>Sub Headline:</h4>
+        <div class="html-view subheadline" ng-bind-html="getComponent(ComponentType.SUB_HEADLINE).Data.Description"></div>
+    </div>-->
+    <div class="pdf-complete-content-text" ng-if="isVisible(ComponentType.DETAILS)">
+        <h4>Details:</h4>
+        <div class="overlay-text-viewer html-view" ng-bind-html="getComponent(ComponentType.DETAILS).Data.Description"></div>
+    </div>
+    <div class="pdf-complete-content-text" ng-if="isVisible(ComponentType.DISCLAIMER)">
+        <h4>Disclaimer:</h4>
+        <div class="overlay-text-viewer html-view" ng-bind-html="getComponent(ComponentType.DISCLAIMER).Data.Description"></div>
+    </div>
+    <div class="pdf-complete-content-text" ng-if="!isEmptyOrWhiteSpace(getCTALink(ComponentType.CALL_TO_ACTION))">
+        <div class="overlay-text-viewer">
+            <div ng-if="isALink(ComponentType.CALL_TO_ACTION)">
+                <span class="cta-link-text">CTA Link:</span> <a href="{{getCTALink(ComponentType.CALL_TO_ACTION)}}" target="_blank">{{getCTALink(ComponentType.CALL_TO_ACTION)}}</a>
+            </div>
+            <div ng-if="!isALink(ComponentType.CALL_TO_ACTION)">
+                <span class="cta-link-text">CTA Link:</span> {{getCTALink(ComponentType.CALL_TO_ACTION)}}
+            </div>
+        </div>
+    </div>
+</div>

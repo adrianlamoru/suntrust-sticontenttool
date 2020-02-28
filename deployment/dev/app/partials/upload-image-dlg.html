@@ -1,0 +1,90 @@
+﻿<div id="uploadImage" class="dialog-block" ng-controller="UploadImageController">
+    <div class="form-container">
+        <form name="uploadImageForm" novalidate>
+            <div class="dialog-header">
+                <div class="dialog-heading">SELECT AN IMAGE USING ONE OF THE OPTIONS BELOW</div>
+                <div class="close-button" ng-click="cancelButtonClick()">&times;</div>
+            </div>
+            <div class="dialog-content">
+                <div class="table-block table-block-pagination">
+                    <div ng-hide="tbImagesModel.pagedItemsLength == 0" class="pagination-content">
+                        <ul>
+                            <li ng-class="{'disabled' : tbImagesModel.previousDisabled()}">
+                                <a href="javascript:void(0)" ng-click="tbImagesModel.firstPage()"><div class="square">&lt;&lt;</div></a>
+                            </li>
+                            <li ng-class="{'disabled' : tbImagesModel.previousDisabled()}">
+                                <a href="javascript:void(0)" ng-click="tbImagesModel.prevPage()"><div class="square">&lt;</div></a>
+                            </li>
+                            <li><span>Page {{tbImagesModel.pageNumber()}} of {{tbImagesModel.pagedItemsLength}}</span></li>
+                            <li ng-class="{'disabled': tbImagesModel.nextDisabled()}">
+                                <a href="javascript:void(0)" ng-click="tbImagesModel.nextPage()"><div class="square">&gt;</div></a>
+                            </li>
+                            <li ng-class="{'disabled': tbImagesModel.nextDisabled()}">
+                                <a href="javascript:void(0)" ng-click="tbImagesModel.lastPage()"><div class="square">&gt;&gt;</div></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="instructions"><span class="sentence">Choose an Image from the image library</span></div>
+                    <div ng-hide="tbImagesModel.pagedItemsLength != 0" class="empty-list">
+                        <label>There are no public images availables in the Library.</label>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+
+                <div class="input-spacing">
+                    <div class="image-container">
+                        <div ng-repeat="item in tbImagesModel.pagedItems[tbImagesModel.currentPage]" class="image-item" ng-click="setCurrentImage(item);" ng-class="{'selected': isImageSelected(item)}">
+                            <img ng-src="{{getAbsoluteURL(item.src)}}" alt="" />
+                            <br />
+                            <label>{{item.name}}</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="separator">
+                    <hr class="button-float-left" />
+                    <div>OR</div>
+                    <hr class="button-float-right" />
+                </div>
+
+                <div class="instructions"><span class="sentence">Choose an Image from your desktop</span></div>
+
+                <div class="input-spacing">
+                    <input class="input-bigger-size" type="text" name="uploadImageLocation" ng-model="formData.uploadInputValue" readonly />
+                    <div class="button blue button-float-right fileUpload">
+                        <span>Upload</span>
+                        <br />
+                        <input type="file" name="fileInput" class="upload" nv-file-select="" uploader="uploaderDlg" />
+                    </div>
+                </div>
+
+                <div class="separator">
+                    <hr class="button-float-left" />
+                    <div>OR</div>
+                    <hr class="button-float-right" />
+                </div>
+
+                <div class="instructions"><span class="sentence">Choose an Image from a URL</span></div>
+                <div class="input-spacing">
+                    <label class="label-smaller">Add Image URL</label>
+                    <input class="input-bigger-size" type="url" name="imageURL" ng-model="formData.imageFromURLValue" ng-change="imageURLChange()" />
+
+                    <div class="error-container no-marging" ng-show="uploadImageForm.imageURL.$invalid">
+                        <span class="error-msg" ng-show="uploadImageForm.imageURL.$error.url">Invalid URL. It must begin with http://</span>
+                    </div>
+                </div>
+
+                <div class="separator">
+                    <hr class="full-size" />
+                </div>
+
+                <div class="button-container">
+                    <button class="button orange button-float-right" ng-click="confirmButtonClick(uploadImageForm)" ng-disabled="uploadImageForm.imageURL.$invalid">Confirm</button>
+                    <button class="button orange button-float-right" ng-click="cancelButtonClick()">Cancel</button>
+                    <div class="clear"></div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>

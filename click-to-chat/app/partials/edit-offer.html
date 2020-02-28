@@ -1,0 +1,56 @@
+﻿<div class="dialog-block" ng-controller="EditOfferController">
+    <div class="form-container">
+        <form name="editOfferForm" novalidate class="edit-offer-form">
+            <div class="dialog-header">
+                <div class="dialog-heading">Edit Offer: {{editOfferModel.ID}}</div>
+                <div class="close-button" ng-click="cancelButtonClick()">&times;</div>
+            </div>
+            <div class="dialog-content">
+                <div class="input-spacing" style="margin-top: 20px;">
+                    <label for="offerID">Offer ID</label>
+                    <input type="text" name="offerID" ng-model="editOfferModel.ID" disabled="disabled" />
+                </div>
+                <div class="input-spacing">
+                    <div class="char-counter" ng-show="editOfferModel.Name.length > 0">
+                        <span>({{50 - editOfferModel.Name.length}}&nbsp;char.)</span>
+                    </div>
+
+                    <label for="offerName">Offer Name</label>
+                    <input type="text" name="offerName" ng-model="editOfferModel.Name" required maxlength="50" />
+
+                    <div class="error-container" ng-show="isFormSubmitted && editOfferForm.offerName.$invalid">
+                        <span class="error-msg" ng-show="editOfferForm.offerName.$error.required">Offer Name is required</span>
+                    </div>
+                </div>
+                <div class="input-spacing">
+                    <label for="offerDescription">Offer Description</label>
+                    <textarea name="offerDescription" ng-model="editOfferModel.Description" disabled="disabled"></textarea>
+                </div>
+                <div class="input-spacing">
+                    <label class="label-contentID" for="offerContentID">Content IDs</label>
+                    <div class="contentID-container">
+                        <div id="contentID-holder" class="contentID-holder">
+                            <div ng-repeat="contentID in editOfferModel.ContentIDArray" class="contentID-holder-input">
+                                <input name="{{'offerContentID' + $index}}" value="{{contentID}}" type="text" readonly />
+                                <div class="close-button" ng-click="removeContentID($index)">&times;</div>
+                            </div>
+                            <input type="text" name="offerContentID" ng-model="editOfferModel.ContentIDtoAdd" maxlength="14" alphanumeric />
+                        </div>
+                        <div class="error-container">
+                            <span class="error-msg" ng-show="contentIDsErrorVisible">{{contentIDsErrorText}}</span>
+                            <span class="error-msg" ng-show="editOfferForm.offerContentID.$error.alphanumeric">Only alphanumeric characters are allowed [a-z, 0-9]</span>
+                        </div>
+                        <div class="contentID-button" ng-click="addContentID()">+ Add Content ID</div>
+                    </div>
+                </div>
+
+                <div class="button-container">
+                    <button class="button orange button-float-right" ng-click="saveOffer(editOfferForm)" ng-disabled="isCommitDisabled(editOfferForm)">Save Offer</button>
+                    <button class="button orange button-float-right" ng-click="cancelButtonClick()">Cancel</button>
+                    <div class="clear"></div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>

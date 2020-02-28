@@ -1,0 +1,53 @@
+﻿<div class="screen-content">
+    <div class="input-spacing" ng-click="showView('layout-menu')">
+        <div class="arrow-holder clickable">
+            <div class="arrow-left"></div>
+        </div>
+        <label class="label-larger grey-color clickable">Back to Layout Menu</label>
+    </div>
+    <div class="input-spacing page-main-title lesser-height">
+        <span>Special Offer - {{projectManager.selectedLayout.ID}}</span>
+    </div>
+
+    <form name="sectionForm" novalidate>
+        <wg-main-image number="01."
+                       header="Upload the image for the Special Offer Banner."
+                       details="The Special Offer image size is - W: 200 x H: 100 px. &lt;br /&gt; Use the text area field to enter the content that should appear on top of the image. &lt;br /&gt;&lt;i&gt;Note: Images with other size specifications cannot be uploaded.&lt;/i&gt;"
+                       width="200"
+                       height="100"
+                       show-tc-text-editor="true"
+                       open-upload-image-dialog-click="openUploadImageDialogClick(callbackOK)">
+        </wg-main-image>
+
+        <!--<wg-headline number="02."
+                     header="The headline is a bolded title for the offer."
+                     max-length="2000"
+                     details="The headline is the bolded title for the offer, and should be kept brief as content is used on all form factors (mobile).">
+        </wg-headline>
+
+        <wg-sub-headline number="03."
+                         header="Enter Sub-Headline copy/text."
+                         details="Please enter the offer copy in the text field provided and format the text as needed.">
+        </wg-sub-headline>-->
+
+        <wg-details number="02."
+                    header="Enter Special Offer copy/text."
+                    details="Please enter the offer copy in the text field provided and format the text as needed.">
+        </wg-details>
+        <!--<wg-call-to-action number="03." header="Select the Call to Action (CTA) for the offer."
+                           details="The Call to Action (CTA) determines how an offer will be fulfilled. Please select the appropriate CTA from the drop down menu. &lt;br /&gt;&lt;br /&gt;&lt;i&gt;Note: When the URL CTA is selected, please enter the hyperlink to the appropriate location.&lt;/i&gt;"
+                           buttom-text-visible="true"
+                           pwm-call-action="true">
+        </wg-call-to-action>-->
+        <wg-call-to-action number="03."
+                           header="Select the Call to Action (CTA) for the offer."
+                           details="The Call to Action (CTA) determines how an offer will be fulfilled. Please select the appropriate CTA from the drop down menu. &lt;br /&gt; &lt;br /&gt; &lt;i&gt;Note: When the URL CTA is selected, please enter the hyperlink to the appropriate location.&lt;/i&gt;"
+                           deactivatable="true"
+                           buttom-text-visible="true"
+                           add-pwm-options="true">
+        </wg-call-to-action>
+        <div ng-include="'../app/partials/action-bar-components.html'"></div>
+    </form>
+</div>
+<div class="dialog noselect" ng-class="{'open': isPreviewDlgVisible }"
+     ng-include="previewUrl()"></div>

@@ -1,0 +1,42 @@
+﻿<div class="bg-hero-offer">
+    <div class="top-header"></div>
+    <div class="banner">
+        <img class="img-banner" fallback-src="{{DEFAULT_IMAGE_URL}}" ng-src="{{getSrc(ComponentType.MAIN_IMAGE)}}" />
+        <div class="content-container">
+            <p class="hero-headline">{{display(ComponentType.HEADLINE)}}</p>
+            <div class="html-view" ng-bind-html="getComponent(ComponentType.DETAILS).Data.Description"></div>
+            <!--<p class="hero-details">{{display(ComponentType.DETAILS)}}</p>-->
+        </div>
+        <a ng-if="!isEmptyOrWhiteSpace(getCTALink(ComponentType.CALL_TO_ACTION)) && isVisible(ComponentType.CALL_TO_ACTION)" class="call-action" ng-href="{{getHref(ComponentType.CALL_TO_ACTION)}}" href="" target="_blank">
+            <div class="action-container">
+                {{display(ComponentType.CALL_TO_ACTION)}}
+            </div>
+        </a>
+    </div>
+</div>
+<div class="pdf-conplete-content">
+    <h3>Complete Content:</h3>
+    <hr />
+    <div class="pdf-complete-content-text" ng-if="!isEmptyOrWhiteSpace(display(ComponentType.HEADLINE))">
+        <h4>Headline:</h4>
+        <div class="overlay-text-viewer">
+            <div ng-bind="getComponent(ComponentType.HEADLINE).Data.Headline"></div>
+        </div>
+    </div>
+    <div class="pdf-complete-content-text" ng-if="isVisible(ComponentType.DETAILS)">
+        <h4>Details:</h4>
+        <div class="overlay-text-viewer html-view" ng-bind-html="getComponent(ComponentType.DETAILS).Data.Description"></div>
+    </div>
+    <div class="pdf-complete-content-text" ng-if="!isEmptyOrWhiteSpace(getCTALink(ComponentType.CALL_TO_ACTION)) && isVisible(ComponentType.CALL_TO_ACTION)">
+        <div class="overlay-text-viewer">
+            <div ng-if="isALink(ComponentType.CALL_TO_ACTION)">
+                <span class="cta-link-text">CTA Link:</span> <a href="{{getCTALink(ComponentType.CALL_TO_ACTION)}}" target="_blank">{{getCTALink(ComponentType.CALL_TO_ACTION)}}</a>
+            </div>
+            <div ng-if="!isALink(ComponentType.CALL_TO_ACTION)">
+                <span class="cta-link-text">CTA Link:</span> {{getCTALink(ComponentType.CALL_TO_ACTION)}}
+            </div>
+        </div>
+    </div>
+</div>
+
+

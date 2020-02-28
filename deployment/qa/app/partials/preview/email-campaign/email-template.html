@@ -1,0 +1,730 @@
+﻿<div class="pdf-conplete-content">
+    <h3>Mobile View</h3>
+</div>
+<div class="wrapper">
+    <div class="wrapper-inner">
+        <table style="width:100%;border-spacing: 0">
+            <tr>
+                <td align="center"><p style="font-size: 10px">If you are unable to see the message below, <a href="#" style="color:#003B73;text-decoration:underline">click here</a> to view</p></td>
+            </tr>
+        </table>
+        <table class="section suntrust-logo-container" style="border-spacing: 0">
+            <tr>
+                <td class="logo-container" style="border-collapse:collapse;padding: 0;">
+                    <img class="suntrust-logo" src="{{EMAIL_TEMPLATE_IMAGE_URL}}/SunTrust_Bank_logo.png" />
+                </td>
+            </tr>
+        </table>
+        <table ng-if="isActive(ComponentType.EMAIL_HEADER_LINKS, ContentType.HEADER_LINKS_CONTENT)" class="section links" style="border-spacing: 0">
+            <tr>
+                <td class="links-container" style="font-size: 14px;border-collapse:collapse;padding: 0">
+                    <a ng-if="isVisible(ComponentType.EMAIL_HEADER_LINKS, EmailHeaderLinks.FIRST_LINK)" ng-href="{{getHeaderLinkUrl(ComponentType.EMAIL_HEADER_LINKS, EmailHeaderLinks.FIRST_LINK)}}" target="_blank"
+                       style="color:#003B73;text-decoration:underline">
+                        {{getHeaderLinkText(ComponentType.EMAIL_HEADER_LINKS, EmailHeaderLinks.FIRST_LINK)}}
+                    </a>
+                    <span ng-if="isVisible(ComponentType.EMAIL_HEADER_LINKS, EmailHeaderLinks.FIRST_LINK) && isVisible(ComponentType.EMAIL_HEADER_LINKS, EmailHeaderLinks.SECOND_LINK)" style="color:#003B73"> | </span>
+                    <a ng-if="isVisible(ComponentType.EMAIL_HEADER_LINKS, EmailHeaderLinks.SECOND_LINK)" ng-href="{{getHeaderLinkUrl(ComponentType.EMAIL_HEADER_LINKS, EmailHeaderLinks.SECOND_LINK)}}" target="_blank"
+                       style="color:#003B73;text-decoration:underline">
+                        {{getHeaderLinkText(ComponentType.EMAIL_HEADER_LINKS, EmailHeaderLinks.SECOND_LINK)}}
+                    </a>
+                    <span ng-if="isVisible(ComponentType.EMAIL_HEADER_LINKS, EmailHeaderLinks.SECOND_LINK) && isVisible(ComponentType.EMAIL_HEADER_LINKS, EmailHeaderLinks.THIRD_LINK)" style="color:#003B73"> | </span>
+                    <a ng-if="isVisible(ComponentType.EMAIL_HEADER_LINKS, EmailHeaderLinks.THIRD_LINK)" ng-href="{{getHeaderLinkUrl(ComponentType.EMAIL_HEADER_LINKS, EmailHeaderLinks.THIRD_LINK)}}" target="_blank"
+                       style="color:#003B73;text-decoration:underline">
+                        {{getHeaderLinkText(ComponentType.EMAIL_HEADER_LINKS, EmailHeaderLinks.THIRD_LINK)}}
+                    </a>
+                </td>
+            </tr>
+        </table>
+        <!-- Header Image -->
+        <table style="width:100%;max-width:600px;border-spacing: 0">
+            <tr>
+                <td align="center" style="padding: 0;">
+                    <a ng-href="{{getHeaderLearnMoreUrl(ComponentType.MAIN_IMAGE)}}" target="_blank" style="display:block" ng-if="!useSolidColor(ComponentType.MAIN_IMAGE) && !displayHeaderCta(ComponentType.MAIN_IMAGE)">
+                        <table style="width:100%;border-spacing: 0;background-image:url({{getSrc(ComponentType.MAIN_IMAGE)}});background-size: 100% 100%">
+                            <tr>
+                                <td class="header-text" width="100%">
+                                    <p class="header-left-content" style="font-size:18px;color:#FFFFFF; word-break: break-word;padding:20px;" ng-bind-html="getHeaderOverlayCopy(ComponentType.MAIN_IMAGE)"></p>
+                                </td>
+                                <!--<td class="header-cta-container hidden-mobile" style="height:0"></td>-->
+                            </tr>
+                        </table>
+                    </a>
+
+                    <table style="width:100%;" ng-if="!useSolidColor(ComponentType.MAIN_IMAGE) && displayHeaderCta(ComponentType.MAIN_IMAGE)">
+                        <tr>
+                            <td>
+                                <table style="width:100%;border-spacing: 0;background-image:url({{getSrc(ComponentType.MAIN_IMAGE)}});background-size: 100% 100%;" ng-class="{'default-height' : useSolidColor(ComponentType.MAIN_IMAGE)}">
+                                    <tr>
+                                        <td class="header-text hidden-mobile">
+                                            <p class="header-left-content" style="font-size:18px;color:#FFFFFF; word-break: break-word;padding:20px;" ng-bind-html="getHeaderOverlayCopy(ComponentType.MAIN_IMAGE)"></p>
+                                        </td>
+                                        <td class="header-text hidden-desktop" style="background-image:url({{getSrc(ComponentType.MAIN_IMAGE)}});background-size: 100% 100%;">
+                                            <p class="header-left-content" style="font-size:18px;color:#FFFFFF; word-break: break-word;padding:20px;" ng-bind-html="getHeaderOverlayCopy(ComponentType.MAIN_IMAGE)"></p>
+                                        </td>
+                                        <td class="header-cta-container">
+                                            <div class="apply-now"
+                                                 style="display:inline-block;text-align:center;margin:10px 0;vertical-align:middle;">
+                                                <a ng-href="{{getHeaderLearnMoreUrl(ComponentType.MAIN_IMAGE)}}" ng-if="isEfectiveLink(getHeaderLearnMoreUrl(ComponentType.MAIN_IMAGE)) && displayHeaderCta(ComponentType.MAIN_IMAGE)"
+                                                   style="display:inline-block;font-family:sans-serif;font-size:13px;font-weight:bold;border: none;border: 0;text-align:center;text-decoration:none;-webkit-text-size-adjust:none;">
+                                                    <table>
+                                                        <tr>
+                                                            <td><img style="height: 32px; width: 20px;" src="{{getTemplateImagePiece(ComponentType.MAIN_IMAGE, TemplatePiece.LEFT, Device.DESKTOP)}}" /></td>
+                                                            <td style="background-color: {{getTemplateBaseColor(ComponentType.MAIN_IMAGE)}}; color:#FFFFFF; line-height: 32px; padding: 0 20px;"><span>{{getHeaderCtaText(ComponentType.MAIN_IMAGE)}}</span></td>
+                                                            <td><img style="height: 32px;" src="{{getTemplateImagePiece(ComponentType.MAIN_IMAGE, TemplatePiece.ARROW, Device.DESKTOP)}}" /></td>
+                                                            <td><img style="height: 32px; width: 20px;" src="{{getTemplateImagePiece(ComponentType.MAIN_IMAGE, TemplatePiece.RIGHT, Device.DESKTOP)}}" /></td>
+                                                        </tr>
+                                                    </table>
+                                                </a>
+
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <table style="width:100%;border-spacing: 0; background-image:url({{getTemplateImagePiece(ComponentType.MAIN_IMAGE, TemplatePiece.HEADER, Device.DESKTOP)}});background-size: 100% 100%" class="header-content" ng-class="{'default-height' : useSolidColor(ComponentType.MAIN_IMAGE) && displayHeaderCta(ComponentType.MAIN_IMAGE)}">
+                        <tr>
+                            <td class="header-text hidden-mobile">
+                                <p class="header-left-content" style="font-size:18px;color:#FFFFFF; word-break: break-word;padding:20px;" ng-bind-html="getHeaderOverlayCopy(ComponentType.MAIN_IMAGE)"></p>
+                            </td>
+                            <td class="header-text hidden-desktop" style="background-image:url({{getTemplateImagePiece(ComponentType.MAIN_IMAGE, TemplatePiece.HEADER, Device.MOBILE)}});background-size: 100% 100%;">
+                                <p class="header-left-content" style="font-size:18px;color:#FFFFFF; word-break: break-word;padding:20px;" ng-bind-html="getHeaderOverlayCopy(ComponentType.MAIN_IMAGE)"></p>
+                            </td>
+                            <td class="header-cta-container">
+                                <div class="apply-now"
+                                     style="display:inline-block;text-align:center;margin:10px 0;vertical-align:middle;">
+                                    <a ng-href="{{getHeaderLearnMoreUrl(ComponentType.MAIN_IMAGE)}}" ng-if="isEfectiveLink(getHeaderLearnMoreUrl(ComponentType.MAIN_IMAGE)) && displayHeaderCta(ComponentType.MAIN_IMAGE)"
+                                       style="display:inline-block;font-family:sans-serif;font-size:13px;font-weight:bold;border: none;border: 0;text-align:center;text-decoration:none;-webkit-text-size-adjust:none;">
+                                        <table>
+                                            <tr>
+                                                <td><img style="height: 32px; width: 20px;" src="{{getTemplateImagePiece(ComponentType.MAIN_IMAGE, TemplatePiece.LEFT, Device.DESKTOP)}}" /></td>
+                                                <td style="background-color: {{getTemplateBaseColor(ComponentType.MAIN_IMAGE)}}; color:#FFFFFF; line-height: 32px; padding: 0 20px;"><span>{{getHeaderCtaText(ComponentType.MAIN_IMAGE)}}</span></td>
+                                                <td><img style="height: 32px;" src="{{getTemplateImagePiece(ComponentType.MAIN_IMAGE, TemplatePiece.ARROW, Device.DESKTOP)}}" /></td>
+                                                <td><img style="height: 32px; width: 20px;" src="{{getTemplateImagePiece(ComponentType.MAIN_IMAGE, TemplatePiece.RIGHT, Device.DESKTOP)}}" /></td>
+                                            </tr>
+                                        </table>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    <a ng-href="{{getHeaderLearnMoreUrl(ComponentType.MAIN_IMAGE)}}" target="_blank" style="display:block" ng-if="useSolidColor(ComponentType.MAIN_IMAGE) && !displayHeaderCta(ComponentType.MAIN_IMAGE)">
+                        <table style="background-image:url({{getTemplateImagePiece(ComponentType.MAIN_IMAGE, TemplatePiece.HEADER, Device.DESKTOP)}});background-size: 100% 100%; width:100%;border-spacing: 0" class="default-height hidden-mobile">
+                            <tr>
+                                <td class="header-text" width="100%">
+                                    <p class="header-left-content" style="font-size:18px;color:#FFFFFF; word-break: break-word;padding:20px;" ng-bind-html="getHeaderOverlayCopy(ComponentType.MAIN_IMAGE)"></p>
+                                </td>
+                                <!--<td class="header-cta-container hidden-mobile" style="height:0;"></td>-->
+                            </tr>
+                        </table>
+                        <table style="background-image:url({{getTemplateImagePiece(ComponentType.MAIN_IMAGE, TemplatePiece.HEADER, Device.MOBILE)}});background-size: 100% 100%; width:100%;border-spacing: 0" class="default-height hidden-desktop">
+                            <tr>
+                                <td class="header-text">
+                                    <p class="header-left-content" style="font-size:18px;color:#FFFFFF; word-break: break-word;padding:20px;" ng-bind-html="getHeaderOverlayCopy(ComponentType.MAIN_IMAGE)"></p>
+                                </td>
+                                <!--<td class="header-cta-container hidden-mobile" style="height:0;"></td>-->
+                            </tr>
+                        </table>
+                    </a>
+                </td>
+            </tr>
+        </table>
+        <!-- Main Content -->
+        <table id="main-content" style="width:100%; background-color:#FFFFFF;border-spacing: 0;display:inline-table">
+            <tr>
+                <td class="main-content-wrapper">
+                    <table style="border-spacing: 0;display:inline-table;vertical-align:top" class="left-content preview" ng-class="{'right-content-active' : isVisible(ComponentType.RIGHT_RAIL)}">
+                        <tr>
+                            <td class="left-content-wrapper">
+                                <div class="html-content" ng-if="isVisible(ComponentType.DETAILS)" ng-bind-html="translateEmailTags(getComponent(ComponentType.DETAILS).Data.Description, getComponent(ComponentType.DETAILS))"></div>
+                            </td>
+                        </tr>
+                    </table>
+                    <table style="border-spacing: 0;display:inline-table;vertical-align:top" class="right-content" ng-if="isVisible(ComponentType.RIGHT_RAIL)">
+                        <tr ng-if="isActive(ComponentType.RIGHT_RAIL, ContentType.TEXT_CONTENT)">
+                            <td class="right-content-wrapper">
+                                <div class="html-content" ng-bind-html="translateEmailTags(getComponent(ComponentType.RIGHT_RAIL).Data.TextEditor.Description)"></div>
+                            </td>
+                        </tr>
+                        <tr ng-if="isActive(ComponentType.RIGHT_RAIL, ContentType.IMAGE_CONTENT)">
+                            <td class="right-content-wrapper" style="text-align:center">
+                                <img class="img" fallback-src="{{DEFAULT_IMAGE_URL}}" ng-src="{{getSrc(ComponentType.RIGHT_RAIL)}}" alt="{{getImageAltText(ComponentType.RIGHT_RAIL)}}" style="width:calc(100% - 20px);" />
+                                <div class="html-content image-component" ng-bind-html="translateEmailTags(getComponent(ComponentType.RIGHT_RAIL).Data.Image.Description)"></div>
+                            </td>
+                        </tr>
+                        <tr ng-if="isActive(ComponentType.RIGHT_RAIL, ContentType.CTA_BUTTONS)">
+                            <td class="right-content-wrapper" style="text-align:center">
+                                <a ng-if="isVisible(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.GO_ONLINE)" class="cta-links" ng-href="{{getEmailCtaUrl(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.GO_ONLINE)}}" target="_blank" style="display: inline-block;background-color: #DCD9DC;color: #003B73;padding: 10px;text-align: left;text-decoration: none;width:94%">
+                                    <table style="width:100%;">
+                                        <tr>
+                                            <td style="width: 20px">
+                                                <img src="{{EMAIL_TEMPLATE_IMAGE_URL}}/right_pointing_angle_bracket.png" style="width: 10px;height: 35px;vertical-align: middle">
+                                            </td>
+                                            <td>
+                                                <h3 style="display:block;font-size: 16px;font-weight:bold; margin: 0">{{getEmailButtonText(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.GO_ONLINE)}}</h3>
+                                                <span style="display:block;font-size: 14px;color: #000000; text-decoration: underline">{{getEmailLinkText(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.GO_ONLINE)}}</span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </a>
+                                <a ng-if="isVisible(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.CALL)" class="cta-links" ng-href="{{getEmailCtaUrl(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.CALL)}}" target="_blank" style="display: inline-block;background-color: #DCD9DC;color: #003B73;padding: 10px;text-align: left;text-decoration: none;width:94%">
+                                    <table style="width:100%;">
+                                        <tr>
+                                            <td style="width: 20px">
+                                                <img src="{{EMAIL_TEMPLATE_IMAGE_URL}}/right_pointing_angle_bracket.png" style="width: 10px;height: 35px;vertical-align: middle">
+                                            </td>
+                                            <td>
+                                                <h3 style="display:block;font-size: 16px;font-weight:bold; margin: 0">{{getEmailButtonText(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.CALL)}}</h3>
+                                                <span style="font-size: 14px;color: #000000;display:block">{{getEmailLinkText(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.CALL)}}</span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </a>
+                                <a ng-if="isVisible(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.VISIT)" class="cta-links" ng-href="{{getEmailCtaUrl(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.VISIT)}}" target="_blank" style="display: inline-block;background-color: #DCD9DC;color: #003B73;padding: 10px;text-align: left;text-decoration: none;width:94%">
+                                    <table style="width:100%;">
+                                        <tr>
+                                            <td style="width: 20px">
+                                                <img src="{{EMAIL_TEMPLATE_IMAGE_URL}}/right_pointing_angle_bracket.png" style="width: 10px;height: 35px;vertical-align: middle">
+                                            </td>
+                                            <td>
+                                                <h3 style="display:block;font-size: 16px;font-weight:bold; margin: 0">{{getEmailButtonText(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.VISIT)}}</h3>
+                                                <span style="font-size: 14px;display:block;color: #000000; text-decoration: underline">{{getEmailLinkText(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.VISIT)}}</span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr ng-if="!isActive(ComponentType.RIGHT_RAIL, ContentType.CTA_BUTTONS)">
+                <td class="bottom-cta-container {{bottomCtaCountClass}}">
+                    <a ng-if="isVisible(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.GO_ONLINE)" class="cta-links" ng-href="{{getEmailCtaUrl(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.GO_ONLINE)}}" target="_blank" style="display: inline-block;background-color: #DCD9DC;color: #003B73;text-align: left;text-decoration: none;">
+                        <table style="width:100%;padding:10px;display:table-cell">
+                            <tr>
+                                <td style="width: 20px">
+                                    <img src="{{EMAIL_TEMPLATE_IMAGE_URL}}/right_pointing_angle_bracket.png" style="width: 10px;height: 35px;vertical-align: middle">
+                                </td>
+                                <td>
+                                    <h3 style="display:block;font-size: 16px;font-weight:bold; margin: 0">{{getEmailButtonText(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.GO_ONLINE)}}</h3>
+                                    <span style="display:block;font-size: 14px;color: #000000; text-decoration: underline">{{getEmailLinkText(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.GO_ONLINE)}}</span>
+                                </td>
+                            </tr>
+                        </table>
+                    </a>
+                    <a ng-if="isVisible(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.CALL)" class="cta-links" ng-href="{{getEmailCtaUrl(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.CALL)}}" target="_blank" style="display: inline-block;background-color: #DCD9DC;color: #003B73;text-align: left;text-decoration: none;font-size: 16px;">
+                        <table style="width:100%;padding:10px;display:table-cell">
+                            <tr>
+                                <td style="width: 20px">
+                                    <img src="{{EMAIL_TEMPLATE_IMAGE_URL}}/right_pointing_angle_bracket.png" style="width: 10px;height: 35px;vertical-align: middle">
+                                </td>
+                                <td>
+                                    <h3 style="display:block;font-size: 16px;font-weight:bold; margin: 0">{{getEmailButtonText(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.CALL)}}</h3>
+                                    <span style="font-size: 14px;color: #000000;display:block">{{getEmailLinkText(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.CALL)}}</span>
+                                </td>
+                            </tr>
+                        </table>
+                    </a>
+                    <a ng-if="isVisible(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.VISIT)" class="cta-links" ng-href="{{getEmailCtaUrl(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.VISIT)}}" target="_blank" style="display: inline-block;background-color: #DCD9DC;color: #003B73;text-align: left;text-decoration: none;font-size: 16px;">
+                        <table style="width:100%;padding:10px;display:table-cell">
+                            <tr>
+                                <td style="width: 20px">
+                                    <img src="{{EMAIL_TEMPLATE_IMAGE_URL}}/right_pointing_angle_bracket.png" style="width: 10px;height: 35px;vertical-align: middle">
+                                </td>
+                                <td>
+                                    <h3 style="display:block;font-size: 16px;font-weight:bold; margin: 0">{{getEmailButtonText(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.VISIT)}}</h3>
+                                    <span style="font-size: 14px;display:block;color: #000000; text-decoration: underline">{{getEmailLinkText(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.VISIT)}}</span>
+                                </td>
+                            </tr>
+                        </table>
+                    </a>
+                </td>
+            </tr>
+        </table>
+        <!-- Social Media -->
+        <table style="width:100%;border-spacing: 0;padding: 15px 10px">
+            <tr>
+                <td class="links-container">
+                    <a href="https://www.facebook.com/suntrust" target="_blank" style="margin:0 5px;text-decoration: none">
+                        <img src="{{EMAIL_TEMPLATE_IMAGE_URL}}/facebook-black.png" style="height:20px;width:10px" />
+                    </a>
+                    <a href="https://twitter.com/SunTrust" target="_blank" style="margin:0 5px;text-decoration: none">
+                        <img src="{{EMAIL_TEMPLATE_IMAGE_URL}}/twitter-black.png" style="height:21px;width:21px" />
+                    </a>
+                    <a href="https://www.youtube.com/user/LiveSolid" target="_blank" style="margin:0 5px;text-decoration: none">
+                        <img src="{{EMAIL_TEMPLATE_IMAGE_URL}}/youtube-black.png" style="height:21px;width:21px" />
+                    </a>
+                    <a href="https://www.linkedin.com/company/suntrust-bank" target="_blank" style="margin:0 5px;text-decoration: none">
+                        <img src="{{EMAIL_TEMPLATE_IMAGE_URL}}/Linkedin-Black.png" style="height:20px;width:20px" />
+                    </a>
+                </td>
+            </tr>
+        </table>
+        <!-- Discalimer -->
+        <table style="width:100%;border-spacing: 0">
+            <tr>
+                <td class="disclaimer-container">
+                    <div style="font-size:10.5px;line-height:16px;" class="html-content" ng-if="isVisible(ComponentType.DISCLAIMER)" ng-bind-html="translateEmailTags(getComponent(ComponentType.DISCLAIMER).Data.Description)"></div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="pdf-conplete-content">
+    <h3>Desktop View</h3>
+    <div class="wrapper">
+        <div class="wrapper-inner">
+            <table style="width:100%;border-spacing: 0">
+                <tr>
+                    <td align="center"><p style="font-size: 10px">If you are unable to see the message below, <a href="#" style="color:#003B73;text-decoration:underline">click here</a> to view</p></td>
+                </tr>
+            </table>
+            <table class="section suntrust-logo-container" style="border-spacing: 0;width:39%">
+                <tr>
+                    <td class="logo-container" style="border-collapse:collapse;padding: 0;">
+                        <img class="suntrust-logo" src="{{EMAIL_TEMPLATE_IMAGE_URL}}/SunTrust_Bank_logo.png" style="width: 198px;"/>
+                    </td>
+                </tr>
+            </table>
+            <table ng-if="isActive(ComponentType.EMAIL_HEADER_LINKS, ContentType.HEADER_LINKS_CONTENT)" class="section links" style="border-spacing: 0;width:60%;text-align:right">
+                <tr>
+                    <td class="links-container" style="font-size: 14px;border-collapse:collapse;padding: 0">
+                        <a ng-if="isVisible(ComponentType.EMAIL_HEADER_LINKS, EmailHeaderLinks.FIRST_LINK)" ng-href="{{getHeaderLinkUrl(ComponentType.EMAIL_HEADER_LINKS, EmailHeaderLinks.FIRST_LINK)}}" target="_blank"
+                           style="color:#003B73;text-decoration:underline">
+                            {{getHeaderLinkText(ComponentType.EMAIL_HEADER_LINKS, EmailHeaderLinks.FIRST_LINK)}}
+                        </a>
+                        <span ng-if="isVisible(ComponentType.EMAIL_HEADER_LINKS, EmailHeaderLinks.FIRST_LINK) && isVisible(ComponentType.EMAIL_HEADER_LINKS, EmailHeaderLinks.SECOND_LINK)" style="color:#003B73"> | </span>
+                        <a ng-if="isVisible(ComponentType.EMAIL_HEADER_LINKS, EmailHeaderLinks.SECOND_LINK)" ng-href="{{getHeaderLinkUrl(ComponentType.EMAIL_HEADER_LINKS, EmailHeaderLinks.SECOND_LINK)}}" target="_blank"
+                           style="color:#003B73;text-decoration:underline">
+                            {{getHeaderLinkText(ComponentType.EMAIL_HEADER_LINKS, EmailHeaderLinks.SECOND_LINK)}}
+                        </a>
+                        <span ng-if="isVisible(ComponentType.EMAIL_HEADER_LINKS, EmailHeaderLinks.SECOND_LINK) && isVisible(ComponentType.EMAIL_HEADER_LINKS, EmailHeaderLinks.THIRD_LINK)" style="color:#003B73"> | </span>
+                        <a ng-if="isVisible(ComponentType.EMAIL_HEADER_LINKS, EmailHeaderLinks.THIRD_LINK)" ng-href="{{getHeaderLinkUrl(ComponentType.EMAIL_HEADER_LINKS, EmailHeaderLinks.THIRD_LINK)}}" target="_blank"
+                           style="color:#003B73;text-decoration:underline">
+                            {{getHeaderLinkText(ComponentType.EMAIL_HEADER_LINKS, EmailHeaderLinks.THIRD_LINK)}}
+                        </a>
+                    </td>
+                </tr>
+            </table>
+            <!-- Header Image -->
+            <table style="width:100%;max-width:600px;border-spacing: 0">
+                <tr>
+                    <td align="center" style="padding: 0;">
+                        <a ng-href="{{getHeaderLearnMoreUrl(ComponentType.MAIN_IMAGE)}}" target="_blank" style="display:block;text-decoration:none;" ng-if="!useSolidColor(ComponentType.MAIN_IMAGE) && !displayHeaderCta(ComponentType.MAIN_IMAGE)">
+
+                            <table style="width:100%;border-spacing: 0;background-image:url({{getSrc(ComponentType.MAIN_IMAGE)}});background-size: 100% 100%">
+                                <tr>
+                                    <td class="header-text" style="width:60%">
+                                        <p class="header-left-content" style="font-size:18px;color:#FFFFFF; word-break: break-word;" ng-bind-html="getHeaderOverlayCopy(ComponentType.MAIN_IMAGE)"></p>
+                                    </td>
+                                    <td class="header-cta-container hidden-mobile" style="height:0;width:40%"></td>
+                                </tr>
+                            </table>
+                        </a>
+
+                        <table style="width:100%;" ng-if="!useSolidColor(ComponentType.MAIN_IMAGE) && displayHeaderCta(ComponentType.MAIN_IMAGE)">
+                            <tr>
+                                <td>
+                                    <table style="width:100%;border-spacing: 0;background-image:url({{getSrc(ComponentType.MAIN_IMAGE)}});background-size: 100% 100%;" ng-class="{'default-height' : useSolidColor(ComponentType.MAIN_IMAGE)}">
+                                        <tr>
+                                            <td class="header-text" style="width:60%">
+                                                <p class="header-left-content" style="font-size:18px;color:#FFFFFF; word-break: break-word;" ng-bind-html="getHeaderOverlayCopy(ComponentType.MAIN_IMAGE)"></p>
+                                            </td>
+                                            <td class="header-cta-container" style="width:40%;background-color:transparent !important">
+                                                <div class="apply-now"
+                                                     style="display:inline-block;text-align:center;margin:10px 0;vertical-align:middle;">
+                                                    <!--<a ng-href="{{getHeaderLearnMoreUrl(ComponentType.MAIN_IMAGE)}}" ng-if="isEfectiveLink(getHeaderLearnMoreUrl(ComponentType.MAIN_IMAGE)) && displayHeaderCta(ComponentType.MAIN_IMAGE)"
+                                                       style="background-size: 100% 100%;background-image:url('{{EMAIL_TEMPLATE_IMAGE_URL}}/apply-now-background-transparent.png');color:#ffffff;display:inline-block;font-family:sans-serif;font-size:13px;font-weight:bold;line-height:34px;border: none;border: 0;padding:0 50px;text-align:center;text-decoration:none;-webkit-text-size-adjust:none;">
+                                                        <span>{{getHeaderCtaText(ComponentType.MAIN_IMAGE)}}</span><span>&nbsp;&nbsp;&nbsp;&nbsp;  &#x25BA;</span>
+                                                    </a>-->
+                                                    <a ng-href="{{getHeaderLearnMoreUrl(ComponentType.MAIN_IMAGE)}}" ng-if="isEfectiveLink(getHeaderLearnMoreUrl(ComponentType.MAIN_IMAGE)) && displayHeaderCta(ComponentType.MAIN_IMAGE)"
+                                                       style="display:inline-block;font-family:sans-serif;font-size:13px;font-weight:bold;border: none;border: 0;text-align:center;text-decoration:none;-webkit-text-size-adjust:none;">
+                                                        <table>
+                                                            <tr>
+                                                                <td><img style="height: 32px; width: 20px;" src="{{getTemplateImagePiece(ComponentType.MAIN_IMAGE, TemplatePiece.LEFT, Device.DESKTOP)}}" /></td>
+                                                                <td style="background-color: {{getTemplateBaseColor(ComponentType.MAIN_IMAGE)}}; color:#FFFFFF; line-height: 32px; padding: 0 20px;"><span>{{getHeaderCtaText(ComponentType.MAIN_IMAGE)}}</span></td>
+                                                                <td><img style="height: 32px;" src="{{getTemplateImagePiece(ComponentType.MAIN_IMAGE, TemplatePiece.ARROW, Device.DESKTOP)}}" /></td>
+                                                                <td><img style="height: 32px; width: 20px;" src="{{getTemplateImagePiece(ComponentType.MAIN_IMAGE, TemplatePiece.RIGHT, Device.DESKTOP)}}" /></td>
+                                                            </tr>
+                                                        </table>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <table style="width:100%;border-spacing: 0;background-image:url({{getTemplateImagePiece(ComponentType.MAIN_IMAGE, TemplatePiece.HEADER, Device.DESKTOP)}});background-size: 100% 100%;" class="header-content" ng-class="{'default-height' : useSolidColor(ComponentType.MAIN_IMAGE) && displayHeaderCta(ComponentType.MAIN_IMAGE)}">
+                            <tr>
+                                <td class="header-text" style="width:60%">
+                                    <p class="header-left-content" style="font-size:18px;color:#FFFFFF; word-break: break-word;" ng-bind-html="getHeaderOverlayCopy(ComponentType.MAIN_IMAGE)"></p>
+                                </td>
+                                <td class="header-cta-container"  style="width:40%;background-color:transparent !important">
+                                    <div class="apply-now"
+                                         style="display:inline-block;text-align:center;margin:10px 0;vertical-align:middle;">
+                                        <!--<a ng-href="{{getHeaderLearnMoreUrl(ComponentType.MAIN_IMAGE)}}" ng-if="isEfectiveLink(getHeaderLearnMoreUrl(ComponentType.MAIN_IMAGE)) && displayHeaderCta(ComponentType.MAIN_IMAGE)"
+                                           style="background-size: 100% 100%;background-image:url('{{EMAIL_TEMPLATE_IMAGE_URL}}/apply-now-background-transparent.png');color:#ffffff;display:inline-block;font-family:sans-serif;font-size:13px;font-weight:bold;line-height:34px;border: none;border: 0;padding:0 50px;text-align:center;text-decoration:none;-webkit-text-size-adjust:none;">
+                                            <span>{{getHeaderCtaText(ComponentType.MAIN_IMAGE)}}</span><span>&nbsp;&nbsp;&nbsp;&nbsp; &#x25BA;</span>
+                                        </a>-->
+                                        <a ng-href="{{getHeaderLearnMoreUrl(ComponentType.MAIN_IMAGE)}}" ng-if="isEfectiveLink(getHeaderLearnMoreUrl(ComponentType.MAIN_IMAGE)) && displayHeaderCta(ComponentType.MAIN_IMAGE)"
+                                           style="display:inline-block;font-family:sans-serif;font-size:13px;font-weight:bold;border: none;border: 0;text-align:center;text-decoration:none;-webkit-text-size-adjust:none;">
+                                            <table>
+                                                <tr>
+                                                    <td><img style="height: 32px;width: 20px;" src="{{getTemplateImagePiece(ComponentType.MAIN_IMAGE, TemplatePiece.LEFT, Device.DESKTOP)}}" /></td>
+                                                    <td style="background-color: {{getTemplateBaseColor(ComponentType.MAIN_IMAGE)}}; color:#FFFFFF; line-height: 32px; padding: 0 20px;"><span>{{getHeaderCtaText(ComponentType.MAIN_IMAGE)}}</span></td>
+                                                    <td><img style="height: 32px;" src="{{getTemplateImagePiece(ComponentType.MAIN_IMAGE, TemplatePiece.ARROW, Device.DESKTOP)}}" /></td>
+                                                    <td><img style="height: 32px; width: 20px;" src="{{getTemplateImagePiece(ComponentType.MAIN_IMAGE, TemplatePiece.RIGHT, Device.DESKTOP)}}" /></td>
+                                                </tr>
+                                            </table>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                        <a ng-href="{{getHeaderLearnMoreUrl(ComponentType.MAIN_IMAGE)}}" target="_blank" style="display:block;text-decoration:none" ng-if="useSolidColor(ComponentType.MAIN_IMAGE) && !displayHeaderCta(ComponentType.MAIN_IMAGE)">
+                            <table style="width:100%;border-spacing: 0;background-image:url({{getTemplateImagePiece(ComponentType.MAIN_IMAGE, TemplatePiece.HEADER, Device.DESKTOP)}});background-size: 100% 100%;" class="default-height">
+                                <tr>
+                                    <td class="header-text" style="width:60%">
+                                        <p class="header-left-content" style="font-size:18px;color:#FFFFFF; word-break: break-word;" ng-bind-html="getHeaderOverlayCopy(ComponentType.MAIN_IMAGE)"></p>
+                                    </td>
+                                    <td class="header-cta-container hidden-mobile" style="height:0;width:40%"></td>
+                                </tr>
+                            </table>
+                        </a>
+                    </td>
+                </tr>
+            </table>
+            <!-- Main Content -->
+            <table id="main-content" style="width:100%; background-color:#FFFFFF;border-spacing: 0;display:inline-table">
+                <tr>
+                    <td class="main-content-wrapper" ng-if="isVisible(ComponentType.RIGHT_RAIL)">
+                        <table style="border-spacing: 0;display:inline-table;vertical-align:top;width:63%;border-right: 1px solid #DCD9DC;" class="left-content" ng-class="{'right-content-active' : isVisible(ComponentType.RIGHT_RAIL)}">
+                            <tr>
+                                <td class="left-content-wrapper">
+                                    <div class="html-content" ng-if="isVisible(ComponentType.DETAILS)" ng-bind-html="translateEmailTags(getComponent(ComponentType.DETAILS).Data.Description, getComponent(ComponentType.DETAILS))"></div>
+                                </td>
+                                <td><div style="display:inline-block;width:5px"></div></td>
+                            </tr>
+                        </table>
+                        <table style="border-spacing: 0;display:inline-table;vertical-align:top;width:34%;border:none;" class="right-content" ng-if="isVisible(ComponentType.RIGHT_RAIL)">
+                            <tr ng-if="isActive(ComponentType.RIGHT_RAIL, ContentType.TEXT_CONTENT)">
+                                <td><div style="display:inline-block;width:8px"></div></td>
+                                <td class="right-content-wrapper" style="padding:0">
+                                    <div class="html-content" ng-bind-html="translateEmailTags(getComponent(ComponentType.RIGHT_RAIL).Data.TextEditor.Description)"></div>
+                                </td>
+                            </tr>
+                            <tr ng-if="isActive(ComponentType.RIGHT_RAIL, ContentType.IMAGE_CONTENT)">
+                                <td><div style="display:inline-block;width:8px"></div></td>
+                                <td class="right-content-wrapper" style="text-align:center;padding:0">
+                                    <img class="img" fallback-src="{{DEFAULT_IMAGE_URL}}" ng-src="{{getSrc(ComponentType.RIGHT_RAIL)}}" alt="{{getImageAltText(ComponentType.RIGHT_RAIL)}}" style="width:200px;" />
+                                    <div class="html-content image-component" ng-bind-html="translateEmailTags(getComponent(ComponentType.RIGHT_RAIL).Data.Image.Description)"></div>
+                                </td>
+                            </tr>
+                            <tr ng-if="isActive(ComponentType.RIGHT_RAIL, ContentType.CTA_BUTTONS)">
+                                <td><div style="display:inline-block;width:8px"></div></td>
+                                <td class="right-content-wrapper" style="padding:0">
+                                    <a ng-if="isVisible(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.GO_ONLINE)" class="cta-links" ng-href="{{getEmailCtaUrl(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.GO_ONLINE)}}" target="_blank" style="display: inline-block;background-color: #DCD9DC;color: #003B73;padding: 10px;text-align: left;text-decoration: none;width:100%">
+                                        <table style="width:100%;">
+                                            <tr>
+                                                <td style="width: 20px">
+                                                    <img src="{{EMAIL_TEMPLATE_IMAGE_URL}}/right_pointing_angle_bracket.png" style="width: 10px;height: 35px;vertical-align: middle">
+                                                </td>
+                                                <td>
+                                                    <h3 style="display:block;font-size: 16px;font-weight:bold; margin: 0">{{getEmailButtonText(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.GO_ONLINE)}}</h3>
+                                                    <span style="display:block;font-size: 14px;color: #000000; text-decoration: underline">{{getEmailLinkText(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.GO_ONLINE)}}</span>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </a>
+                                    <a ng-if="isVisible(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.CALL)" class="cta-links" ng-href="{{getEmailCtaUrl(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.CALL)}}" target="_blank" style="display: inline-block;background-color: #DCD9DC;color: #003B73;padding: 10px;text-align: left;text-decoration: none;width:100%">
+                                        <table style="width:100%;">
+                                            <tr>
+                                                <td style="width: 20px">
+                                                    <img src="{{EMAIL_TEMPLATE_IMAGE_URL}}/right_pointing_angle_bracket.png" style="width: 10px;height: 35px;vertical-align: middle">
+                                                </td>
+                                                <td>
+                                                    <h3 style="display:block;font-size: 16px;font-weight:bold; margin: 0">{{getEmailButtonText(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.CALL)}}</h3>
+                                                    <span style="font-size: 14px;color: #000000;display:block">{{getEmailLinkText(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.CALL)}}</span>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </a>
+                                    <a ng-if="isVisible(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.VISIT)" class="cta-links" ng-href="{{getEmailCtaUrl(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.VISIT)}}" target="_blank" style="display: inline-block;background-color: #DCD9DC;color: #003B73;padding: 10px;text-align: left;text-decoration: none;width:100%">
+                                        <table style="width:100%;">
+                                            <tr>
+                                                <td style="width: 20px">
+                                                    <img src="{{EMAIL_TEMPLATE_IMAGE_URL}}/right_pointing_angle_bracket.png" style="width: 10px;height: 35px;vertical-align: middle">
+                                                </td>
+                                                <td>
+                                                    <h3 style="display:block;font-size: 16px;font-weight:bold; margin: 0">{{getEmailButtonText(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.VISIT)}}</h3>
+                                                    <span style="font-size: 14px;display:block;color: #000000; text-decoration: underline">{{getEmailLinkText(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.VISIT)}}</span>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </a>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td class="main-content-wrapper" ng-if="!isVisible(ComponentType.RIGHT_RAIL)">
+                        <table style="border-spacing: 0;display:inline-table;vertical-align:top;" class="left-content" ng-class="{'right-content-active' : isVisible(ComponentType.RIGHT_RAIL)}">
+                            <tr>
+                                <td class="left-content-wrapper">
+                                    <div class="html-content" ng-if="isVisible(ComponentType.DETAILS)" ng-bind-html="translateEmailTags(getComponent(ComponentType.DETAILS).Data.Description, getComponent(ComponentType.DETAILS))"></div>
+                                </td>
+                                <td><div style="display:inline-block;width:5px"></div></td>
+                            </tr>
+                        </table>
+                        <table style="border-spacing: 0;display:inline-table;vertical-align:top;border:none;" class="right-content" ng-if="isVisible(ComponentType.RIGHT_RAIL)">
+                            <tr ng-if="isActive(ComponentType.RIGHT_RAIL, ContentType.TEXT_CONTENT)">
+                                <td><div style="display:inline-block;width:8px"></div></td>
+                                <td class="right-content-wrapper" style="padding:0">
+                                    <div class="html-content" ng-bind-html="translateEmailTags(getComponent(ComponentType.RIGHT_RAIL).Data.TextEditor.Description)"></div>
+                                </td>
+                            </tr>
+                            <tr ng-if="isActive(ComponentType.RIGHT_RAIL, ContentType.IMAGE_CONTENT)">
+                                <td><div style="display:inline-block;width:8px"></div></td>
+                                <td class="right-content-wrapper" style="text-align:center;padding:0">
+                                    <img class="img" fallback-src="{{DEFAULT_IMAGE_URL}}" ng-src="{{getSrc(ComponentType.RIGHT_RAIL)}}" alt="{{getImageAltText(ComponentType.RIGHT_RAIL)}}" style="width:200px;" />
+                                    <div class="html-content image-component" ng-bind-html="translateEmailTags(getComponent(ComponentType.RIGHT_RAIL).Data.Image.Description)"></div>
+                                </td>
+                            </tr>
+                            <tr ng-if="isActive(ComponentType.RIGHT_RAIL, ContentType.CTA_BUTTONS)">
+                                <td><div style="display:inline-block;width:8px"></div></td>
+                                <td class="right-content-wrapper" style="padding:0">
+                                    <a ng-if="isVisible(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.GO_ONLINE)" class="cta-links" ng-href="{{getEmailCtaUrl(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.GO_ONLINE)}}" target="_blank" style="display: inline-block;background-color: #DCD9DC;color: #003B73;padding: 10px;text-align: left;text-decoration: none;width:100%">
+                                        <table style="width:100%;">
+                                            <tr>
+                                                <td style="width: 20px">
+                                                    <img src="{{EMAIL_TEMPLATE_IMAGE_URL}}/right_pointing_angle_bracket.png" style="width: 10px;height: 35px;vertical-align: middle">
+                                                </td>
+                                                <td>
+                                                    <h3 style="display:block;font-size: 16px;font-weight:bold; margin: 0">{{getEmailButtonText(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.GO_ONLINE)}}</h3>
+                                                    <span style="display:block;font-size: 14px;color: #000000; text-decoration: underline">{{getEmailLinkText(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.GO_ONLINE)}}</span>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </a>
+                                    <a ng-if="isVisible(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.CALL)" class="cta-links" ng-href="{{getEmailCtaUrl(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.CALL)}}" target="_blank" style="display: inline-block;background-color: #DCD9DC;color: #003B73;padding: 10px;text-align: left;text-decoration: none;width:100%">
+                                        <table style="width:100%;">
+                                            <tr>
+                                                <td style="width: 20px">
+                                                    <img src="{{EMAIL_TEMPLATE_IMAGE_URL}}/right_pointing_angle_bracket.png" style="width: 10px;height: 35px;vertical-align: middle">
+                                                </td>
+                                                <td>
+                                                    <h3 style="display:block;font-size: 16px;font-weight:bold; margin: 0">{{getEmailButtonText(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.CALL)}}</h3>
+                                                    <span style="font-size: 14px;color: #000000;display:block">{{getEmailLinkText(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.CALL)}}</span>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </a>
+                                    <a ng-if="isVisible(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.VISIT)" class="cta-links" ng-href="{{getEmailCtaUrl(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.VISIT)}}" target="_blank" style="display: inline-block;background-color: #DCD9DC;color: #003B73;padding: 10px;text-align: left;text-decoration: none;width:100%">
+                                        <table style="width:100%;">
+                                            <tr>
+                                                <td style="width: 20px">
+                                                    <img src="{{EMAIL_TEMPLATE_IMAGE_URL}}/right_pointing_angle_bracket.png" style="width: 10px;height: 35px;vertical-align: middle">
+                                                </td>
+                                                <td>
+                                                    <h3 style="display:block;font-size: 16px;font-weight:bold; margin: 0">{{getEmailButtonText(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.VISIT)}}</h3>
+                                                    <span style="font-size: 14px;display:block;color: #000000; text-decoration: underline">{{getEmailLinkText(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.VISIT)}}</span>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </a>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr ng-if="!isActive(ComponentType.RIGHT_RAIL, ContentType.CTA_BUTTONS) && (bottomCtaCountClass == 'one-item')">
+                    <td class="bottom-cta-container {{bottomCtaCountClass}}">
+                        <a ng-if="isVisible(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.GO_ONLINE)" class="cta-links" ng-href="{{getEmailCtaUrl(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.GO_ONLINE)}}" target="_blank" style="display: inline-block;background-color: #DCD9DC;color: #003B73;text-align: left;text-decoration: none;width:100%">
+                            <table style="width:100%;padding:10px;display:table-cell">
+                                <tr>
+                                    <td style="width: 20px">
+                                        <img src="{{EMAIL_TEMPLATE_IMAGE_URL}}/right_pointing_angle_bracket.png" style="width: 10px;height: 35px;vertical-align: middle">
+                                    </td>
+                                    <td>
+                                        <h3 style="display:block;font-size: 16px;font-weight:bold; margin: 0">{{getEmailButtonText(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.GO_ONLINE)}}</h3>
+                                        <span style="display:block;font-size: 14px;color: #000000; text-decoration: underline">{{getEmailLinkText(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.GO_ONLINE)}}</span>
+                                    </td>
+                                </tr>
+                            </table>
+                        </a>
+                        <a ng-if="isVisible(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.CALL)" class="cta-links" ng-href="{{getEmailCtaUrl(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.CALL)}}" target="_blank" style="display: inline-block;background-color: #DCD9DC;color: #003B73;text-align: left;text-decoration: none;font-size: 16px;width:100%">
+                            <table style="width:100%;padding:10px;display:table-cell">
+                                <tr>
+                                    <td style="width: 20px">
+                                        <img src="{{EMAIL_TEMPLATE_IMAGE_URL}}/right_pointing_angle_bracket.png" style="width: 10px;height: 35px;vertical-align: middle">
+                                    </td>
+                                    <td>
+                                        <h3 style="display:block;font-size: 16px;font-weight:bold; margin: 0">{{getEmailButtonText(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.CALL)}}</h3>
+                                        <span style="font-size: 14px;color: #000000;display:block">{{getEmailLinkText(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.CALL)}}</span>
+                                    </td>
+                                </tr>
+                            </table>
+                        </a>
+                        <a ng-if="isVisible(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.VISIT)" class="cta-links" ng-href="{{getEmailCtaUrl(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.VISIT)}}" target="_blank" style="display: inline-block;background-color: #DCD9DC;color: #003B73;text-align: left;text-decoration: none;font-size: 16px;width:100%">
+                            <table style="width:100%;padding:10px;display:table-cell">
+                                <tr>
+                                    <td style="width: 20px">
+                                        <img src="{{EMAIL_TEMPLATE_IMAGE_URL}}/right_pointing_angle_bracket.png" style="width: 10px;height: 35px;vertical-align: middle">
+                                    </td>
+                                    <td>
+                                        <h3 style="display:block;font-size: 16px;font-weight:bold; margin: 0">{{getEmailButtonText(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.VISIT)}}</h3>
+                                        <span style="font-size: 14px;display:block;color: #000000; text-decoration: underline">{{getEmailLinkText(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.VISIT)}}</span>
+                                    </td>
+                                </tr>
+                            </table>
+                        </a>
+                    </td>
+                </tr>
+
+                <tr ng-if="!isActive(ComponentType.RIGHT_RAIL, ContentType.CTA_BUTTONS) && (bottomCtaCountClass == 'two-items')">
+                    <td class="bottom-cta-container {{bottomCtaCountClass}}">
+                        <a ng-if="isVisible(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.GO_ONLINE)" class="cta-links" ng-href="{{getEmailCtaUrl(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.GO_ONLINE)}}" target="_blank" style="display: inline-block;background-color: #DCD9DC;color: #003B73;text-align: left;text-decoration: none;width:49%;">
+                            <table style="width:100%;padding:10px;display:table-cell;margin-right:10px">
+                                <tr>
+                                    <td style="width: 20px">
+                                        <img src="{{EMAIL_TEMPLATE_IMAGE_URL}}/right_pointing_angle_bracket.png" style="width: 10px;height: 35px;vertical-align: middle">
+                                    </td>
+                                    <td>
+                                        <h3 style="display:block;font-size: 16px;font-weight:bold; margin: 0">{{getEmailButtonText(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.GO_ONLINE)}}</h3>
+                                        <span style="display:block;font-size: 14px;color: #000000; text-decoration: underline">{{getEmailLinkText(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.GO_ONLINE)}}</span>
+                                    </td>
+                                </tr>
+                            </table>
+                        </a>
+                        <div ng-if="isVisible(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.GO_ONLINE)" style="display:inline-block;width:10px"></div>
+                        <a ng-if="isVisible(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.CALL)" class="cta-links" ng-href="{{getEmailCtaUrl(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.CALL)}}" target="_blank" style="display: inline-block;background-color: #DCD9DC;color: #003B73;text-align: left;text-decoration: none;font-size: 16px;width: 49%;">
+                            <table style="width:100%;padding:10px;display:table-cell">
+                                <tr>
+                                    <td style="width: 20px">
+                                        <img src="{{EMAIL_TEMPLATE_IMAGE_URL}}/right_pointing_angle_bracket.png" style="width: 10px;height: 35px;vertical-align: middle">
+                                    </td>
+                                    <td>
+                                        <h3 style="display:block;font-size: 16px;font-weight:bold; margin: 0">{{getEmailButtonText(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.CALL)}}</h3>
+                                        <span style="font-size: 14px;color: #000000;display:block">{{getEmailLinkText(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.CALL)}}</span>
+                                    </td>
+                                </tr>
+                            </table>
+                        </a>
+                        <div ng-if="isVisible(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.VISIT) && isVisible(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.CALL)" style="display:inline-block;width:10px"></div>
+                        <a ng-if="isVisible(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.VISIT)" class="cta-links" ng-href="{{getEmailCtaUrl(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.VISIT)}}" target="_blank" style="display: inline-block;background-color: #DCD9DC;color: #003B73;text-align: left;text-decoration: none;font-size: 16px;width:49%">
+                            <table style="width:100%;padding:10px;display:table-cell">
+                                <tr>
+                                    <td style="width: 20px">
+                                        <img src="{{EMAIL_TEMPLATE_IMAGE_URL}}/right_pointing_angle_bracket.png" style="width: 10px;height: 35px;vertical-align: middle">
+                                    </td>
+                                    <td>
+                                        <h3 style="display:block;font-size: 16px;font-weight:bold; margin: 0">{{getEmailButtonText(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.VISIT)}}</h3>
+                                        <span style="font-size: 14px;display:block;color: #000000; text-decoration: underline">{{getEmailLinkText(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.VISIT)}}</span>
+                                    </td>
+                                </tr>
+                            </table>
+                        </a>
+                    </td>
+                </tr>
+                <tr ng-if="!isActive(ComponentType.RIGHT_RAIL, ContentType.CTA_BUTTONS) && (bottomCtaCountClass == 'three-items')">
+                    <td class="bottom-cta-container {{bottomCtaCountClass}}">
+                        <a ng-if="isVisible(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.GO_ONLINE)" class="cta-links" ng-href="{{getEmailCtaUrl(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.GO_ONLINE)}}" target="_blank" style="display: inline-block;background-color: #DCD9DC;color: #003B73;text-align: left;text-decoration: none;width:32%;">
+                            <table style="width:100%;padding:10px;display:table-cell;margin-right:10px">
+                                <tr>
+                                    <td style="width: 20px">
+                                        <img src="{{EMAIL_TEMPLATE_IMAGE_URL}}/right_pointing_angle_bracket.png" style="width: 10px;height: 35px;vertical-align: middle">
+                                    </td>
+                                    <td>
+                                        <h3 style="display:block;font-size: 16px;font-weight:bold; margin: 0">{{getEmailButtonText(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.GO_ONLINE)}}</h3>
+                                        <span style="display:block;font-size: 14px;color: #000000; text-decoration: underline">{{getEmailLinkText(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.GO_ONLINE)}}</span>
+                                    </td>
+                                </tr>
+                            </table>
+                        </a>
+                        <div style="display:inline-block;width:10px"></div>
+                        <a ng-if="isVisible(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.CALL)" class="cta-links" ng-href="{{getEmailCtaUrl(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.CALL)}}" target="_blank" style="display: inline-block;background-color: #DCD9DC;color: #003B73;text-align: left;text-decoration: none;font-size: 16px;width:32%;">
+                            <table style="width:100%;padding:10px;display:table-cell">
+                                <tr>
+                                    <td style="width: 20px">
+                                        <img src="{{EMAIL_TEMPLATE_IMAGE_URL}}/right_pointing_angle_bracket.png" style="width: 10px;height: 35px;vertical-align: middle">
+                                    </td>
+                                    <td>
+                                        <h3 style="display:block;font-size: 16px;font-weight:bold; margin: 0">{{getEmailButtonText(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.CALL)}}</h3>
+                                        <span style="font-size: 14px;color: #000000;display:block">{{getEmailLinkText(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.CALL)}}</span>
+                                    </td>
+                                </tr>
+                            </table>
+                        </a>
+                        <div style="display:inline-block;width:10px"></div>
+                        <a ng-if="isVisible(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.VISIT)" class="cta-links" ng-href="{{getEmailCtaUrl(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.VISIT)}}" target="_blank" style="display: inline-block;background-color: #DCD9DC;color: #003B73;text-align: left;text-decoration: none;font-size: 16px;width:32%">
+                            <table style="width:100%;padding:10px;display:table-cell">
+                                <tr>
+                                    <td style="width: 20px">
+                                        <img src="{{EMAIL_TEMPLATE_IMAGE_URL}}/right_pointing_angle_bracket.png" style="width: 10px;height: 35px;vertical-align: middle">
+                                    </td>
+                                    <td>
+                                        <h3 style="display:block;font-size: 16px;font-weight:bold; margin: 0">{{getEmailButtonText(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.VISIT)}}</h3>
+                                        <span style="font-size: 14px;display:block;color: #000000; text-decoration: underline">{{getEmailLinkText(ComponentType.EMAIL_CALL_TO_ACTION, EmailCTAType.VISIT)}}</span>
+                                    </td>
+                                </tr>
+                            </table>
+                        </a>
+                    </td>
+                </tr>
+            </table>
+            <!-- Social Media -->
+            <table style="width:100%;border-spacing: 0;padding: 15px 10px">
+                <tr>
+                    <td class="links-container" style="text-align:right;padding-right:20px">
+                        <a href="https://www.facebook.com/suntrust" target="_blank" style="margin:0 5px;text-decoration: none">
+                            <img src="{{EMAIL_TEMPLATE_IMAGE_URL}}/facebook-black.png" style="height:20px;width:10px" />
+                        </a>
+                        <a href="https://twitter.com/SunTrust" target="_blank" style="margin:0 5px;text-decoration: none">
+                            <img src="{{EMAIL_TEMPLATE_IMAGE_URL}}/twitter-black.png" style="height:21px;width:21px" />
+                        </a>
+                        <a href="https://www.youtube.com/user/LiveSolid" target="_blank" style="margin:0 5px;text-decoration: none">
+                            <img src="{{EMAIL_TEMPLATE_IMAGE_URL}}/youtube-black.png" style="height:21px;width:21px" />
+                        </a>
+                        <a href="https://www.linkedin.com/company/suntrust-bank" target="_blank" style="margin:0 5px;text-decoration: none">
+                            <img src="{{EMAIL_TEMPLATE_IMAGE_URL}}/Linkedin-Black.png" style="height:20px;width:20px" />
+                        </a>
+                    </td>
+                </tr>
+            </table>
+            <!-- Discalimer -->
+            <table style="width:100%;border-spacing: 0">
+                <tr>
+                    <td class="disclaimer-container">
+                        <div style="font-size:10.5px;line-height:16px;" class="html-content" ng-if="isVisible(ComponentType.DISCLAIMER)" ng-bind-html="translateEmailTags(getComponent(ComponentType.DISCLAIMER).Data.Description)"></div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

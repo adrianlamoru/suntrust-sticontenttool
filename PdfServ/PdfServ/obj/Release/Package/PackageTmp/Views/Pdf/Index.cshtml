@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<br />
+
+<p>
+    Instructions to use the project: 
+</p>
+<ul>
+    <li>wkhtmltopdf it's the original library and it's based on webkit <a href="http://wkhtmltopdf.org/">http://wkhtmltopdf.org/</a></li>
+    <li>We are using a .net wrapper from wkhtmltopdf and you can install this package using the nuget pachage manager: <a href="https://www.nuget.org/packages/Pechkin.Synchronized/0.5.8.1">Pechkin.Synchronized</a></li>
+    <li><a href="https://github.com/gmanny/Pechkin">https://github.com/gmanny/Pechkin it's the official .net wrapper page</a></li>
+    <li><a href="http://wkhtmltopdf.org/usage/wkhtmltopdf.txt">how to use wkhtmltopdf</a></li>
+</ul>
+
+<h1>Test the library!!!</h1>
+
+<form role="form" class="form-horizontal" action="Pdf/download" method="post">
+    <div class="form-group">
+        <label for="docName" class="col-sm-2 control-label">Document Name: </label>
+        <div class="col-sm-10">
+            <input type="text" name="docName" id="docName" class="form-control" value="" placeholder="@ViewBag.defaultDocName" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="url" class="col-sm-2 control-label">Url: </label>
+        <div class="col-sm-10">
+            <input type="text" name="url" id="url" class="form-control" value="" placeholder="@ViewBag.defaultUrl" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="html" class="col-sm-2 control-label">HTML: </label>
+        <div class="col-sm-10">
+            <textarea rows="4" cols="40" class="form-control" name="html" id="html"></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="fileName" class="col-sm-2 control-label">File Name:</label>
+        <div class="col-sm-10">
+            <input type="text" name="fileName" id="fileName" value="" placeholder="@ViewBag.defaultFileName" />
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-default">Convert to PDF</button>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,43 @@
+﻿<div class="bg-equity">
+    <div class="banner">
+        <h1 class="page-title">
+            Special Offer
+        </h1>
+        <div class="dark-widget">
+            <div class="icon-no"></div>
+            <div class="headline">
+                <div ng-bind="getComponent(ComponentType.HEADLINE).Data.Headline"></div>
+            </div>
+            <div class="preview-details">
+                <div class="html-view" ng-bind-html="getComponent(ComponentType.DETAILS).Data.Description"></div>
+            </div>
+        </div>
+        <div class="options">
+            <a class="btn action" href="">Continue</a>
+        </div>
+        <div class="term-conditions">
+            <div class="html-view sup" ng-bind-html="getComponent(ComponentType.TERMS_CONDITIONS).Data.Conditions"></div>
+        </div>
+    </div>
+</div>
+<div class="bg-cc-footer">
+
+</div>
+<div class="pdf-conplete-content">
+    <h3>Complete Content:</h3>
+    <hr />
+    <div class="pdf-complete-content-text" ng-if="!isEmptyOrWhiteSpace(display(ComponentType.HEADLINE))">
+        <h4>Headline:</h4>
+        <div class="overlay-text-viewer">
+            <div ng-bind="getComponent(ComponentType.HEADLINE).Data.Headline"></div>
+        </div>
+    </div>
+    <div class="pdf-complete-content-text" ng-if="isVisible(ComponentType.DETAILS)">
+        <h4>Details:</h4>
+        <div class="overlay-text-viewer html-view" ng-bind-html="getComponent(ComponentType.DETAILS).Data.Description"></div>
+    </div>
+    <div class="pdf-complete-content-text" ng-if="isVisible(ComponentType.TERMS_CONDITIONS)">
+        <h4>Terms & Conditions:</h4>
+        <div class="overlay-text-viewer html-view" ng-bind-html="getComponent(ComponentType.TERMS_CONDITIONS).Data.Conditions"></div>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+﻿<div class="bg-primary-banner">
+    <div class="banner">
+        <div class="img-container">
+            <a ng-href="{{getHref(ComponentType.CALL_TO_ACTION)}}" href="" target="_blank">
+                <img class="img-banner" fallback-src="{{DEFAULT_IMAGE_URL}}" ng-src="{{getSrc(ComponentType.MAIN_IMAGE)}}"/>
+                <!--<div class="headline-subheadline-container">
+                    <span class="headline">{{getComponent(ComponentType.HEADLINE).Data.Headline}}</span>
+                    <div class="html-view subheadline" ng-bind-html="getComponent(ComponentType.SUB_HEADLINE).Data.Description"></div>
+                </div>-->
+            </a>
+        </div>
+        <div class="overlay-text" ng-bind-html="getComponent(ComponentType.MAIN_IMAGE).Data.OverlayText"></div>
+    </div>
+</div>
+<div class="pdf-conplete-content">
+    <h3>Complete Content:</h3>
+    <hr/>
+    <!--<div class="pdf-complete-content-text">
+        <h4>Headline:</h4>
+        <span class="headline">{{getComponent(ComponentType.HEADLINE).Data.Headline}}</span>
+    </div>
+    <div class="pdf-complete-content-text">
+        <h4>Sub Headline:</h4>
+        <div class="html-view subheadline" ng-bind-html="getComponent(ComponentType.SUB_HEADLINE).Data.Description"></div>
+    </div>-->
+    <div class="pdf-complete-content-text" ng-if="false">
+        <h4>Overlay Text:</h4>
+        <div class="overlay-text-viewer" ng-bind-html="getComponent(ComponentType.MAIN_IMAGE).Data.OverlayText"></div>
+    </div>
+    <div class="pdf-complete-content-text" ng-if="!isEmptyOrWhiteSpace(getCTALink(ComponentType.CALL_TO_ACTION))">
+        <div class="overlay-text-viewer">
+            <div ng-if="isALink(ComponentType.CALL_TO_ACTION)">
+                <span class="cta-link-text">CTA Link:</span> <a href="{{getCTALink(ComponentType.CALL_TO_ACTION)}}" target="_blank">{{getCTALink(ComponentType.CALL_TO_ACTION)}}</a>
+            </div>
+            <div ng-if="!isALink(ComponentType.CALL_TO_ACTION)">
+                <span class="cta-link-text">CTA Link:</span> {{getCTALink(ComponentType.CALL_TO_ACTION)}}
+            </div>
+        </div>
+    </div>
+</div>
+
+

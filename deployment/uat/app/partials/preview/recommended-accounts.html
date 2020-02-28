@@ -1,0 +1,12 @@
+﻿<div class="bg-recommended">
+    <div class="banner">
+        <div class="headline">
+            {{getComponent(ComponentType.HEADLINE).Data.selectedOption.Name}}
+        </div>
+        <div class="action-link">
+            <a class="btn rejection" ng-if="isVisible(ComponentType.CALL_TO_ACTION)" href="" target="_blank"
+               ng-href="{{getHref(ComponentType.CALL_TO_ACTION)}}">{{display(ComponentType.CALL_TO_ACTION)}}</a>
+        </div>
+    </div>
+</div>
+

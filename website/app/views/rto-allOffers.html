@@ -1,0 +1,36 @@
+﻿<div class="screen-content">
+    <div class="input-spacing" ng-click="showView('layout-menu')">
+        <div class=" arrow-holder clickable">
+            <div class="arrow-left"></div>
+        </div>
+        <label class="label-larger grey-color clickable">Back to Layout Menu</label>
+    </div>
+    <div class="input-spacing page-main-title lesser-height">
+        <span>All Offers - {{projectManager.selectedLayout.ID}}</span>
+    </div>
+
+    <form name="sectionForm" novalidate>
+        <wg-main-image number="01."
+                       header="Upload the image for All Offers Page."
+                       details="The All Offers Page image size is - W: 374 x H: 180 px. &lt;br /&gt; Use the text area field to enter the content that should appear on top of the image. &lt;br /&gt; &lt;i&gt;Note: Images with other size specifications cannot be uploaded.&lt;/i&gt;"
+                       width="374"
+                       height="180"
+                       show-tc-text-editor="true"
+                       open-upload-image-dialog-click="openUploadImageDialogClick(callbackOK)">
+        </wg-main-image>
+
+        <wg-call-to-action number="02."
+                           header="Select the Call to Action (CTA) for the offer."
+                           details="The Call to Action (CTA) determines how an offer will be fulfilled. Please select the appropriate CTA from the drop down menu. &lt;br /&gt; &lt;br /&gt; &lt;i&gt;Note: When the URL CTA is selected, please enter the hyperlink to the appropriate location.&lt;/i&gt;"
+                           deactivatable="true"
+                           buttom-text-visible="false"
+                           add-mob-options="true"
+                           balance-transfer-opt="true"
+                           add-mob-brightfolio="true"
+                           add-mob-in-app-linking-options="true">
+        </wg-call-to-action>
+        <div ng-include="'../app/partials/action-bar-components.html'"></div>
+    </form>
+</div>
+<div class="dialog noselect" ng-class="{'open': isPreviewDlgVisible }"
+     ng-include="previewUrl()"></div>

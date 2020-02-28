@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="bbea39f1cfd24641b2a48e701c03ea89" Name="Diagram1" ZoomLevel="86">
+        <EntityTypeShape EntityType="st1001Model.ComponentType" Width="3" PointX="9.875" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="st1001Model.Offer" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="st1001Model.Project" Width="1.5" PointX="3" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="st1001Model.User" Width="1.5" PointX="1" PointY="4.625" IsExpanded="true" />
+        <AssociationConnector Association="st1001Model.FK_Project_Offer" ManuallyRouted="false" />
+        <AssociationConnector Association="st1001Model.UserProject" />
+        <EntityTypeShape EntityType="st1001Model.Component" Width="1.5" PointX="5.25" PointY="0.625" />
+        <AssociationConnector Association="st1001Model.FK_Component_Project" />
+        <EntityTypeShape EntityType="st1001Model.SectionType" Width="1.5" PointX="10.75" PointY="1.875" />
+        <EntityTypeShape EntityType="st1001Model.ProcessFileTask" Width="4.75" PointX="4.75" PointY="5" />
+        <EntityTypeShape EntityType="st1001Model.LayoutDetail" Width="1.5" PointX="7.375" PointY="0.75" />
+        <AssociationConnector Association="st1001Model.FK_LayoutDetail_Offer" />
+        <EntityTypeShape EntityType="st1001Model.LayoutType" Width="1.5" PointX="0.75" PointY="8.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

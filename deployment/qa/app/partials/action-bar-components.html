@@ -1,0 +1,9 @@
+﻿<div class="action-bar pull-right">
+    <button class="button orange" ng-click="reset()" ng-disabled="sectionForm.$pristine && !projectManager.EditMode()">Reset</button>
+    <button class="button orange" ng-click="openPreviewDialogClick()">Preview</button>
+    <!--<a class="button orange" target="_blank" ng-href="{{previewUrl()}}">Preview</a>-->
+    <button class="button orange" ng-click="cancel()">Cancel</button>
+    <button class="button orange" ng-click="save()">Save</button>
+    <!--<button class="button orange" ng-click="save()" ng-disabled="sectionForm.$pristine || sectionForm.$invalid">Save</button>-->
+</div>
+<div class="clear"></div>

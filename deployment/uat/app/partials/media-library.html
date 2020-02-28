@@ -1,0 +1,90 @@
+﻿<div>
+    <div class="action-bar top-row">
+        <div class="filter-container">
+            <select name="filter-assets-type" class="filter-select" ng-model="formData.selectedAssetTypeFilter" ng-show="formData.isRootFolderSelected" 
+                    ng-change="resetSelectAllValue(); applyFilter();">
+                <option value="ALL">Show all types</option>
+                <option value="PROJECT_FOLDER">Project Folders</option>
+                <option value="CUSTOM_FOLDER">Custom Folders</option>
+                <option value="FILE">Assets</option>
+            </select>
+
+            <select name="filter-file-type" class="filter-select" ng-model="formData.selectedFileTypeFilter" ng-show="!formData.isRootFolderSelected" 
+                    ng-change="resetSelectAllValue(); applyFilter();">
+                <option value="ALL">Show all types</option>
+                <option value="IMAGE">Image</option>
+                <option value="TEXT">Text</option>
+                <option value="PDF">PDF</option>
+                <option value="SPREADSHEET">Spreadsheet</option>
+                <option value="PRESENTATION">Presentation</option>
+                <option value="OTHER">Other</option>
+            </select>
+        </div>
+
+        <div class="filter-container">
+            <select name="filter-bulk-select" ng-model="formData.bulkActionSelected" class="filter-select bulk" ng-disabled="formData.isBulkActionDisabled">
+                <option value="NONE">Select an Action</option>
+                <option value="DOWNLOAD">Download Selected</option>
+                <option value="DELETE">Delete Selected</option>
+            </select>
+            <input type="button" name="apply" value="Apply" class="button blue bulk" ng-click="applyBulkAction()" ng-disabled="formData.isBulkActionDisabled" />
+            <br />
+            <label class="bulk-disabled-msg" ng-show="formData.isBulkActionDisabled">No bulk actions available on any assets currently displayed.</label>
+        </div>
+
+        <div class="filter-container right">
+            <input ng-show="formData.isRootFolderSelected" type="button" name="create-new-folder" value="Create New Folder" class="button blue" ng-click="openCreateNewFolderDialog()" />
+            <input type="button" name="add-media" value="Add Media" class="button blue" ng-click="openAddMediaDialog()" />
+        </div>
+    </div>
+
+    <div class="action-bar">
+        <div class="fl">
+            <input type="checkbox" name="select-all" ng-model="formData.selectAllValue" ng-change="setSelectedValueToFiles(formData.selectAllValue)" />
+            <label>Select All</label>
+        </div>
+
+        <div ng-hide="tbImagesModel.pagedItemsLength == 0" class="pagination-content">
+            <ul>
+                <li ng-class="{'disabled' : tbImagesModel.previousDisabled()}">
+                    <a href="javascript:void(0)" ng-click="resetSelectAllValue(); tbImagesModel.firstPage();"><div class="square">&lt;&lt;</div></a>
+                </li>
+                <li ng-class="{'disabled' : tbImagesModel.previousDisabled()}">
+                    <a href="javascript:void(0)" ng-click="resetSelectAllValue(); tbImagesModel.prevPage(); "><div class="square">&lt;</div></a>
+                </li>
+                <li><span>Page {{tbImagesModel.pageNumber()}} of {{tbImagesModel.pagedItemsLength}}</span></li>
+                <li ng-class="{'disabled': tbImagesModel.nextDisabled()}">
+                    <a href="javascript:void(0)" ng-click="resetSelectAllValue(); tbImagesModel.nextPage();"><div class="square">&gt;</div></a>
+                </li>
+                <li ng-class="{'disabled': tbImagesModel.nextDisabled()}">
+                    <a href="javascript:void(0)" ng-click="resetSelectAllValue(); tbImagesModel.lastPage();"><div class="square">&gt;&gt;</div></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div id="all-assets-view" class="assets-container noselect">
+        <div ng-repeat="item in tbImagesModel.pagedItems[tbImagesModel.currentPage]">
+
+            <div ng-if="item.isCustomFolder" class="item folder custom" ng-click="setSelectedFolder(item)">
+                <div class="close-button button-float-right" ng-click="deleteFolder(item, $event)">&times;</div>
+                <div class="icon-holder folder-icon"></div>
+                <label>{{item.title}}</label>
+            </div>
+
+            <div ng-if="item.isProjectFolder" class="item folder" ng-click="setSelectedFolder(item)">
+                <div class="icon-holder folder-icon"></div>
+                <label>{{item.title}}</label>
+            </div>
+
+            <div ng-if="item.isFile" class="item image-item">
+                <div class="close-button button-float-right" ng-click="deleteFile(item, $event)">&times;</div>
+                <input type="checkbox" ng-model="item.isSelected" ng-change="updateApplyBulkStatus()" />
+                <img class="{{item.subtype}}" ng-src="{{getImagePreview(item)}}" alt="" />
+                <div class="clear"></div>
+                <label>{{item.name}}</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="clear"></div>
+</div>

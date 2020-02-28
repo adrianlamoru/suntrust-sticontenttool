@@ -1,0 +1,35 @@
+﻿<div class="dialog-block" ng-controller="SelectContentIDsController">
+    <div class="form-container">
+        <form name="selectContentIDsForm" novalidate class="copy-content-ids-form">
+            <div class="dialog-header">
+                <div class="dialog-heading">{{dlgTitle}}</div>
+                <div class="close-button" ng-click="cancelButtonClick()">&times;</div>
+            </div>
+            <div class="dialog-content">
+                <div class="instructions">
+                    <span class="sentence">{{dlgDescription}}.</span>
+                    <a class="select-all" ng-click="selectAll()">{{selectAllText()}}</a>
+                </div>
+                <ul class="display-block">
+                    <li class="input-spacing display-block dialog-items" ng-class="{'asterisk': !item.hasData}" ng-repeat="item in formData.contentIDs">
+                        <label class="id-selector">
+                            <input type="checkbox" id="contentID1" value="Content ID 1" ng-model="item.selected" />
+                            {{item.id}}<span ng-show="!item.hasData">*</span>
+                        </label>
+                        <span class="note">
+                            {{item.note}}
+                        </span>
+                    </li>
+                </ul>
+                <div class="footnotes" ng-show="showMessage">*WARNING: this Content ID contains no content.</div>
+
+                <div class="button-container">
+                    <button class="button orange button-float-right" ng-click="confirmButtonClick()" ng-disabled="false">Export</button>
+                    <button class="button orange button-float-right" ng-click="cancelButtonClick()">Cancel</button>
+                    <div class="clear"></div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>

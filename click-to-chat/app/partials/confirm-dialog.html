@@ -1,0 +1,22 @@
+﻿<div class="">
+    <div class="dialog-block">
+        <div class="form-container">
+            <form name="confirmForm" novalidate>
+                <div id="confirm" class="dialog-header">
+                    <div class="dialog-heading">{{dialogTitle}}</div>
+                    <div class="close-button" ng-click="closeConfirmDialogClick()">&times;</div>
+                </div>
+                <div class="dialog-content">
+                    <div class="instructions">
+                        <span class="sentence" ng-bind-html="dialogMessage"></span>
+                    </div>
+                    <div class="button-container">
+                        <a class="button orange button-float-right" ng-click="confirmDialogOKClick()">{{btnOkText}}</a>
+                        <a class="button orange button-float-right" ng-click="closeConfirmDialogClick()" ng-hide="isCancelButtonHidden">No</a>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
